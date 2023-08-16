@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "114363239732",
+    "project_id": "parde-31f96",
+    "storage_bucket": "parde-31f96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114363239732:android:58abad54ae4411859b2961",
+        "android_client_info": {
+          "package_name": "com.cna.parde"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114363239732-daoi2umhkrk5opeuc79nuef9m4aivlp5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cna.parde",
+            "certificate_hash": "c277508a7546346a36bc8c101b581518a6c26b3f"
+          }
+        },
+        {
+          "client_id": "114363239732-ansrnqvofkdg101uc7ch4s49v30levio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAseAYD3uNdHr7LHQ4hcwGnq6xWM0ke0mI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114363239732-ansrnqvofkdg101uc7ch4s49v30levio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
