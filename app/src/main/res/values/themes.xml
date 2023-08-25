@@ -1,9 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Parde.light" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <style name="Base.Theme.Parde" parent="Theme.MaterialComponents.NoActionBar">
+
     </style>
 
     <style name="Theme.Parde" parent="Base.Theme.Parde" />
+
+    <style name="roundedImageRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50dp</item>
+    </style>
 </resources>
