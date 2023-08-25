@@ -25,7 +25,7 @@ class IntroActivity : AppCompatActivity() {
         fadeIn.fillAfter = true
         binding.introTextView.startAnimation(fadeIn)
 
-        val intent = Intent(this,WelcomActivity::class.java)
+        val intent = Intent(this,WelcomeActivity::class.java)
 
         CoroutineScope(Dispatchers.Main).launch {
             delay(1000)
