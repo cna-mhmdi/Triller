@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InfoActivity"
+    android:id="@+id/activity_info"
     android:background="@color/main_background">
 
     <ScrollView
@@ -27,10 +28,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/titr"
-                android:text="علاقه مندی ها"
+                android:text="نام خود را وارد کنید"
                 android:textColor="@color/white"
-                android:textSize="30sp"
-                android:layout_marginTop="50dp"
+                android:textSize="20sp"
+                android:layout_marginTop="45dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +41,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:hint="نام خود را وارد کنید"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white"
                 app:endIconMode="custom"
                 app:endIconDrawable="@drawable/user"
                 app:endIconTint="@color/white"
@@ -52,12 +50,14 @@
                 android:layout_marginTop="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Action"/>
 
@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Adventure"/>
 
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Animation"/>
 
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Comedy"/>
                 <com.google.android.material.chip.Chip
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Crime"/>
 
@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Documentary"/>
                 <com.google.android.material.chip.Chip
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Drama"/>
 
@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Family"/>
 
@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Fantasy"/>
 
@@ -146,7 +146,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="History"/>
 
@@ -155,7 +155,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Horror"/>
 
@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Music"/>
 
@@ -173,7 +173,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Mystery"/>
 
@@ -182,7 +182,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Romance"/>
 
@@ -191,7 +191,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Science Fiction"/>
 
@@ -200,7 +200,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="TV Movie"/>
 
@@ -209,7 +209,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Thriller"/>
 
@@ -218,7 +218,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="War"/>
 
@@ -227,7 +227,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:textColor="@color/chip_text"
-                    app:rippleColor="@color/checkOn"
+                    app:rippleColor="@color/checkOff"
                     app:chipBackgroundColor="@color/chip_background"
                     android:text="Western"/>
 
