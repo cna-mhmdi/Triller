@@ -4,6 +4,247 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfoActivity">
+    tools:context=".InfoActivity"
+    android:background="@color/main_background">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradiant_color_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/titr"
+                android:text="علاقه مندی ها"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:hint="نام خود را وارد کنید"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/user"
+                app:endIconTint="@color/white"
+                app:boxStrokeColor="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Action"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Adventure"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Animation"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Comedy"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Crime"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Documentary"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Drama"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Family"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Fantasy"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="History"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Horror"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Music"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Mystery"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Romance"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Science Fiction"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="TV Movie"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Thriller"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="War"/>
+
+                    <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOn"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Western"/>
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnInfo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.Button"
+                android:background="@drawable/intro_button_bacground"
+                android:layout_gravity="center"
+                android:fontFamily="@font/titr"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                android:text="@string/go"/>
+        </LinearLayout>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

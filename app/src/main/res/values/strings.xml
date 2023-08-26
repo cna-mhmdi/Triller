@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Parde</string>
+    <string name="welcome">خوش آمدید</string>
+    <string name="go">ورود</string>
 </resources>
