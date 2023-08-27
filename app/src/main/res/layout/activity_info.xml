@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/titr"
-                android:text="نام خود را وارد کنید"
+                android:text="نام خود را وارد و حداکثر سه ژانر را انتخاب کنید"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_marginTop="45dp"
@@ -60,6 +60,7 @@
                 android:id="@+id/chipGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:chipSpacingVertical="1dp"
                 android:layout_marginTop="8dp">
 
                 <com.google.android.material.chip.Chip

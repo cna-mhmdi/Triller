@@ -36,10 +36,16 @@ class InfoActivity : AppCompatActivity() {
                         selectedChipNames.add(chipName)
                     }
                 selectedChipNames.joinToString(", ")
-                val intent = Intent(this,MainActivity::class.java)
-                intent.putExtra(TAG_USERNAME, userNames)
-                intent.putStringArrayListExtra(TAG_CHIP_NAMES,ArrayList(selectedChipNames))
-                startActivity(intent)
+                if (selectedChipNames.size > 3){
+                    Snackbar.make(binding.root,"شما تنها میتوانید حداکثر 3 تا ژانر انتخاب کنید",Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(resources.getColor(R.color.main_background))
+                        .show()
+                }else{
+                    val intent = Intent(this,MainActivity::class.java)
+                    intent.putExtra(TAG_USERNAME, userNames)
+                    intent.putStringArrayListExtra(TAG_CHIP_NAMES,ArrayList(selectedChipNames))
+                    startActivity(intent)
+                }
             }else{
                 Snackbar.make(binding.root,"لطفا نام خود را وارد کنید !",Snackbar.LENGTH_LONG)
                     .setBackgroundTint(resources.getColor(R.color.main_background))
