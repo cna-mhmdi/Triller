@@ -29,7 +29,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Movie"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Tv"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Anime"))
+        binding.tabLayout.tabGravity = TabLayout.GRAVITY_FILL
 
+        val adapter =
+            ViewPagerAdapter(this,supportFragmentManager,binding.tabLayout.tabCount)
+        binding.viewPager.adapter = adapter
+
+        binding.viewPager
+            .addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                binding.viewPager.currentItem = tab!!.position
+
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?){}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
 
         binding.txtUserName.text = userName
     }
