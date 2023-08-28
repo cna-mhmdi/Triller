@@ -3,6 +3,9 @@ package com.cna.parde
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.cna.parde.adapters.ViewPagerAdapter
+import com.cna.parde.databinding.ActivityMainBinding
+import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,9 +22,15 @@ class MainActivity : AppCompatActivity() {
     private val selectedChipNames: List<String> by lazy {
         intent.getStringArrayListExtra(TAG_CHIP_NAMES) ?: emptyList()
     }
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        Toast.makeText(this,"$userName$selectedChipNames",Toast.LENGTH_LONG).show()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+
+        binding.txtUserName.text = userName
     }
 }
