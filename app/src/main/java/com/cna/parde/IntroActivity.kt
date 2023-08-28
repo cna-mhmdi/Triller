@@ -22,8 +22,8 @@ class IntroActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-//        introPreferences = getSharedPreferences("introPreferences", Context.MODE_PRIVATE)
-//        val isIntroShowed = introPreferences.getBoolean("introPreferences",false)
+        introPreferences = getSharedPreferences("introPreferences", Context.MODE_PRIVATE)
+        val isIntroShowed = introPreferences.getBoolean("introPreferences",false)
 
         val fadeIn = AlphaAnimation(0f, 1f)
         fadeIn.duration = 700
@@ -32,20 +32,20 @@ class IntroActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Main).launch {
             delay(1000)
-            val intent = Intent(this@IntroActivity,WelcomeActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this@IntroActivity,WelcomeActivity::class.java)
+//            startActivity(intent)
 // shared Preferences should be added after the project completed
-//            val targetActivity = if (!isIntroShowed) {
-//
-//                val editor = introPreferences.edit()
-//                editor.putBoolean("introPreferences",true)
-//                editor.apply()
-//                WelcomeActivity::class.java
-//
-//            } else {
-//                MainActivity::class.java
-//            }
-//            startActivity(Intent(this@IntroActivity,targetActivity))
+            val targetActivity = if (!isIntroShowed) {
+
+                val editor = introPreferences.edit()
+                editor.putBoolean("introPreferences",true)
+                editor.apply()
+                WelcomeActivity::class.java
+
+            } else {
+                MainActivity::class.java
+            }
+            startActivity(Intent(this@IntroActivity,targetActivity))
 
             finish()
         }

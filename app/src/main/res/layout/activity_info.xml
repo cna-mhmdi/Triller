@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 app:endIconMode="custom"
-                app:endIconDrawable="@drawable/user"
+                app:endIconDrawable="@drawable/username"
                 app:endIconTint="@color/white"
                 app:boxStrokeColor="@color/white"
                 android:focusable="true"
