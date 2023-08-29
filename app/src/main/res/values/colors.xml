@@ -8,6 +8,8 @@
     <color name="pink">#e45eb0</color>
     <color name="green">#34e3c4</color>
 
+    <color name="bottomAppbar">#25888484</color>
+
     <color name="checkOff">#F1F6F9</color>
     <color name="checkOn">#212A3E</color>
 </resources>

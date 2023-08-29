@@ -3,8 +3,15 @@ package com.cna.parde
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.cna.parde.adapters.ViewPagerAdapter
 import com.cna.parde.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
@@ -14,14 +21,6 @@ class MainActivity : AppCompatActivity() {
         const val TAG_CHIP_NAMES = "CHIP_NAMES"
     }
 
-    private val userName: String by lazy {
-        intent.getStringExtra(TAG_USERNAME) ?:"مهمان"
-    }
-
-    //remember if list was empty
-    private val selectedChipNames: List<String> by lazy {
-        intent.getStringArrayListExtra(TAG_CHIP_NAMES) ?: emptyList()
-    }
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,26 +28,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Movie"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Tv"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Anime"))
-        binding.tabLayout.tabGravity = TabLayout.GRAVITY_FILL
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        val adapter =
-            ViewPagerAdapter(this,supportFragmentManager,binding.tabLayout.tabCount)
-        binding.viewPager.adapter = adapter
+        findViewById<BottomNavigationView>(R.id.nav_view)?.setupWithNavController(navController)
+    }
 
-        binding.viewPager
-            .addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                binding.viewPager.currentItem = tab!!.position
-
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab?){}
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-        })
-
-        binding.txtUserName.text = userName
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
