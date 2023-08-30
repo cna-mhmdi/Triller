@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="مهمان"
-                android:fontFamily="@font/titr"
+                android:fontFamily="@font/unisans"
                 android:textColor="@color/light_white"
                 android:textSize="20sp"/>
         </LinearLayout>
