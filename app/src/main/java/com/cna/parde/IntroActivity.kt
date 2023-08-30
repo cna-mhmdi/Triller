@@ -6,6 +6,8 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import com.cna.parde.databinding.ActivityIntroBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +18,9 @@ class IntroActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityIntroBinding
     private lateinit var introPreferences: SharedPreferences
+
+    private lateinit var animation: Animation
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityIntroBinding.inflate(layoutInflater)
@@ -25,16 +30,11 @@ class IntroActivity : AppCompatActivity() {
         introPreferences = getSharedPreferences("introPreferences", Context.MODE_PRIVATE)
         val isIntroShowed = introPreferences.getBoolean("introPreferences",false)
 
-        val fadeIn = AlphaAnimation(0f, 1f)
-        fadeIn.duration = 700
-        fadeIn.fillAfter = true
-        binding.introTextView.startAnimation(fadeIn)
+        animation = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_in)
+        binding.introTextView.startAnimation(animation)
 
         CoroutineScope(Dispatchers.Main).launch {
             delay(1000)
-//            val intent = Intent(this@IntroActivity,WelcomeActivity::class.java)
-//            startActivity(intent)
-// shared Preferences should be added after the project completed
             val targetActivity = if (!isIntroShowed) {
 
                 val editor = introPreferences.edit()
