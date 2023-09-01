@@ -22,22 +22,25 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/txt_onTheAir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="upcoming movies"
-                    android:textColor="@color/pink"
+                    android:text="On The Air"
+                    android:textColor="@color/yellow"
                     android:textSize="20sp"
+                    android:fontFamily="@font/uniheavy"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/Recycler_OnTheAir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    tools:listitem="@layout/layout_recycler_item"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_onTheAir" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -46,22 +49,25 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/txtBestOfTheYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="recomended"
-                    android:textColor="@color/pink"
+                    android:text="Best Of The Year"
+                    android:textColor="@color/yellow"
+                    android:fontFamily="@font/uniheavy"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/Recycler_BestOfTheYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/layout_recycler_item"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtBestOfTheYear" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -71,28 +77,84 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/txtForYou"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="for you"
-                    android:textColor="@color/pink"
+                    android:textColor="@color/yellow"
+                    android:fontFamily="@font/uniheavy"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/Recycler_ForYou"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/layout_recycler_item"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtForYou" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/txtUpComing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UpComing"
+                    android:textColor="@color/yellow"
+                    android:fontFamily="@font/uniheavy"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/Recycler_UpComing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/layout_recycler_item"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/txtUpComing" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtTopMovieAllTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Top Movies All Time"
+                    android:textColor="@color/yellow"
+                    android:fontFamily="@font/uniheavy"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/Recycler_TopMovieAllTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/layout_recycler_item"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTopMovieAllTime" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>
