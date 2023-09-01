@@ -31,7 +31,6 @@ class HomeFragment : Fragment() {
 
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Movie"))
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Tv"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Anime"))
         binding.tabLayout.tabGravity = TabLayout.GRAVITY_FILL
 
         val adapter =
