@@ -15,9 +15,7 @@ class MovieFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_movie, container, false)
-        val btn = view.findViewById<Button>(R.id.btn_movie).setOnClickListener {
-            Toast.makeText(context,"hi",Toast.LENGTH_LONG).show()
-        }
+
         return view
     }
 
