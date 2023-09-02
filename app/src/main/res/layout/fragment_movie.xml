@@ -16,9 +16,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/layout_ota_movie_recyclerview"/>
-            <include layout="@layout/layout_fy_movie_recyclerview"/>
-            <include layout="@layout/layout_uc_movie_recyclerview"/>
+            <Button
+                android:id="@+id/btn_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ok"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
