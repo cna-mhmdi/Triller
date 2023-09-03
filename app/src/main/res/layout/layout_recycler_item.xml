@@ -20,7 +20,8 @@
         <ImageView
             android:id="@+id/imgMoviePic"
             android:layout_width="140dp"
-            android:layout_height="140dp" />
+            android:layout_height="140dp"
+            android:src="@drawable/star"/>
 
         <LinearLayout
             android:layout_width="match_parent"
