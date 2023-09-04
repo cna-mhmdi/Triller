@@ -1,7 +1,7 @@
 package com.cna.parde
 
 import android.app.Application
-import com.cna.parde.api.PopularMovieService
+import com.cna.parde.api.MovieService
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -17,8 +17,8 @@ class PardeApplication: Application() {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
-        val popularMovieService = retrofit.create(PopularMovieService::class.java)
+        val movieService = retrofit.create(MovieService::class.java)
 
-        pardeRepository = PardeRepository(popularMovieService)
+        pardeRepository = PardeRepository(movieService)
     }
 }
