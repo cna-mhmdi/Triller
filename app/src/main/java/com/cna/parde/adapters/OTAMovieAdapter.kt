@@ -10,14 +10,14 @@ import com.bumptech.glide.Glide
 import com.cna.parde.R
 import com.cna.parde.model.PopularMovie
 
-class OTAMovieAdapter(private val clickListener: OTAMovieClickListener)
-    :RecyclerView.Adapter<OTAMovieAdapter.OTAMovieViewHolder>() {
+class OTAMovieAdapter(private val clickListener: OTAMovieClickListener) :
+    RecyclerView.Adapter<OTAMovieAdapter.OTAMovieViewHolder>() {
 
     private val movies = mutableListOf<PopularMovie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OTAMovieViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_recycler_item,parent,false)
+            .inflate(R.layout.layout_recycler_item, parent, false)
         return OTAMovieViewHolder(view)
     }
 
@@ -31,19 +31,19 @@ class OTAMovieAdapter(private val clickListener: OTAMovieClickListener)
         return movies.size
     }
 
-    fun addMovies(movieList: List<PopularMovie>){
+    fun addMovies(movieList: List<PopularMovie>) {
         movies.addAll(movieList)
-        notifyItemRangeInserted(0,movieList.size)
+        notifyItemRangeInserted(0, movieList.size)
     }
 
 
-    inner class OTAMovieViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        private val txtTitle: TextView by lazy {itemView.findViewById(R.id.txtTitleMovie)}
-        private val txtRate: TextView by lazy {itemView.findViewById(R.id.txtRateMovie)}
+    inner class OTAMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val txtTitle: TextView by lazy { itemView.findViewById(R.id.txtTitleMovie) }
+        private val txtRate: TextView by lazy { itemView.findViewById(R.id.txtRateMovie) }
         private val imgMoviePic: ImageView by lazy { itemView.findViewById(R.id.imgMoviePic) }
         private val imageUrl = "https://image.tmdb.org/t/p/w185/"
 
-        fun bind(movie: PopularMovie){
+        fun bind(movie: PopularMovie) {
             txtTitle.text = movie.title
             txtRate.text = movie.vote_average.toString()
 

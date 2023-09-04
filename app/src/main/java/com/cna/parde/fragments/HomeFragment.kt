@@ -12,7 +12,6 @@ import com.google.android.material.tabs.TabLayout
 class HomeFragment : Fragment() {
 
 
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -28,17 +27,18 @@ class HomeFragment : Fragment() {
         binding.tabLayout.tabGravity = TabLayout.GRAVITY_FILL
 
         val adapter =
-            ViewPagerAdapter(requireActivity(),childFragmentManager,binding.tabLayout.tabCount)
+            ViewPagerAdapter(requireActivity(), childFragmentManager, binding.tabLayout.tabCount)
         binding.viewPager.adapter = adapter
 
         binding.viewPager
             .addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 binding.viewPager.currentItem = tab!!.position
 
             }
-            override fun onTabUnselected(tab: TabLayout.Tab?){}
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
         return binding.root

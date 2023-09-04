@@ -7,17 +7,22 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.cna.parde.fragments.MovieFragment
 import com.cna.parde.fragments.TvFragment
 
-class ViewPagerAdapter(private val context: Context, fm: FragmentManager, private val totalTabs: Int)
-    : FragmentPagerAdapter(fm) {
+class ViewPagerAdapter(
+    private val context: Context,
+    fm: FragmentManager,
+    private val totalTabs: Int,
+) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        return when(position){
+        return when (position) {
             0 -> {
                 MovieFragment()
             }
+
             1 -> {
                 TvFragment()
             }
+
             else -> getItem(position)
         }
     }

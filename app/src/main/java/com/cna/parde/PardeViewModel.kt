@@ -8,7 +8,7 @@ import com.cna.parde.model.UCMovie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class PardeViewModel(private val pardeRepository: PardeRepository): ViewModel() {
+class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel() {
 
     init {
         fetchMovies()

@@ -16,7 +16,7 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.btnWelcome.setOnClickListener {
-            val intent = Intent(this,InfoActivity::class.java)
+            val intent = Intent(this, InfoActivity::class.java)
             startActivity(intent)
             finish()
         }

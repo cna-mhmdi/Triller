@@ -10,14 +10,14 @@ import coil.load
 import com.cna.parde.R
 import com.cna.parde.model.UCMovie
 
-class UCMovieAdapter(private val clickListener: UCMovieClickListener)
-    : RecyclerView.Adapter<UCMovieAdapter.UCMovieViewHolder>() {
+class UCMovieAdapter(private val clickListener: UCMovieClickListener) :
+    RecyclerView.Adapter<UCMovieAdapter.UCMovieViewHolder>() {
 
     private val movies = mutableListOf<UCMovie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UCMovieViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_recycler_item,parent,false)
+            .inflate(R.layout.layout_recycler_item, parent, false)
         return UCMovieViewHolder(view)
     }
 
@@ -31,18 +31,18 @@ class UCMovieAdapter(private val clickListener: UCMovieClickListener)
         return movies.size
     }
 
-    fun addMovies(movieList: List<UCMovie>){
+    fun addMovies(movieList: List<UCMovie>) {
         movies.addAll(movieList)
-        notifyItemRangeInserted(0,movieList.size)
+        notifyItemRangeInserted(0, movieList.size)
     }
 
-    inner class UCMovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val txtTitle: TextView by lazy {itemView.findViewById(R.id.txtTitleMovie)}
-        private val txtRate: TextView by lazy {itemView.findViewById(R.id.txtRateMovie)}
+    inner class UCMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val txtTitle: TextView by lazy { itemView.findViewById(R.id.txtTitleMovie) }
+        private val txtRate: TextView by lazy { itemView.findViewById(R.id.txtRateMovie) }
         private val imgMoviePic: ImageView by lazy { itemView.findViewById(R.id.imgMoviePic) }
         private val imageUrl = "https://image.tmdb.org/t/p/w185/"
 
-        fun bind(movie: UCMovie){
+        fun bind(movie: UCMovie) {
             txtTitle.text = movie.title
             txtRate.text = movie.vote_average.toString()
 

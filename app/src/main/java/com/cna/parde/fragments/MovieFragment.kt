@@ -22,7 +22,7 @@ import com.cna.parde.model.UCMovie
 
 class MovieFragment : Fragment() {
 
-    private lateinit var recyclerViewOTAMovie : RecyclerView
+    private lateinit var recyclerViewOTAMovie: RecyclerView
 
     private lateinit var recyclerViewFYMovie: RecyclerView
     private lateinit var adapterFYMovie: FYMovieAdapter
@@ -84,7 +84,8 @@ class MovieFragment : Fragment() {
 
         recyclerViewFYMovie = view.findViewById(R.id.Recycler_ForYou)
         adapterFYMovie = FYMovieAdapter(MainActivity.nameFY, MainActivity.ratesFY)
-        val layoutManagerFY = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL,false)
+        val layoutManagerFY =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         recyclerViewFYMovie.layoutManager = layoutManagerFY
         recyclerViewFYMovie.adapter = adapterFYMovie
 
@@ -93,11 +94,11 @@ class MovieFragment : Fragment() {
     }
 
     private fun openOTAMovieDetails(movie: PopularMovie) {
-        Toast.makeText(requireActivity(),movie.title, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireActivity(), movie.title, Toast.LENGTH_LONG).show()
     }
 
     private fun openUCMovieDetails(movie: UCMovie) {
-        Toast.makeText(requireActivity(),movie.title, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireActivity(), movie.title, Toast.LENGTH_LONG).show()
     }
 
 }

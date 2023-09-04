@@ -5,8 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 
 data class PopularMoviesResponse(
-    val page : Int,
-    val results: List<PopularMovie>
+    val page: Int,
+    val results: List<PopularMovie>,
 )
 
 @Parcelize
@@ -23,16 +23,17 @@ data class PopularMovie(
     val title: String = "",
     val video: Boolean = false,
     val vote_average: Float = 0f,
-    val vote_count: Int = 0
+    val vote_count: Int = 0,
 ) : Parcelable
 
 data class UcMovieResponse(
     val page: Int,
-    val results: List<UCMovie>
+    val results: List<UCMovie>,
 
-)
+    )
+
 @Parcelize
-data class UCMovie (
+data class UCMovie(
     val adult: Boolean = false,
     val backdrop_path: String = "",
     val id: Int = 0,
@@ -45,5 +46,5 @@ data class UCMovie (
     val title: String = "",
     val video: Boolean = false,
     val vote_average: Float = 0f,
-    val vote_count: Int = 0
-):Parcelable
+    val vote_count: Int = 0,
+) : Parcelable

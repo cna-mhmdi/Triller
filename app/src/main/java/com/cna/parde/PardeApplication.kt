@@ -5,7 +5,7 @@ import com.cna.parde.api.MovieService
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class PardeApplication: Application() {
+class PardeApplication : Application() {
 
     lateinit var pardeRepository: PardeRepository
 

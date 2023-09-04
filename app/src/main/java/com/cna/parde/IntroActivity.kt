@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class IntroActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityIntroBinding
+    private lateinit var binding: ActivityIntroBinding
     private lateinit var introPreferences: SharedPreferences
 
     private lateinit var animation: Animation
@@ -28,9 +28,9 @@ class IntroActivity : AppCompatActivity() {
         setContentView(view)
 
         introPreferences = getSharedPreferences("introPreferences", Context.MODE_PRIVATE)
-        val isIntroShowed = introPreferences.getBoolean("introPreferences",false)
+        val isIntroShowed = introPreferences.getBoolean("introPreferences", false)
 
-        animation = AnimationUtils.loadAnimation(applicationContext,R.anim.fade_in)
+        animation = AnimationUtils.loadAnimation(applicationContext, R.anim.fade_in)
         binding.introTextView.startAnimation(animation)
 
         CoroutineScope(Dispatchers.Main).launch {
@@ -38,14 +38,14 @@ class IntroActivity : AppCompatActivity() {
             val targetActivity = if (!isIntroShowed) {
 
                 val editor = introPreferences.edit()
-                editor.putBoolean("introPreferences",true)
+                editor.putBoolean("introPreferences", true)
                 editor.apply()
                 WelcomeActivity::class.java
 
             } else {
                 MainActivity::class.java
             }
-            startActivity(Intent(this@IntroActivity,targetActivity))
+            startActivity(Intent(this@IntroActivity, targetActivity))
 
             finish()
         }
