@@ -1,19 +1,17 @@
 package com.cna.parde.adapters
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.cna.parde.R
+import com.cna.parde.model.Movie
 
-class OTAMovieAdapter(private var names: Array<String>,private val rates : Array<String>)
+class OTAMovieAdapter(private val clickListener: MovieClickListener)
     :RecyclerView.Adapter<OTAMovieAdapter.OTAMovieViewHolder>() {
+
+    private val movies = mutableListOf<Movie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OTAMovieViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -22,28 +20,32 @@ class OTAMovieAdapter(private var names: Array<String>,private val rates : Array
     }
 
     override fun onBindViewHolder(holder: OTAMovieViewHolder, position: Int) {
-        val btnNames = names[position]
-        val btnRates = rates[position]
-        holder.bind(btnNames,btnRates)
+        val movie = movies[position]
+        holder.bind(movie)
+        holder.itemView.setOnClickListener { clickListener.onMovieClick(movie) }
     }
 
     override fun getItemCount(): Int {
-        return names.size
+        return movies.size
     }
 
-    fun updateData(newNames: Array<String>){
-        names = newNames
-        notifyDataSetChanged()
+    fun addMovies(movieList: List<Movie>){
+        movies.addAll(movieList)
+        notifyItemRangeInserted(0,movieList.size)
     }
 
 
     inner class OTAMovieViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        private val txtTitle: TextView = itemView.findViewById(R.id.txtTitleMovie)
-        private val txtRate: TextView = itemView.findViewById(R.id.txtRateMovie)
+        private val txtTitle: TextView by lazy {itemView.findViewById(R.id.txtTitleMovie)}
+        private val txtRate: TextView by lazy {itemView.findViewById(R.id.txtRateMovie)}
 
-        fun bind(names: String,rates: String){
-            txtTitle.text = names
-            txtRate.text = rates
+        fun bind(movie: Movie){
+            txtTitle.text = movie.title
+            txtRate.text = movie.vote_average.toString()
         }
+    }
+
+    interface MovieClickListener {
+        fun onMovieClick(movie: Movie)
     }
 }
