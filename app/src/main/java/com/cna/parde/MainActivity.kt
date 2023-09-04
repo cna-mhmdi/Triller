@@ -3,14 +3,18 @@ package com.cna.parde
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cna.parde.adapters.FYMovieAdapter
 import com.cna.parde.adapters.OTAMovieAdapter
 import com.cna.parde.adapters.UCMovieAdapter
-import com.cna.parde.model.Movie
+import com.cna.parde.model.PopularMovie
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,59 +60,20 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private lateinit var recyclerViewOTAMovie : RecyclerView
-//  private lateinit var adapterOTAMovie: OTAMovieAdapter
-
-    private lateinit var recyclerViewFYMovie: RecyclerView
-    private lateinit var adapterFYMovie: FYMovieAdapter
-
-    private lateinit var recyclerViewUCMovie: RecyclerView
-    private lateinit var adapterUCMovie: UCMovieAdapter
-
-    private val otaMovieAdapter by lazy {
-        OTAMovieAdapter(object : OTAMovieAdapter.MovieClickListener {
-            override fun onMovieClick(movie: Movie) {
-                openMovieDetails(movie)
-            }
-        })
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerViewOTAMovie = findViewById(R.id.Recycler_OnTheAir)
-        recyclerViewOTAMovie.adapter = otaMovieAdapter
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        val pardeRepository = (application as PardeApplication).pardeRepository
-        val pardeViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return PardeViewModel(pardeRepository) as T
-            }
-        }).get(PardeViewModel::class.java)
-
-        pardeViewModel.popularMovies.observe(this) { popularMovies ->
-            otaMovieAdapter.addMovies(popularMovies)
-        }
-        pardeViewModel.getError().observe(this) { error ->
-            Toast.makeText(this, error, Toast.LENGTH_LONG).show()
-        }
-
-        recyclerViewFYMovie = findViewById(R.id.Recycler_ForYou)
-        adapterFYMovie = FYMovieAdapter(nameFY,ratesFY)
-        val layoutManagerFY = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        recyclerViewFYMovie.layoutManager = layoutManagerFY
-        recyclerViewFYMovie.adapter = adapterFYMovie
-
-        recyclerViewUCMovie = findViewById(R.id.Recycler_UpComing)
-        adapterUCMovie = UCMovieAdapter(nameUC,rateUC)
-        val layoutManagerUC = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        recyclerViewUCMovie.layoutManager = layoutManagerUC
-        recyclerViewUCMovie.adapter = adapterUCMovie
+        findViewById<BottomNavigationView>(R.id.nav_view)?.setupWithNavController(navController)
 
     }
 
-    private fun openMovieDetails(movie: Movie) {
-        Toast.makeText(this,movie.title,Toast.LENGTH_LONG).show()
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
