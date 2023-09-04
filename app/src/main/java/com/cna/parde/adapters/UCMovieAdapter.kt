@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.bumptech.glide.Glide
 import com.cna.parde.R
 import com.cna.parde.model.UCMovie
 
@@ -49,11 +48,6 @@ class UCMovieAdapter(private val clickListener: UCMovieClickListener)
 
             imgMoviePic.load("$imageUrl${movie.poster_path}")
 
-//            Glide.with(itemView.context)
-//                .load("$imageUrl${movie.poster_path}")
-//                .placeholder(R.drawable.star)
-//                .fitCenter()
-//                .into(imgMoviePic)
         }
     }
 
