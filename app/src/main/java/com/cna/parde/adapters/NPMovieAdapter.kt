@@ -32,8 +32,9 @@ class NPMovieAdapter(private val clickListener: NPMovieClickListener) :
     }
 
     fun addMovies(movieList: List<NPMovie>) {
-        movies.addAll(movieList)
-        notifyItemRangeInserted(0, movieList.size)
+        this.movies.clear()
+        this.movies.addAll(movieList)
+        notifyDataSetChanged()
     }
 
 

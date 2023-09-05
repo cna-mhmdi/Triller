@@ -32,8 +32,9 @@ class UCMovieAdapter(private val clickListener: UCMovieClickListener) :
     }
 
     fun addMovies(movieList: List<UCMovie>) {
-        movies.addAll(movieList)
-        notifyItemRangeInserted(0, movieList.size)
+        this.movies.clear()
+        this.movies.addAll(movieList)
+        notifyDataSetChanged()
     }
 
     inner class UCMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
