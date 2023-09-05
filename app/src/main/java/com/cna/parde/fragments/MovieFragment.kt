@@ -15,9 +15,9 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.FYMovieAdapter
-import com.cna.parde.adapters.OTAMovieAdapter
+import com.cna.parde.adapters.NPMovieAdapter
 import com.cna.parde.adapters.UCMovieAdapter
-import com.cna.parde.model.PopularMovie
+import com.cna.parde.model.NPMovie
 import com.cna.parde.model.UCMovie
 
 class MovieFragment : Fragment() {
@@ -29,10 +29,10 @@ class MovieFragment : Fragment() {
 
     private lateinit var recyclerViewUCMovie: RecyclerView
 
-    private val otaMovieAdapter by lazy {
-        OTAMovieAdapter(object : OTAMovieAdapter.OTAMovieClickListener {
-            override fun onOTAMovieClick(movie: PopularMovie) {
-                openOTAMovieDetails(movie)
+    private val npMovieAdapter by lazy {
+        NPMovieAdapter(object : NPMovieAdapter.NPMovieClickListener {
+            override fun onNPMovieClick(movie: NPMovie) {
+                openNPMovieDetails(movie)
             }
         })
     }
@@ -54,7 +54,7 @@ class MovieFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_movie, container, false)
 
         recyclerViewOTAMovie = view.findViewById(R.id.Recycler_OnTheAir)
-        recyclerViewOTAMovie.adapter = otaMovieAdapter
+        recyclerViewOTAMovie.adapter = npMovieAdapter
 
         val pardeRepository = (activity?.application as PardeApplication).pardeRepository
         val pardeViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
@@ -63,18 +63,16 @@ class MovieFragment : Fragment() {
             }
         }).get(PardeViewModel::class.java)
 
-        //attachment for PopularMovies
-        pardeViewModel.popularMovies.observe(requireActivity()) { popularMovie ->
-            otaMovieAdapter.addMovies(popularMovie)
+        pardeViewModel.nowPlayingMovies.observe(requireActivity()) { nowPlayingMovie ->
+            npMovieAdapter.addMovies(nowPlayingMovie)
         }
-        pardeViewModel.getPopularMovieError().observe(requireActivity()) { error ->
+        pardeViewModel.getNowPlayingMovieError().observe(requireActivity()) { error ->
             Toast.makeText(requireActivity(), error, Toast.LENGTH_LONG).show()
         }
 
         recyclerViewUCMovie = view.findViewById(R.id.Recycler_UpComing)
         recyclerViewUCMovie.adapter = ucMovieAdapter
 
-        //attachment for PopularMovies
         pardeViewModel.upComingMovie.observe(requireActivity()) { upcomingMovie ->
             ucMovieAdapter.addMovies(upcomingMovie)
         }
@@ -93,7 +91,7 @@ class MovieFragment : Fragment() {
         return view
     }
 
-    private fun openOTAMovieDetails(movie: PopularMovie) {
+    private fun openNPMovieDetails(movie: NPMovie) {
         Toast.makeText(requireActivity(), movie.title, Toast.LENGTH_LONG).show()
     }
 
