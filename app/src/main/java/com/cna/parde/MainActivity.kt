@@ -2,18 +2,9 @@ package com.cna.parde
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.navigation.findNavController
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.cna.parde.adapters.FYMovieAdapter
-import com.cna.parde.adapters.OTAMovieAdapter
-import com.cna.parde.adapters.UCMovieAdapter
-import com.cna.parde.model.PopularMovie
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
