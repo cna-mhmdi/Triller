@@ -15,11 +15,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/layout_ota_movie_recyclerview" />
-
+            <include layout="@layout/layout_uc_movie_recyclerview" />
+            <include layout="@layout/layout_np_movie_recyclerview" />
             <include layout="@layout/layout_fy_movie_recyclerview" />
 
-            <include layout="@layout/layout_uc_movie_recyclerview" />
+
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
