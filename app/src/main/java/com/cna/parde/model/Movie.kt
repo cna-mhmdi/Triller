@@ -4,13 +4,13 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 
-data class PopularMoviesResponse(
+data class NPMoviesResponse(
     val page: Int,
-    val results: List<PopularMovie>,
+    val results: List<NPMovie>,
 )
 
 @Parcelize
-data class PopularMovie(
+data class NPMovie(
     val adult: Boolean = false,
     val backdrop_path: String = "",
     val id: Int = 0,
