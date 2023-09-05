@@ -10,7 +10,7 @@
         android:id="@+id/txt_onTheAir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="On The Air"
+        android:text="NOW PLAYING"
         android:textColor="@color/yellow"
         android:textSize="20sp"
         android:fontFamily="@font/uniheavy"
