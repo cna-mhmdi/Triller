@@ -1,5 +1,6 @@
 package com.cna.parde
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.MovieService
@@ -34,6 +35,7 @@ class PardeRepository(private val movieService: MovieService) {
             nowPlayingMovieLiveData.postValue(popularMovies.results)
             upcomingMovieLiveData.postValue(upcomingMovies.results)
         } catch (exception: Exception) {
+            TODO("remember to <list is up to date> ")
             nowPlayingMovieErrorLiveData.postValue("An error occurred: ${exception.message}")
         }
     }

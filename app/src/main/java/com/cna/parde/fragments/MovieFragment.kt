@@ -63,27 +63,27 @@ class MovieFragment : Fragment() {
             }
         }).get(PardeViewModel::class.java)
 
-        pardeViewModel.nowPlayingMovies.observe(requireActivity()) { nowPlayingMovie ->
+        pardeViewModel.nowPlayingMovies.observe(viewLifecycleOwner) { nowPlayingMovie ->
             npMovieAdapter.addMovies(nowPlayingMovie)
         }
-        pardeViewModel.getNowPlayingMovieError().observe(requireActivity()) { error ->
+        pardeViewModel.getNowPlayingMovieError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireActivity(), error, Toast.LENGTH_LONG).show()
         }
 
         recyclerViewUCMovie = view.findViewById(R.id.Recycler_UpComing)
         recyclerViewUCMovie.adapter = ucMovieAdapter
 
-        pardeViewModel.upComingMovie.observe(requireActivity()) { upcomingMovie ->
+        pardeViewModel.upComingMovie.observe(viewLifecycleOwner) { upcomingMovie ->
             ucMovieAdapter.addMovies(upcomingMovie)
         }
-        pardeViewModel.getUpComingMovieError().observe(requireActivity()) { error ->
+        pardeViewModel.getUpComingMovieError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireActivity(), error, Toast.LENGTH_LONG).show()
         }
 
         recyclerViewFYMovie = view.findViewById(R.id.Recycler_ForYou)
         adapterFYMovie = FYMovieAdapter(MainActivity.nameFY, MainActivity.ratesFY)
         val layoutManagerFY =
-            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerViewFYMovie.layoutManager = layoutManagerFY
         recyclerViewFYMovie.adapter = adapterFYMovie
 
@@ -92,11 +92,11 @@ class MovieFragment : Fragment() {
     }
 
     private fun openNPMovieDetails(movie: NPMovie) {
-        Toast.makeText(requireActivity(), movie.title, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_LONG).show()
     }
 
     private fun openUCMovieDetails(movie: UCMovie) {
-        Toast.makeText(requireActivity(), movie.title, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_LONG).show()
     }
 
 }
