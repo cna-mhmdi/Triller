@@ -12,16 +12,32 @@
         android:layout_height="match_parent"
         android:background="@drawable/gradiant_color_background">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tabIndicatorColor="@color/light_white"
-                app:tabSelectedTextColor="@color/light_white"
-                app:tabTextAppearance="@style/tab_text"
-                app:tabTextColor="@color/tabOff" />
+                android:layout_height="?attr/actionBarSize"
+                app:title="Parde"
+                app:titleTextColor="@color/white" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:tabIndicatorColor="@color/light_white"
+            app:tabSelectedTextColor="@color/light_white"
+            app:tabTextAppearance="@style/tab_text"
+            app:tabTextColor="@color/tabOff" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPager"
