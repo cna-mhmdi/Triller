@@ -3,41 +3,57 @@ package com.cna.parde.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.bumptech.glide.Glide
 import com.cna.parde.R
+import com.cna.parde.model.NPMovie
+import com.cna.parde.model.TRMovie
 
-class TRMovieAdapter(private var names: Array<String>, private val rates: Array<String>) :
-    RecyclerView.Adapter<TRMovieAdapter.FYMovieViewHolder>() {
+class TRMovieAdapter(private val clickListener: TRMovieClickListener) :
+    RecyclerView.Adapter<TRMovieAdapter.TRMovieViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FYMovieViewHolder {
+    private val movies = mutableListOf<TRMovie>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TRMovieViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_recycler_item, parent, false)
-        return FYMovieViewHolder(view)
+        return TRMovieViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: FYMovieViewHolder, position: Int) {
-        val btnNames = names[position]
-        val btnRates = rates[position]
-        holder.bind(btnNames, btnRates)
+    override fun onBindViewHolder(holder: TRMovieViewHolder, position: Int) {
+        val movie = movies[position]
+        holder.bind(movie)
+        holder.itemView.setOnClickListener { clickListener.onTRMovieClick(movie) }
     }
 
     override fun getItemCount(): Int {
-        return names.size
+        return movies.size
     }
 
-    fun updateData(newNames: Array<String>) {
-        names = newNames
+    fun addMovies(movieList: List<TRMovie>) {
+        this.movies.clear()
+        this.movies.addAll(movieList)
         notifyDataSetChanged()
     }
 
-    inner class FYMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val txtTitle: TextView = itemView.findViewById(R.id.txtTitleMovie)
-        private val txtRate: TextView = itemView.findViewById(R.id.txtRateMovie)
+    inner class TRMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val txtTitle: TextView by lazy { itemView.findViewById(R.id.txtTitleMovie) }
+        private val txtRate: TextView by lazy { itemView.findViewById(R.id.txtRateMovie) }
+        private val imgMoviePic: ImageView by lazy { itemView.findViewById(R.id.imgMoviePic) }
+        private val imageUrl = "https://image.tmdb.org/t/p/w185/"
 
-        fun bind(names: String, rates: String) {
-            txtTitle.text = names
-            txtRate.text = rates
+        fun bind(movie: TRMovie) {
+            txtTitle.text = movie.title
+            txtRate.text = movie.vote_average.toString()
+
+            imgMoviePic.load("$imageUrl${movie.poster_path}")
         }
+    }
+
+    interface TRMovieClickListener {
+        fun onTRMovieClick(movie: TRMovie)
     }
 }

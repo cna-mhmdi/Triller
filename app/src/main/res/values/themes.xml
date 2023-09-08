@@ -1,10 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.Parde" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Base.Theme.Parde" parent="Theme.Material3.DayNight.NoActionBar">
 
     </style>
 
     <style name="Theme.Parde" parent="Base.Theme.Parde">
+    </style>
+
+    <style name="Widget.App.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:fontFamily">@font/uniheavy</item>
     </style>
 
     <style name="roundedImageRounded">

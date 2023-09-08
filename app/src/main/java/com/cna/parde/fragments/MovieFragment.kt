@@ -8,16 +8,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cna.parde.MainActivity
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
-import com.cna.parde.adapters.FYMovieAdapter
+import com.cna.parde.adapters.TRMovieAdapter
 import com.cna.parde.adapters.NPMovieAdapter
 import com.cna.parde.adapters.UCMovieAdapter
 import com.cna.parde.model.NPMovie
+import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
 
 class MovieFragment : Fragment() {
@@ -25,7 +24,6 @@ class MovieFragment : Fragment() {
     private lateinit var recyclerViewOTAMovie: RecyclerView
 
     private lateinit var recyclerViewFYMovie: RecyclerView
-    private lateinit var adapterFYMovie: FYMovieAdapter
 
     private lateinit var recyclerViewUCMovie: RecyclerView
 
@@ -45,6 +43,13 @@ class MovieFragment : Fragment() {
         })
     }
 
+    private val trMovieAdapter by lazy {
+        TRMovieAdapter(object : TRMovieAdapter.TRMovieClickListener{
+            override fun onTRMovieClick(movie: TRMovie) {
+                openTRMovieDetails(movie)
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,7 +72,7 @@ class MovieFragment : Fragment() {
             npMovieAdapter.addMovies(nowPlayingMovie)
         }
         pardeViewModel.getNowPlayingMovieError().observe(viewLifecycleOwner) { error ->
-            Toast.makeText(requireActivity(), error, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewUCMovie = view.findViewById(R.id.Recycler_UpComing)
@@ -77,26 +82,32 @@ class MovieFragment : Fragment() {
             ucMovieAdapter.addMovies(upcomingMovie)
         }
         pardeViewModel.getUpComingMovieError().observe(viewLifecycleOwner) { error ->
-            Toast.makeText(requireActivity(), error, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewFYMovie = view.findViewById(R.id.Recycler_ForYou)
-        adapterFYMovie = FYMovieAdapter(MainActivity.nameFY, MainActivity.ratesFY)
-        val layoutManagerFY =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recyclerViewFYMovie.layoutManager = layoutManagerFY
-        recyclerViewFYMovie.adapter = adapterFYMovie
+        recyclerViewFYMovie.adapter = trMovieAdapter
 
+        pardeViewModel.topRatedMovie.observe(viewLifecycleOwner) { topRatedMovie ->
+            trMovieAdapter.addMovies(topRatedMovie)
+        }
+        pardeViewModel.getTopRatedMovieError().observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireActivity(),error,Toast.LENGTH_SHORT).show()
+        }
 
         return view
     }
 
     private fun openNPMovieDetails(movie: NPMovie) {
-        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
     }
 
     private fun openUCMovieDetails(movie: UCMovie) {
-        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun openTRMovieDetails(movie: TRMovie) {
+        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
     }
 
 }

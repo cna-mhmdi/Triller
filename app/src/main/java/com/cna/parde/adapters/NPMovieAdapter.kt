@@ -50,7 +50,7 @@ class NPMovieAdapter(private val clickListener: NPMovieClickListener) :
 
             Glide.with(itemView.context)
                 .load("$imageUrl${movie.poster_path}")
-                .placeholder(R.drawable.star)
+                .placeholder(R.drawable.loading)
                 .fitCenter()
                 .into(imgMoviePic)
         }

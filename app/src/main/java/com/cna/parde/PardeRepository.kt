@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.MovieService
 import com.cna.parde.model.NPMovie
+import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
 
 class PardeRepository(private val movieService: MovieService) {
@@ -28,11 +29,21 @@ class PardeRepository(private val movieService: MovieService) {
     val upcomingMovieError: LiveData<String>
         get() = upcomingMovieErrorLiveData
 
+    private val topRatedMovieLiveData = MutableLiveData<List<TRMovie>>()
+    private val topRatedMovieErrorLiveData = MutableLiveData<String>()
+
+    val topRatedMovies: LiveData<List<TRMovie>>
+        get() = topRatedMovieLiveData
+    val topRatedMovieError: LiveData<String>
+        get() = topRatedMovieErrorLiveData
+
     suspend fun fetchMovies() {
         try {
-            val popularMovies = movieService.getNowPlayingMovie(apiKey)
+            val nowPlayingMovies = movieService.getNowPlayingMovie(apiKey)
             val upcomingMovies = movieService.getUpcomingMovie(apiKey)
-            nowPlayingMovieLiveData.postValue(popularMovies.results)
+            val topRatedMovies = movieService.getTopRatedMovie(apiKey)
+            topRatedMovieLiveData.postValue(topRatedMovies.results)
+            nowPlayingMovieLiveData.postValue(nowPlayingMovies.results)
             upcomingMovieLiveData.postValue(upcomingMovies.results)
         } catch (exception: Exception) {
             TODO("remember to <list is up to date> ")
