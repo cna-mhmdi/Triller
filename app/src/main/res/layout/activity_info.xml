@@ -27,8 +27,8 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/titr"
-                android:text="نام خود را وارد و حداکثر سه ژانر را انتخاب کنید"
+                android:fontFamily="@font/uniheavy"
+                android:text="Enter your name"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_marginTop="45dp"
@@ -41,9 +41,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                app:endIconMode="custom"
-                app:endIconDrawable="@drawable/username"
-                app:endIconTint="@color/white"
+                app:startIconMode="custom"
+                app:startIconDrawable="@drawable/username"
+                app:startIconTint="@color/white"
                 app:boxStrokeColor="@color/white"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
@@ -243,10 +243,10 @@
                 style="@android:style/Widget.Button"
                 android:background="@drawable/intro_button_bacground"
                 android:layout_gravity="center"
-                android:fontFamily="@font/titr"
+                android:fontFamily="@font/uniheavy"
                 android:textColor="@color/white"
                 android:layout_marginTop="8dp"
-                android:text="@string/go" />
+                android:text="next" />
         </LinearLayout>
 
     </ScrollView>
