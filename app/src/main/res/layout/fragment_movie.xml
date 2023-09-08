@@ -17,7 +17,7 @@
 
             <include layout="@layout/layout_uc_movie_recyclerview" />
             <include layout="@layout/layout_np_movie_recyclerview" />
-            <include layout="@layout/layout_fy_movie_recyclerview" />
+            <include layout="@layout/layout_tr_movie_recyclerview" />
 
 
 

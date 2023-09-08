@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cna.parde.R
 
-class FYMovieAdapter(private var names: Array<String>, private val rates: Array<String>) :
-    RecyclerView.Adapter<FYMovieAdapter.FYMovieViewHolder>() {
+class TRMovieAdapter(private var names: Array<String>, private val rates: Array<String>) :
+    RecyclerView.Adapter<TRMovieAdapter.FYMovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FYMovieViewHolder {
         val view = LayoutInflater.from(parent.context)
