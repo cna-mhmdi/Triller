@@ -12,55 +12,23 @@
         android:layout_height="match_parent"
         android:background="@drawable/gradiant_color_background">
 
-        <LinearLayout
-            android:id="@+id/topAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            android:gravity="center|start"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:elevation="4dp"
-                android:src="@drawable/java"
-                app:shapeAppearanceOverlay="@style/roundedImageRounded" />
-
-            <TextView
-                android:id="@+id/txtUserName"
-                android:layout_width="wrap_content"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="مهمان"
-                android:fontFamily="@font/unisans"
-                android:textColor="@color/light_white"
-                android:textSize="20sp" />
-        </LinearLayout>
+                android:background="@android:color/transparent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabIndicatorColor="@color/light_white"
+                app:tabSelectedTextColor="@color/light_white"
+                app:tabTextAppearance="@style/tab_text"
+                app:tabTextColor="@color/tabOff" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:tabTextAppearance="@style/tab_text"
-            app:layout_constraintTop_toBottomOf="@+id/topAppBar"
-            app:tabIndicatorColor="@color/light_white"
-            app:tabSelectedTextColor="@color/light_white"
-            app:tabTextColor="@color/tabOff" />
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout"></androidx.viewpager.widget.ViewPager>
-
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </FrameLayout>

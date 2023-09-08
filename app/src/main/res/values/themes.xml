@@ -1,10 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.Parde" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Parde" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 
     </style>
 
-    <style name="Theme.Parde" parent="Base.Theme.Parde" />
+    <style name="Theme.Parde" parent="Base.Theme.Parde">
+    </style>
 
     <style name="roundedImageRounded">
         <item name="cornerFamily">rounded</item>
