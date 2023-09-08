@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cna.parde.model.NPMovie
+import com.cna.parde.model.OTATv
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +26,9 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     val topRatedMovie: LiveData<List<TRMovie>> get() = pardeRepository.topRatedMovies
     fun getTopRatedMovieError(): LiveData<String> = pardeRepository.topRatedMovieError
+
+    val onTheAirTv: LiveData<List<OTATv>> get() = pardeRepository.onTheAirTv
+    fun getOnTheAirTvError(): LiveData<String> = pardeRepository.onTheAirTvError
 
     private fun fetchMovies() {
         viewModelScope.launch(Dispatchers.IO) {

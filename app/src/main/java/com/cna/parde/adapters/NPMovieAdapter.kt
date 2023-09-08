@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil.load
 import com.cna.parde.R
 import com.cna.parde.model.NPMovie
 
@@ -48,11 +48,7 @@ class NPMovieAdapter(private val clickListener: NPMovieClickListener) :
             txtTitle.text = movie.title
             txtRate.text = movie.vote_average.toString()
 
-            Glide.with(itemView.context)
-                .load("$imageUrl${movie.poster_path}")
-                .placeholder(R.drawable.loading)
-                .fitCenter()
-                .into(imgMoviePic)
+            imgMoviePic.load("$imageUrl${movie.poster_path}")
         }
     }
 

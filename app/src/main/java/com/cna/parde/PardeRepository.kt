@@ -1,14 +1,14 @@
 package com.cna.parde
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.cna.parde.api.MovieService
+import com.cna.parde.api.PardeService
 import com.cna.parde.model.NPMovie
+import com.cna.parde.model.OTATv
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
 
-class PardeRepository(private val movieService: MovieService) {
+class PardeRepository(private val pardeService: PardeService) {
 
     private val apiKey = "721e4f18664869b21649e0be3e99ec59"
 
@@ -37,14 +37,28 @@ class PardeRepository(private val movieService: MovieService) {
     val topRatedMovieError: LiveData<String>
         get() = topRatedMovieErrorLiveData
 
+    private val onTheAirTvLiveData = MutableLiveData<List<OTATv>>()
+    private val onTheAirTvErrorLiveData = MutableLiveData<String>()
+
+    val onTheAirTv: LiveData<List<OTATv>>
+        get() = onTheAirTvLiveData
+    val onTheAirTvError: LiveData<String>
+        get() = onTheAirTvErrorLiveData
+
+
     suspend fun fetchMovies() {
         try {
-            val nowPlayingMovies = movieService.getNowPlayingMovie(apiKey)
-            val upcomingMovies = movieService.getUpcomingMovie(apiKey)
-            val topRatedMovies = movieService.getTopRatedMovie(apiKey)
+            val nowPlayingMovies = pardeService.getNowPlayingMovie(apiKey)
+            val upcomingMovies = pardeService.getUpcomingMovie(apiKey)
+            val topRatedMovies = pardeService.getTopRatedMovie(apiKey)
             topRatedMovieLiveData.postValue(topRatedMovies.results)
             nowPlayingMovieLiveData.postValue(nowPlayingMovies.results)
             upcomingMovieLiveData.postValue(upcomingMovies.results)
+
+            val onTheAirTv = pardeService.getOnTheAirTv(apiKey)
+            onTheAirTvLiveData.postValue(onTheAirTv.results)
+
+
         } catch (exception: Exception) {
             TODO("remember to <list is up to date> ")
             nowPlayingMovieErrorLiveData.postValue("An error occurred: ${exception.message}")
