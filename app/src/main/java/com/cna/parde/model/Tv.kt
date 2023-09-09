@@ -24,6 +24,28 @@ data class OTATv(
     val vote_count: Int = 0
 ):Parcelable
 
+data class TTvResponse(
+    val page: Int,
+    val results: List<TTv>
+)
+
+@Parcelize
+data class TTv(
+    val adult: Boolean = false,
+    val backdrop_path: String = "",
+    val id: Int = 0,
+    val name: String = "",
+    val original_language: String = "",
+    val original_name: String = "",
+    val overview: String = "",
+    val poster_path: String = "",
+    val popularity: Float = 0f,
+    val vote_average: Float = 0f,
+    val vote_count: Int = 0,
+):Parcelable
+
+
+
 data class POPTvResponse(
     val page: Int,
     val results: List<POPTv>

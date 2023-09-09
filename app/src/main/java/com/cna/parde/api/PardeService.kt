@@ -7,6 +7,7 @@ import com.cna.parde.model.POPTvResponse
 import com.cna.parde.model.TMovieResponse
 import com.cna.parde.model.TRMovieResponse
 import com.cna.parde.model.TRTvResponse
+import com.cna.parde.model.TTvResponse
 import com.cna.parde.model.UcMovieResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -30,6 +31,9 @@ interface PardeService {
 
     @GET("tv/on_the_air")
     suspend fun getOnTheAirTv(@Query("api_key") apikey: String): OTATvResponse
+
+    @GET("trending/tv/week")
+    suspend fun getTrendingTv(@Query("api_key") apikey: String): TTvResponse
 
     @GET("tv/popular")
     suspend fun getPopularTv(@Query("api_key") apikey: String): POPTvResponse

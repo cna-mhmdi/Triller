@@ -15,21 +15,32 @@ import com.cna.parde.R
 import com.cna.parde.adapters.OTATvAdapter
 import com.cna.parde.adapters.POPTvAdapter
 import com.cna.parde.adapters.TRTvAdapter
+import com.cna.parde.adapters.TTvAdapter
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
+import com.cna.parde.model.TTv
 
 class TvFragment : Fragment() {
 
     private lateinit var recyclerViewOntTv : RecyclerView
     private lateinit var recyclerViewPopTv : RecyclerView
     private lateinit var recyclerViewTrTv: RecyclerView
+    private lateinit var recyclerViewTTv: RecyclerView
 
     private val otaTvAdapter by lazy {
         OTATvAdapter(object : OTATvAdapter.OTATvClickListener {
             override fun onOTATvClick(tv: OTATv) {
                 openOTATvDetails(tv)
+            }
+        })
+    }
+
+    private val tTvAdapter by lazy {
+        TTvAdapter(object : TTvAdapter.TTvClickListener {
+            override fun onTTvClick(tv: TTv) {
+                openTTvDetails(tv)
             }
         })
     }
@@ -95,6 +106,16 @@ class TvFragment : Fragment() {
             Toast.makeText(requireContext(),error,Toast.LENGTH_SHORT).show()
         }
 
+        recyclerViewTTv = view.findViewById(R.id.Recycler_tv_trending)
+        recyclerViewTTv.adapter = tTvAdapter
+
+        pardeViewModel.trendingTv.observe(viewLifecycleOwner) {trendingTv->
+            tTvAdapter.addMovies(trendingTv)
+        }
+
+        pardeViewModel.getTrendingTvError().observe(viewLifecycleOwner) {error->
+            Toast.makeText(requireContext(),error,Toast.LENGTH_SHORT).show()
+        }
 
         return view
     }
@@ -108,6 +129,10 @@ class TvFragment : Fragment() {
     }
 
     private fun openTRTvDetails(tv: TRTv) {
+        Toast.makeText(requireContext(), tv.original_name, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun openTTvDetails(tv: TTv) {
         Toast.makeText(requireContext(), tv.original_name, Toast.LENGTH_SHORT).show()
     }
 

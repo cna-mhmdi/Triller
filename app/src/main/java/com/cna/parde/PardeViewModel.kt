@@ -10,6 +10,7 @@ import com.cna.parde.model.POPTv
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
+import com.cna.parde.model.TTv
 import com.cna.parde.model.UCMovie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,6 +44,9 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     val trendingMovie : LiveData<List<TMovie>> get() = pardeRepository.trendingMovies
     fun getTrendingMovieError(): LiveData<String> = pardeRepository.trendingMovieError
+
+    val trendingTv : LiveData<List<TTv>> get() = pardeRepository.trendingTv
+    fun getTrendingTvError(): LiveData<String> = pardeRepository.trendingTvError
 
     private fun fetchMovies() {
         viewModelScope.launch(Dispatchers.IO) {
