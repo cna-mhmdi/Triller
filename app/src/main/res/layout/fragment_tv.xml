@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     tools:context=".fragments.TvFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -14,9 +15,9 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <include layout="@layout/layout_tr_tv_recyclerview"/>
             <include layout="@layout/layout_ota_tv_recyclerview"/>
             <include layout="@layout/layout_pop_tv_recyclerview"/>
-            <include layout="@layout/layout_tr_tv_recyclerview"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
