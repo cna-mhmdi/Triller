@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
+import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
@@ -24,6 +25,15 @@ class PardeRepository(private val pardeService: PardeService) {
 
     val nowPlayingMovieError: LiveData<String>
         get() = nowPlayingMovieErrorLiveData
+
+    private val popularMovieLiveData = MutableLiveData<List<POPMovie>>()
+    private val popularMovieErrorLiveData = MutableLiveData<String>()
+
+    val popularMovies: LiveData<List<POPMovie>>
+        get() = popularMovieLiveData
+
+    val popularMovieError: LiveData<String>
+        get() = popularMovieErrorLiveData
 
     private val upcomingMovieLiveData = MutableLiveData<List<UCMovie>>()
     private val upcomingMovieErrorLiveData = MutableLiveData<String>()
@@ -69,11 +79,13 @@ class PardeRepository(private val pardeService: PardeService) {
     suspend fun fetchMovies() {
         try {
             val nowPlayingMovies = pardeService.getNowPlayingMovie(apiKey)
+            val popularMovies = pardeService.getPopularMovie(apiKey)
             val upcomingMovies = pardeService.getUpcomingMovie(apiKey)
             val topRatedMovies = pardeService.getTopRatedMovie(apiKey)
             val onTheAirTv = pardeService.getOnTheAirTv(apiKey)
             val popularTv = pardeService.getPopularTv(apiKey)
             val topRatedTv = pardeService.getTopRatedTv(apiKey)
+            popularMovieLiveData.postValue(popularMovies.results)
             topRatedTvLiveData.postValue(topRatedTv.results)
             upcomingMovieLiveData.postValue(upcomingMovies.results)
             topRatedMovieLiveData.postValue(topRatedMovies.results)

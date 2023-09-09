@@ -14,8 +14,10 @@ import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.TRMovieAdapter
 import com.cna.parde.adapters.NPMovieAdapter
+import com.cna.parde.adapters.POPMovieAdapter
 import com.cna.parde.adapters.UCMovieAdapter
 import com.cna.parde.model.NPMovie
+import com.cna.parde.model.POPMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
 
@@ -26,6 +28,8 @@ class MovieFragment : Fragment() {
     private lateinit var recyclerViewFYMovie: RecyclerView
 
     private lateinit var recyclerViewUCMovie: RecyclerView
+
+    private lateinit var recyclerViewPOPMovie: RecyclerView
 
     private val npMovieAdapter by lazy {
         NPMovieAdapter(object : NPMovieAdapter.NPMovieClickListener {
@@ -47,6 +51,14 @@ class MovieFragment : Fragment() {
         TRMovieAdapter(object : TRMovieAdapter.TRMovieClickListener{
             override fun onTRMovieClick(movie: TRMovie) {
                 openTRMovieDetails(movie)
+            }
+        })
+    }
+
+    private val popMovieAdapter by lazy {
+        POPMovieAdapter(object : POPMovieAdapter.POPMovieClickListener{
+            override fun onPOPMovieClick(movie: POPMovie) {
+                openPOPMovieDetails(movie)
             }
         })
     }
@@ -95,6 +107,17 @@ class MovieFragment : Fragment() {
             Toast.makeText(requireActivity(),error,Toast.LENGTH_SHORT).show()
         }
 
+        recyclerViewPOPMovie = view.findViewById(R.id.Recycler_movie_popular)
+        recyclerViewPOPMovie.adapter = popMovieAdapter
+
+        pardeViewModel.popularMovies.observe(viewLifecycleOwner) { popularMovie->
+            popMovieAdapter.addMovies(popularMovie)
+        }
+
+        pardeViewModel.getPopularMovieError().observe(viewLifecycleOwner) { error->
+            Toast.makeText(requireActivity(),error,Toast.LENGTH_SHORT).show()
+        }
+
         return view
     }
 
@@ -107,6 +130,10 @@ class MovieFragment : Fragment() {
     }
 
     private fun openTRMovieDetails(movie: TRMovie) {
+        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun openPOPMovieDetails(movie: POPMovie) {
         Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
     }
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
+import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
@@ -20,6 +21,9 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     val nowPlayingMovies: LiveData<List<NPMovie>> get() = pardeRepository.nowPlayingMovies
     fun getNowPlayingMovieError(): LiveData<String> = pardeRepository.nowPlayingMovieError
+
+    val popularMovies:LiveData<List<POPMovie>> get() = pardeRepository.popularMovies
+    fun getPopularMovieError():LiveData<String> = pardeRepository.popularMovieError
 
     val upComingMovie: LiveData<List<UCMovie>> get() = pardeRepository.upcomingMovies
     fun getUpComingMovieError(): LiveData<String> = pardeRepository.upcomingMovieError
