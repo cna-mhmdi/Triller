@@ -37,7 +37,7 @@
 
             <TextView
                 android:id="@+id/txtRateMovie"
-                android:layout_width="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="15dp"
                 android:layout_marginStart="4dp"
                 android:fontFamily="@font/uniheavy"

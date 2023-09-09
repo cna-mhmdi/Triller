@@ -94,3 +94,25 @@ data class TRMovie(
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
 ):Parcelable
+
+data class TMovieResponse (
+    val page: Int,
+    val results: List<TMovie>
+)
+
+@Parcelize
+data class TMovie(
+    val adult: Boolean = false,
+    val backdrop_path: String = "",
+    val id: Int = 0,
+    val title: String = "",
+    val original_language: String = "",
+    val original_title: String = "",
+    val overview: String = "",
+    val poster_path: String = "",
+    val popularity: Float = 0f,
+    val release_date: String = "",
+    val video: Boolean = false,
+    val vote_average: Float = 0f,
+    val vote_count: Int = 0,
+):Parcelable

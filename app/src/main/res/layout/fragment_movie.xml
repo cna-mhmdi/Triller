@@ -16,6 +16,7 @@
             android:orientation="vertical">
 
             <include layout="@layout/layout_tr_movie_recyclerview" />
+            <include layout="@layout/layout_t_movie_recyclerview" />
             <include layout="@layout/layout_pop_movie_recyclerview" />
             <include layout="@layout/layout_uc_movie_recyclerview" />
             <include layout="@layout/layout_np_movie_recyclerview" />

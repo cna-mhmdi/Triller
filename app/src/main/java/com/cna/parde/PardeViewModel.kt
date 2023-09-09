@@ -7,6 +7,7 @@ import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
+import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
 import com.cna.parde.model.UCMovie
@@ -39,6 +40,9 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     val topRatedTv: LiveData<List<TRTv>> get() = pardeRepository.topRatedTv
     fun getTopRatedTvError(): LiveData<String> = pardeRepository.topRatedTvError
+
+    val trendingMovie : LiveData<List<TMovie>> get() = pardeRepository.trendingMovies
+    fun getTrendingMovieError(): LiveData<String> = pardeRepository.trendingMovieError
 
     private fun fetchMovies() {
         viewModelScope.launch(Dispatchers.IO) {

@@ -4,6 +4,7 @@ import com.cna.parde.model.NPMoviesResponse
 import com.cna.parde.model.OTATvResponse
 import com.cna.parde.model.POPMoviesResponse
 import com.cna.parde.model.POPTvResponse
+import com.cna.parde.model.TMovieResponse
 import com.cna.parde.model.TRMovieResponse
 import com.cna.parde.model.TRTvResponse
 import com.cna.parde.model.UcMovieResponse
@@ -23,6 +24,9 @@ interface PardeService {
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovie(@Query("api_key") apikey: String): TRMovieResponse
+
+    @GET("trending/movie/week")
+    suspend fun getTrendingMovie(@Query("api_key") apikey: String): TMovieResponse
 
     @GET("tv/on_the_air")
     suspend fun getOnTheAirTv(@Query("api_key") apikey: String): OTATvResponse
