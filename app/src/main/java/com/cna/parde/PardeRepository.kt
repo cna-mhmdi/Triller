@@ -1,11 +1,15 @@
 package com.cna.parde
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
+import com.cna.parde.model.POPTv
 import com.cna.parde.model.TRMovie
+import com.cna.parde.model.TRTv
 import com.cna.parde.model.UCMovie
 
 class PardeRepository(private val pardeService: PardeService) {
@@ -45,23 +49,40 @@ class PardeRepository(private val pardeService: PardeService) {
     val onTheAirTvError: LiveData<String>
         get() = onTheAirTvErrorLiveData
 
+    private val popularTvLiveData = MutableLiveData<List<POPTv>>()
+    private val popularTvErrorLiveData = MutableLiveData<String>()
+
+    val popularTv: LiveData<List<POPTv>>
+        get() = popularTvLiveData
+    val popularTvError: LiveData<String>
+        get() = popularTvErrorLiveData
+
+    private val topRatedTvLiveData = MutableLiveData<List<TRTv>>()
+    private val topRatedTvErrorLiveData = MutableLiveData<String>()
+
+    val topRatedTv: LiveData<List<TRTv>>
+        get() = topRatedTvLiveData
+    val topRatedTvError: LiveData<String>
+        get() = topRatedTvErrorLiveData
+
 
     suspend fun fetchMovies() {
         try {
             val nowPlayingMovies = pardeService.getNowPlayingMovie(apiKey)
             val upcomingMovies = pardeService.getUpcomingMovie(apiKey)
             val topRatedMovies = pardeService.getTopRatedMovie(apiKey)
+            val onTheAirTv = pardeService.getOnTheAirTv(apiKey)
+            val popularTv = pardeService.getPopularTv(apiKey)
+            val topRatedTv = pardeService.getTopRatedTv(apiKey)
+            topRatedTvLiveData.postValue(topRatedTv.results)
+            upcomingMovieLiveData.postValue(upcomingMovies.results)
             topRatedMovieLiveData.postValue(topRatedMovies.results)
             nowPlayingMovieLiveData.postValue(nowPlayingMovies.results)
-            upcomingMovieLiveData.postValue(upcomingMovies.results)
-
-            val onTheAirTv = pardeService.getOnTheAirTv(apiKey)
             onTheAirTvLiveData.postValue(onTheAirTv.results)
-
-
+            popularTvLiveData.postValue(popularTv.results)
         } catch (exception: Exception) {
-            TODO("remember to <list is up to date> ")
-            nowPlayingMovieErrorLiveData.postValue("An error occurred: ${exception.message}")
+            popularTvErrorLiveData.postValue("An error occurred: ${exception.message}")
+            Log.d("thisisforrecyclertest","${exception.message}")
         }
     }
 }
