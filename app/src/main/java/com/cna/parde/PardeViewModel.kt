@@ -2,7 +2,9 @@ package com.cna.parde
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.cna.parde.model.GMovie
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
@@ -17,8 +19,11 @@ import kotlinx.coroutines.launch
 
 class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel() {
 
+    var genreId : Int = 28
+
     init {
         fetchMovies()
+        getGenreMovies()
     }
 
     val nowPlayingMovies: LiveData<List<NPMovie>> get() = pardeRepository.nowPlayingMovies
@@ -48,9 +53,18 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     val trendingTv : LiveData<List<TTv>> get() = pardeRepository.trendingTv
     fun getTrendingTvError(): LiveData<String> = pardeRepository.trendingTvError
 
+    val genreMovie: LiveData<List<GMovie>> get() = pardeRepository.genreMovie
+    fun getGenreMovieError(): LiveData<String> = pardeRepository.genreMovieError
+
     private fun fetchMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             pardeRepository.fetchMovies()
+        }
+    }
+
+    private fun getGenreMovies() {
+        viewModelScope.launch(Dispatchers.IO) {
+            pardeRepository.fetchGenres(genreId)
         }
     }
 }

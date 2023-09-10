@@ -5,6 +5,8 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
+import com.cna.parde.model.GMovie
+import com.cna.parde.model.GMovieResponse
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
@@ -93,6 +95,19 @@ class PardeRepository(private val pardeService: PardeService) {
         get() = trendingTvLiveData
     val trendingTvError: LiveData<String>
         get() = trendingTvErrorLiveData
+
+    private val genresMovieLiveData = MutableLiveData<List<GMovie>>()
+    private val genresMovieErrorLiveData = MutableLiveData<String>()
+
+    val genreMovie: LiveData<List<GMovie>>
+        get() = genresMovieLiveData
+    val genreMovieError: LiveData<String>
+        get() = genresMovieErrorLiveData
+
+    suspend fun fetchGenres(genreId: Int) {
+        val genreMovies = pardeService.getGenreMovie(apiKey,genreId)
+        genresMovieLiveData.postValue(genreMovies.results)
+    }
 
 
     suspend fun fetchMovies() {

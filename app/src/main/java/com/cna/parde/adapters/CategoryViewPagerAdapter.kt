@@ -4,10 +4,8 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.cna.parde.fragments.MovieCFragment
-import com.cna.parde.fragments.MovieFragment
+import com.cna.parde.fragments.MovieGFragment
 import com.cna.parde.fragments.TvCFragment
-import com.cna.parde.fragments.TvFragment
 
 class CategoryViewPagerAdapter(
     private val context: Context,
@@ -18,7 +16,7 @@ class CategoryViewPagerAdapter(
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> {
-                MovieCFragment()
+                MovieGFragment()
             }
 
             1 -> {

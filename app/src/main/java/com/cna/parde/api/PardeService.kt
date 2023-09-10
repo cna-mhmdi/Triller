@@ -1,5 +1,6 @@
 package com.cna.parde.api
 
+import com.cna.parde.model.GMovieResponse
 import com.cna.parde.model.NPMoviesResponse
 import com.cna.parde.model.OTATvResponse
 import com.cna.parde.model.POPMoviesResponse
@@ -40,5 +41,12 @@ interface PardeService {
 
     @GET("tv/top_rated")
     suspend fun getTopRatedTv(@Query("api_key") apikey: String): TRTvResponse
+
+
+    @GET("discover/movie")
+    suspend fun getGenreMovie(
+        @Query("api_key") apikey: String,
+        @Query("with_genres") genreId: Int,
+    ): GMovieResponse
 
 }
