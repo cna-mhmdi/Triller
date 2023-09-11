@@ -47,6 +47,7 @@ interface PardeService {
     suspend fun getGenreMovie(
         @Query("api_key") apikey: String,
         @Query("with_genres") genreId: Int,
+        @Query("page") page: Int
     ): GMovieResponse
 
 }

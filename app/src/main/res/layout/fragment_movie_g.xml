@@ -7,29 +7,227 @@
     tools:context=".fragments.MovieGFragment">
 
     <LinearLayout
+        android:id="@+id/linilayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/G_chipGroup"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:chipSpacingVertical="1dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginBottom="4dp"
+            android:scrollbars="none">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/actionChip"
-                android:layout_width="wrap_content"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/G_chipGroup"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:textColor="@color/chip_text"
-                app:rippleColor="@color/checkOff"
-                app:chipBackgroundColor="@color/chip_background"
-                android:text="Action" />
-    </com.google.android.material.chip.ChipGroup>
+                app:chipSpacingVertical="1dp"
+                android:layout_marginTop="8dp"
+                app:singleLine="true"
+                app:singleSelection="true">
 
-        <include layout="@layout/layout_g_movie_recyclerview"/>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cAction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Action" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cAdventure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Adventure" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cAnimation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Animation" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cComedy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Comedy" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cCrime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Crime" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cDocumentary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Documentary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cDrama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Drama" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cFamily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Family" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cFantasy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Fantasy" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="History" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cHorror"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Horror" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Music" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cMystery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Mystery" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cRomance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Romance" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cScienceFiction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Science Fiction" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cTVMovie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="TV Movie" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cThriller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Thriller" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cWar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="War" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cWestern"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:textColor="@color/chip_text"
+                    app:rippleColor="@color/checkOff"
+                    app:chipBackgroundColor="@color/chip_background"
+                    android:text="Western" />
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Recycler_movie_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="75dp"
+            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/layout_recycler_item" />
 
     </LinearLayout>
 

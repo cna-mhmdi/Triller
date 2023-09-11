@@ -104,9 +104,13 @@ class PardeRepository(private val pardeService: PardeService) {
     val genreMovieError: LiveData<String>
         get() = genresMovieErrorLiveData
 
-    suspend fun fetchGenres(genreId: Int) {
-        val genreMovies = pardeService.getGenreMovie(apiKey,genreId)
-        genresMovieLiveData.postValue(genreMovies.results)
+    suspend fun fetchGenres(genreId: Int,pages: Int) {
+        val genreMovies = mutableListOf<GMovie>()
+        for (i in 1..pages) {
+            val response = pardeService.getGenreMovie(apiKey, genreId, i)
+            genreMovies.addAll(response.results)
+        }
+        genresMovieLiveData.postValue(genreMovies)
     }
 
 
