@@ -85,3 +85,22 @@ data class TRTv(
     val vote_average: Float = 0f,
     val vote_count: Int = 0
 ):Parcelable
+
+data class GTvResponse (
+    val page: Int,
+    val results: List<GTv>,
+)
+
+@Parcelize
+data class GTv(
+    val backdrop_path: String = "",
+    val id: Int = 0,
+    val name: String = "",
+    val original_language: String = "",
+    val original_name: String = "",
+    val overview: String = "",
+    val popularity: Float = 0f,
+    val poster_path: String = "",
+    val vote_average: Float = 0f,
+    val vote_count: Int = 0,
+):Parcelable

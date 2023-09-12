@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.cna.parde.fragments.MovieGFragment
-import com.cna.parde.fragments.TvCFragment
+import com.cna.parde.fragments.TvGFragment
 
 class CategoryViewPagerAdapter(
     private val context: Context,
@@ -20,7 +20,7 @@ class CategoryViewPagerAdapter(
             }
 
             1 -> {
-                TvCFragment()
+                TvGFragment()
             }
 
             else -> getItem(position)

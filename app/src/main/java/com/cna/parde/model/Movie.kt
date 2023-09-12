@@ -120,8 +120,6 @@ data class TMovie(
 data class GMovieResponse (
     val page: Int,
     val results: List<GMovie>,
-    val total_pages: Int,
-    val total_results: Int
 )
 
 @Parcelize

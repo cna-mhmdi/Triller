@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.cna.parde.model.GMovie
+import com.cna.parde.model.GTv
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
@@ -20,17 +21,29 @@ import kotlinx.coroutines.launch
 
 class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel() {
 
-    private var genreId : Int = 28
+    private var genreMovieId : Int = 28
+    private var genreTvId : Int = 35
     private var page: Int = 5
 
     fun setGenreId(id: Int){
-        genreId = id
+        genreMovieId = id
         getGenreMovies()
+    }
+
+    fun setGenreTvId(id: Int){
+        genreTvId = id
+        getGenreTvs()
+    }
+
+    private fun getGenreTvs(){
+        viewModelScope.launch(Dispatchers.IO) {
+            pardeRepository.fetchTvGenres(genreTvId,page)
+        }
     }
 
     private fun getGenreMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            pardeRepository.fetchGenres(genreId,page)
+            pardeRepository.fetchMovieGenres(genreMovieId,page)
         }
     }
 
@@ -67,6 +80,9 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     val genreMovie: LiveData<List<GMovie>> get() = pardeRepository.genreMovie
     fun getGenreMovieError(): LiveData<String> = pardeRepository.genreMovieError
+
+    val genreTv: LiveData<List<GTv>> get() = pardeRepository.genreTv
+    fun getGenreTvError(): LiveData<String> = pardeRepository.genreTvError
 
     private fun fetchMovies() {
         viewModelScope.launch(Dispatchers.IO) {

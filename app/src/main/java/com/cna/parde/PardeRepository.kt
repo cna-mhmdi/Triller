@@ -1,12 +1,11 @@
 package com.cna.parde
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
 import com.cna.parde.model.GMovie
-import com.cna.parde.model.GMovieResponse
+import com.cna.parde.model.GTv
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
@@ -104,7 +103,15 @@ class PardeRepository(private val pardeService: PardeService) {
     val genreMovieError: LiveData<String>
         get() = genresMovieErrorLiveData
 
-    suspend fun fetchGenres(genreId: Int,pages: Int) {
+    private val genresTvLiveData = MutableLiveData<List<GTv>>()
+    private val genresTvErrorLiveData = MutableLiveData<String>()
+
+    val genreTv: LiveData<List<GTv>>
+        get() = genresTvLiveData
+    val genreTvError: LiveData<String>
+        get() = genresTvErrorLiveData
+
+    suspend fun fetchMovieGenres(genreId: Int,pages: Int) {
         val genreMovies = mutableListOf<GMovie>()
         for (i in 1..pages) {
             val response = pardeService.getGenreMovie(apiKey, genreId, i)
@@ -113,6 +120,14 @@ class PardeRepository(private val pardeService: PardeService) {
         genresMovieLiveData.postValue(genreMovies)
     }
 
+    suspend fun fetchTvGenres(genreId: Int,pages: Int) {
+        val genreTv = mutableListOf<GTv>()
+        for (i in 1..pages){
+            val response = pardeService.getGenreTv(apiKey,genreId,i)
+            genreTv.addAll(response.results)
+        }
+        genresTvLiveData.postValue(genreTv)
+    }
 
     suspend fun fetchMovies() {
         try {
