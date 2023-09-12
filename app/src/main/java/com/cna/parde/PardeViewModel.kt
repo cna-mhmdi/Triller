@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
@@ -78,10 +79,15 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     val trendingTv : LiveData<List<TTv>> get() = pardeRepository.trendingTv
     fun getTrendingTvError(): LiveData<String> = pardeRepository.trendingTvError
 
-    val genreMovie: LiveData<List<GMovie>> get() = pardeRepository.genreMovie
+    val genreMovie: LiveData<List<GMovie>>
+        get() = pardeRepository.genreMovie.map { list->
+            list.sortedByDescending { it.vote_average }
+        }
     fun getGenreMovieError(): LiveData<String> = pardeRepository.genreMovieError
 
-    val genreTv: LiveData<List<GTv>> get() = pardeRepository.genreTv
+    val genreTv: LiveData<List<GTv>> get() = pardeRepository.genreTv.map {list->
+        list.sortedByDescending { it.vote_average }
+    }
     fun getGenreTvError(): LiveData<String> = pardeRepository.genreTvError
 
     private fun fetchMovies() {
@@ -89,6 +95,4 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
             pardeRepository.fetchMovies()
         }
     }
-
-
 }
