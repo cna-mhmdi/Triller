@@ -6,6 +6,7 @@ import com.cna.parde.model.NPMoviesResponse
 import com.cna.parde.model.OTATvResponse
 import com.cna.parde.model.POPMoviesResponse
 import com.cna.parde.model.POPTvResponse
+import com.cna.parde.model.SearchResponse
 import com.cna.parde.model.TMovieResponse
 import com.cna.parde.model.TRMovieResponse
 import com.cna.parde.model.TRTvResponse
@@ -57,5 +58,11 @@ interface PardeService {
         @Query("with_genres") genreId: Int,
         @Query("page") page: Int
     ): GTvResponse
+
+    @GET("search/multi")
+    suspend fun getSearch(
+        @Query("api_key") apikey: String,
+        @Query("query") query: String
+    ): SearchResponse
 
 }

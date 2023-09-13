@@ -10,6 +10,7 @@ import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
+import com.cna.parde.model.Search
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
@@ -110,6 +111,17 @@ class PardeRepository(private val pardeService: PardeService) {
         get() = genresTvLiveData
     val genreTvError: LiveData<String>
         get() = genresTvErrorLiveData
+
+    private val searchLiveData = MutableLiveData<List<Search>>()
+    private val searchErrorLiveData = MutableLiveData<String>()
+
+    val search : LiveData<List<Search>> get() = searchLiveData
+    val searchError: LiveData<String> get() = searchErrorLiveData
+
+    suspend fun fetchSearch(query: String) {
+        val search = pardeService.getSearch(apiKey,query)
+        searchLiveData.postValue(search.results)
+    }
 
     suspend fun fetchMovieGenres(genreId: Int,pages: Int) {
         val genreMovies = mutableListOf<GMovie>()

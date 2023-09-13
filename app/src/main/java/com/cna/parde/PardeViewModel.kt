@@ -12,6 +12,7 @@ import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
+import com.cna.parde.model.Search
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
@@ -25,6 +26,7 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     private var genreMovieId : Int = 28
     private var genreTvId : Int = 35
     private var page: Int = 5
+    private var userQuery: String = ""
 
     fun setGenreId(id: Int){
         genreMovieId = id
@@ -36,17 +38,12 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
         getGenreTvs()
     }
 
-    private fun getGenreTvs(){
-        viewModelScope.launch(Dispatchers.IO) {
-            pardeRepository.fetchTvGenres(genreTvId,page)
-        }
+    fun setSearch(query: String) {
+        userQuery = query
+        fetchSearch()
     }
 
-    private fun getGenreMovies() {
-        viewModelScope.launch(Dispatchers.IO) {
-            pardeRepository.fetchMovieGenres(genreMovieId,page)
-        }
-    }
+
 
     init {
         fetchMovies()
@@ -89,6 +86,27 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
         list.sortedByDescending { it.vote_average }
     }
     fun getGenreTvError(): LiveData<String> = pardeRepository.genreTvError
+
+    val search : LiveData<List<Search>> get() = pardeRepository.search
+    fun getSearchError(): LiveData<String> = pardeRepository.searchError
+
+    private fun fetchSearch(){
+        viewModelScope.launch(Dispatchers.IO) {
+            pardeRepository.fetchSearch(userQuery)
+        }
+    }
+
+    private fun getGenreTvs(){
+        viewModelScope.launch(Dispatchers.IO) {
+            pardeRepository.fetchTvGenres(genreTvId,page)
+        }
+    }
+
+    private fun getGenreMovies() {
+        viewModelScope.launch(Dispatchers.IO) {
+            pardeRepository.fetchMovieGenres(genreMovieId,page)
+        }
+    }
 
     private fun fetchMovies() {
         viewModelScope.launch(Dispatchers.IO) {
