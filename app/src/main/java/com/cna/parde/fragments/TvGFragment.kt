@@ -79,6 +79,10 @@ class TvGFragment : Fragment() {
         pardeViewModel.genreTv.observe(viewLifecycleOwner) { genreMovie->
             gTvAdapter.addMovies(genreMovie)
         }
+
+        pardeViewModel.getGenreTvError().observe(viewLifecycleOwner) {error->
+            Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun openGTvDetails(tv: GTv) {

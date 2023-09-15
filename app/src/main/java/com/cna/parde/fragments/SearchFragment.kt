@@ -51,6 +51,11 @@ class SearchFragment : Fragment() {
                     pardeViewModel.search.observe(viewLifecycleOwner) {search ->
                         searchAdapter.addMovies(search)
                     }
+
+                    pardeViewModel.getSearchError().observe(viewLifecycleOwner) { error->
+                        Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
+                    }
+
                     binding.searchView.clearFocus()
                 }else{
                     Toast.makeText(requireContext(),"please Enter something first!",Toast.LENGTH_LONG).show()

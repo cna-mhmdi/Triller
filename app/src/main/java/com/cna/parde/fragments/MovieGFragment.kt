@@ -145,6 +145,10 @@ class MovieGFragment : Fragment() {
         pardeViewModel.genreMovie.observe(viewLifecycleOwner) { genreMovie->
             gMovieAdapter.addMovies(genreMovie)
         }
+
+        pardeViewModel.getGenreMovieError().observe(viewLifecycleOwner) { error->
+            Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun openGMovieDetails(movie: GMovie) {
