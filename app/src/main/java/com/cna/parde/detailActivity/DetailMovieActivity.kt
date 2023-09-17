@@ -1,8 +1,15 @@
 package com.cna.parde.detailActivity
 
 import android.os.Bundle
-import android.widget.TextView
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.cna.parde.PardeApplication
+import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
@@ -25,8 +32,7 @@ class DetailMovieActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
 
-        val movieTitle = findViewById<TextView>(R.id.movie_title)
-
+        val movieImage = findViewById<ImageView>(R.id.movie_img)
         val intent = intent
         if(intent != null){
             val popMovie = intent.getParcelableExtra<POPMovie>(POPMovie)
@@ -36,18 +42,15 @@ class DetailMovieActivity: AppCompatActivity() {
             val ucMovie = intent.getParcelableExtra<UCMovie>(UCMovie)
 
             if (popMovie != null){
-                movieTitle.text = popMovie.title
+
             }else if (npMovie != null) {
-                movieTitle.text = npMovie.title
-
+                movieImage.load("$IMAGE_URL${npMovie.backdrop_path}")
             }else if (tMovie != null) {
-                movieTitle.text = tMovie.title
-
+                movieImage.load("$IMAGE_URL${tMovie.backdrop_path}")
             }else if (trMovie != null) {
-                movieTitle.text = trMovie.title
-
+                movieImage.load("$IMAGE_URL${trMovie.backdrop_path}")
             }else if (ucMovie != null) {
-                movieTitle.text = ucMovie.title
+                movieImage.load("$IMAGE_URL${ucMovie.backdrop_path}")
             }
         }
     }

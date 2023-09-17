@@ -87,7 +87,11 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     }
     fun getGenreTvError(): LiveData<String> = pardeRepository.genreTvError
 
-    val search : LiveData<List<Search>> get() = pardeRepository.search
+    val search : LiveData<List<Search>>
+        get() = pardeRepository.search.map { list->
+            list.sortedByDescending { it.vote_average }
+        }
+
     fun getSearchError(): LiveData<String> = pardeRepository.searchError
 
     private fun fetchSearch(){

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,23 +8,24 @@
     android:background="@color/main_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/img_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gradiant_color_background">
+        android:layout_height="250dp">
 
-        <TextView
-            android:id="@+id/movie_title"
+        <ImageView
+            android:id="@+id/movie_img"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/uniheavy"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:text="sample"
-            android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/img_layout"
+        android:background="@drawable/round_imageview"
+        android:orientation="vertical">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
