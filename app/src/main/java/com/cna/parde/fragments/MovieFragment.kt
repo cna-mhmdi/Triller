@@ -1,5 +1,6 @@
 package com.cna.parde.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.cna.parde.detailActivity.DetailMovieActivity
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
@@ -145,23 +147,46 @@ class MovieFragment : Fragment() {
     }
 
     private fun openNPMovieDetails(movie: NPMovie) {
-        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
+            putExtra(DetailMovieActivity.NPMovie,movie)
+        }
+        startActivity(intent)
     }
 
     private fun openUCMovieDetails(movie: UCMovie) {
-        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
+            putExtra(DetailMovieActivity.UCMovie,movie)
+        }
+        startActivity(intent)
     }
 
     private fun openTRMovieDetails(movie: TRMovie) {
-        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
+            putExtra(DetailMovieActivity.TRMovie,movie)
+        }
+        startActivity(intent)
     }
 
     private fun openPOPMovieDetails(movie: POPMovie) {
-        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
+            putExtra(DetailMovieActivity.POPMovie,movie)
+        }
+        startActivity(intent)
+
     }
 
     private fun openTMovieDetails(movie: TMovie) {
-        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
+            putExtra(DetailMovieActivity.TMovie,movie)
+        }
+        startActivity(intent)
     }
+
+//    private fun openMovieDetails(movieType: String, movieId: ) {
+//        val intent = Intent(requireContext(),DetailMovieActivity::class.java).apply {
+//            putExtra(DetailMovieActivity.NPMovie,movie)
+//        }
+//        startActivity(intent)
+//    }
 
 }
