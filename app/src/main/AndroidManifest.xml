@@ -34,8 +34,11 @@
             android:name=".InfoActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailActivity"
+            android:name=".detailActivity.DetailMovieActivity"
             android:exported="false"/>
+        <activity android:name=".detailActivity.DetailTvActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

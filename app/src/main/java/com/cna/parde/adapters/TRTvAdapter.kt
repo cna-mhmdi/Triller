@@ -44,7 +44,7 @@ class TRTvAdapter(private val clickListener: TRTvClickListener) :
         private val imageUrl = "https://image.tmdb.org/t/p/w185/"
 
         fun bind(tv: TRTv) {
-            txtTitle.text = tv.original_name
+            txtTitle.text = tv.name
             txtRate.text = tv.vote_average.toString()
 
             imgMoviePic.load("$imageUrl${tv.poster_path}")

@@ -44,7 +44,7 @@ class POPTvAdapter(private val clickListener: POPTvClickListener) :
         private val imageUrl = "https://image.tmdb.org/t/p/w185/"
 
         fun bind(tv: POPTv) {
-            txtTitle.text = tv.original_name
+            txtTitle.text = tv.name
             txtRate.text = tv.vote_average.toString()
 
             imgMoviePic.load("$imageUrl${tv.poster_path}")

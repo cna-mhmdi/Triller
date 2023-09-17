@@ -1,5 +1,6 @@
 package com.cna.parde.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.cna.parde.adapters.OTATvAdapter
 import com.cna.parde.adapters.POPTvAdapter
 import com.cna.parde.adapters.TRTvAdapter
 import com.cna.parde.adapters.TTvAdapter
+import com.cna.parde.detailActivity.DetailTvActivity
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.TRMovie
@@ -121,19 +123,31 @@ class TvFragment : Fragment() {
     }
 
     private fun openOTATvDetails(tv: OTATv) {
-        Toast.makeText(requireContext(), tv.original_name, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(),DetailTvActivity::class.java).apply {
+            putExtra(DetailTvActivity.OTATv,tv)
+        }
+        startActivity(intent)
     }
 
     private fun openPOPTvDetails(tv: POPTv) {
-        Toast.makeText(requireContext(), tv.original_name, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(),DetailTvActivity::class.java).apply {
+            putExtra(DetailTvActivity.POPTv,tv)
+        }
+        startActivity(intent)
     }
 
     private fun openTRTvDetails(tv: TRTv) {
-        Toast.makeText(requireContext(), tv.original_name, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(),DetailTvActivity::class.java).apply {
+            putExtra(DetailTvActivity.TRTv,tv)
+        }
+        startActivity(intent)
     }
 
     private fun openTTvDetails(tv: TTv) {
-        Toast.makeText(requireContext(), tv.original_name, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(),DetailTvActivity::class.java).apply {
+            putExtra(DetailTvActivity.TTv,tv)
+        }
+        startActivity(intent)
     }
 
 }
