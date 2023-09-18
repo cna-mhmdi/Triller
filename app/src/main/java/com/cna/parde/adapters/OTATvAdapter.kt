@@ -48,7 +48,10 @@ class OTATvAdapter(private val clickListener: OTATvClickListener) :
             txtTitle.text = tv.name
             txtRate.text = tv.vote_average.toString()
 
-            imgMoviePic.load("$imageUrl${tv.poster_path}")
+            Glide.with(itemView.context)
+                .load("$imageUrl${tv.poster_path}")
+                .fitCenter()
+                .into(imgMoviePic)
         }
     }
 

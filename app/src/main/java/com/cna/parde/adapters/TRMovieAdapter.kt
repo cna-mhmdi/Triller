@@ -49,7 +49,10 @@ class TRMovieAdapter(private val clickListener: TRMovieClickListener) :
             txtTitle.text = movie.title
             txtRate.text = movie.vote_average.toString()
 
-            imgMoviePic.load("$imageUrl${movie.poster_path}")
+            Glide.with(itemView.context)
+                .load("$imageUrl${movie.poster_path}")
+                .fitCenter()
+                .into(imgMoviePic)
         }
     }
 
