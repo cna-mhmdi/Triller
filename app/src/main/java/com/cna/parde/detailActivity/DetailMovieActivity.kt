@@ -8,9 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.bumptech.glide.Glide
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
+import com.cna.parde.databinding.ActivityMovieDetailBinding
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.TMovie
@@ -28,11 +30,13 @@ class DetailMovieActivity: AppCompatActivity() {
         const val IMAGE_URL = "https://image.tmdb.org/t/p/w185/"
     }
 
+    private lateinit var binding: ActivityMovieDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_detail)
+        binding = ActivityMovieDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val movieImage = findViewById<ImageView>(R.id.movie_img)
         val intent = intent
         if(intent != null){
             val popMovie = intent.getParcelableExtra<POPMovie>(POPMovie)
@@ -43,14 +47,27 @@ class DetailMovieActivity: AppCompatActivity() {
 
             if (popMovie != null){
 
+                binding.movieTitle.text = popMovie.title
+                binding.moviePopularity.text = popMovie.popularity.toString()
+                binding.movieMetaScore.text = popMovie.vote_count.toString()
+                binding.movieOverview.text = popMovie.overview
+
+                binding.rateMovie.text = "${popMovie.vote_average} /10 "
+
+                Glide.with(this)
+                    .load("$IMAGE_URL${popMovie.poster_path}")
+                    .placeholder(R.drawable.star)
+                    .centerInside()
+                    .into(binding.movieImg)
+
             }else if (npMovie != null) {
-                movieImage.load("$IMAGE_URL${npMovie.backdrop_path}")
+                binding.movieImg.load("$IMAGE_URL${npMovie.backdrop_path}")
             }else if (tMovie != null) {
-                movieImage.load("$IMAGE_URL${tMovie.backdrop_path}")
+                binding.movieImg.load("$IMAGE_URL${tMovie.backdrop_path}")
             }else if (trMovie != null) {
-                movieImage.load("$IMAGE_URL${trMovie.backdrop_path}")
+                binding.movieImg.load("$IMAGE_URL${trMovie.backdrop_path}")
             }else if (ucMovie != null) {
-                movieImage.load("$IMAGE_URL${ucMovie.backdrop_path}")
+                binding.movieImg.load("$IMAGE_URL${ucMovie.backdrop_path}")
             }
         }
     }
