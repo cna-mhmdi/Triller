@@ -33,7 +33,7 @@
             android:layout_marginBottom="75dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"
-            tools:listitem="@layout/layout_recycler_item"/>
+            tools:listitem="@layout/layout_recycler_item" />
 
     </LinearLayout>
 </FrameLayout>

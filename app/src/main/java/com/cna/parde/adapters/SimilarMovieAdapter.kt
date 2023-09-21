@@ -7,7 +7,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cna.parde.R
-import com.cna.parde.model.Cast
 import com.cna.parde.model.SimilarMovie
 
 class SimilarMovieAdapter(private val clickListener: SimilarMovieClickListener) :

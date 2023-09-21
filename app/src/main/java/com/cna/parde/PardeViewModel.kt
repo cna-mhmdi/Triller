@@ -1,13 +1,10 @@
 package com.cna.parde
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.cna.parde.model.Cast
-import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
 import com.cna.parde.model.GenreMovie
@@ -27,36 +24,36 @@ import kotlinx.coroutines.launch
 
 class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel() {
 
-    private var genreMovieId : Int = 28
-    private var genreTvId : Int = 35
+    private var genreMovieId: Int = 28
+    private var genreTvId: Int = 35
     private var page: Int = 5
     private var userQuery: String = ""
     private var movieId: Int = 0
     private var movieIdCast: Int = 0
     private var movieSimilar: Int = 0
 
-    fun setSimilarId(path: Int){
+    fun setSimilarId(path: Int) {
         movieSimilar = path
         fetchSimilarMovie()
     }
 
 
-    fun setCastId(path:Int) {
+    fun setCastId(path: Int) {
         movieIdCast = path
         fetchCastMovie()
     }
 
-    fun setMovieId(path:Int){
+    fun setMovieId(path: Int) {
         movieId = path
         fetchMovieDetail()
     }
 
-    fun setGenreId(id: Int){
+    fun setGenreId(id: Int) {
         genreMovieId = id
         getGenreMovies()
     }
 
-    fun setGenreTvId(id: Int){
+    fun setGenreTvId(id: Int) {
         genreTvId = id
         getGenreTvs()
     }
@@ -73,8 +70,8 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     val nowPlayingMovies: LiveData<List<NPMovie>> get() = pardeRepository.nowPlayingMovies
     fun getNowPlayingMovieError(): LiveData<String> = pardeRepository.nowPlayingMovieError
 
-    val popularMovies:LiveData<List<POPMovie>> get() = pardeRepository.popularMovies
-    fun getPopularMovieError():LiveData<String> = pardeRepository.popularMovieError
+    val popularMovies: LiveData<List<POPMovie>> get() = pardeRepository.popularMovies
+    fun getPopularMovieError(): LiveData<String> = pardeRepository.popularMovieError
 
     val upComingMovie: LiveData<List<UCMovie>> get() = pardeRepository.upcomingMovies
     fun getUpComingMovieError(): LiveData<String> = pardeRepository.upcomingMovieError
@@ -91,13 +88,13 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     val topRatedTv: LiveData<List<TRTv>> get() = pardeRepository.topRatedTv
     fun getTopRatedTvError(): LiveData<String> = pardeRepository.topRatedTvError
 
-    val trendingMovie : LiveData<List<TMovie>> get() = pardeRepository.trendingMovies
+    val trendingMovie: LiveData<List<TMovie>> get() = pardeRepository.trendingMovies
     fun getTrendingMovieError(): LiveData<String> = pardeRepository.trendingMovieError
 
-    val trendingTv : LiveData<List<TTv>> get() = pardeRepository.trendingTv
+    val trendingTv: LiveData<List<TTv>> get() = pardeRepository.trendingTv
     fun getTrendingTvError(): LiveData<String> = pardeRepository.trendingTvError
 
-    val detailMovie : LiveData<List<GenreMovie>> get() = pardeRepository.detailMovie
+    val detailMovie: LiveData<List<GenreMovie>> get() = pardeRepository.detailMovie
     fun getDetailMovieError(): LiveData<String> = pardeRepository.detailMovieError
 
     val castMovie: LiveData<List<Cast>>
@@ -114,57 +111,60 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     fun getSimilarMovieError(): LiveData<String> = pardeRepository.similarMovieError
 
-    private fun fetchSimilarMovie(){
+    private fun fetchSimilarMovie() {
         viewModelScope.launch(Dispatchers.IO) {
             pardeRepository.fetchSimilarMovie(movieSimilar)
         }
     }
 
-    private fun fetchCastMovie(){
+    private fun fetchCastMovie() {
         viewModelScope.launch(Dispatchers.IO) {
             pardeRepository.fetchCastMovie(movieIdCast)
         }
     }
 
     private fun fetchMovieDetail() {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             pardeRepository.fetchDetailMovie(movieId)
         }
     }
 
     val genreMovie: LiveData<List<GMovie>>
-        get() = pardeRepository.genreMovie.map { list->
+        get() = pardeRepository.genreMovie.map { list ->
             list.sortedByDescending { it.vote_average }
         }
+
     fun getGenreMovieError(): LiveData<String> = pardeRepository.genreMovieError
 
-    val genreTv: LiveData<List<GTv>> get() = pardeRepository.genreTv.map {list->
-        list.sortedByDescending { it.vote_average }
-    }
+    val genreTv: LiveData<List<GTv>>
+        get() = pardeRepository.genreTv.map { list ->
+            list.sortedByDescending { it.vote_average }
+        }
+
     fun getGenreTvError(): LiveData<String> = pardeRepository.genreTvError
 
-    val search : LiveData<List<Search>>
-        get() = pardeRepository.search.map { list->
+    val search: LiveData<List<Search>>
+        get() = pardeRepository.search.map { list ->
             list.sortedByDescending { it.vote_average }
         }
 
     fun getSearchError(): LiveData<String> = pardeRepository.searchError
 
-    private fun fetchSearch(){
+    private fun fetchSearch() {
         viewModelScope.launch(Dispatchers.IO) {
             pardeRepository.fetchSearch(userQuery)
         }
     }
 
-    private fun getGenreTvs(){
+    private fun getGenreTvs() {
         viewModelScope.launch(Dispatchers.IO) {
-            pardeRepository.fetchTvGenres(genreTvId,page)
+            pardeRepository.fetchTvGenres(genreTvId, page)
         }
     }
 
     private fun getGenreMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            pardeRepository.fetchMovieGenres(genreMovieId,page)
+            pardeRepository.fetchMovieGenres(genreMovieId, page)
         }
     }
 

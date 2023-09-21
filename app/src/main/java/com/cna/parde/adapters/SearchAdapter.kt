@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.cna.parde.R
-import com.cna.parde.model.GMovie
 import com.cna.parde.model.Search
 
 
@@ -49,7 +48,7 @@ class SearchAdapter(private val clickListener: SearchClickListener) :
         fun bind(movie: Search) {
             if (movie.media_type == "movie") {
                 txtTitle.text = movie.title
-            }else{
+            } else {
                 txtTitle.text = movie.name
             }
             txtRate.text = movie.vote_average.toString()

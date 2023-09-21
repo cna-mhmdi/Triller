@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
 import com.cna.parde.model.Cast
-import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
 import com.cna.parde.model.GenreMovie
@@ -119,51 +118,51 @@ class PardeRepository(private val pardeService: PardeService) {
     private val searchLiveData = MutableLiveData<List<Search>>()
     private val searchErrorLiveData = MutableLiveData<String>()
 
-    val search : LiveData<List<Search>> get() = searchLiveData
+    val search: LiveData<List<Search>> get() = searchLiveData
     val searchError: LiveData<String> get() = searchErrorLiveData
 
 
     private val detailMovieLiveData = MutableLiveData<List<GenreMovie>>()
     private val detailMovieErrorLiveData = MutableLiveData<String>()
 
-    val detailMovie : LiveData<List<GenreMovie>> get() = detailMovieLiveData
+    val detailMovie: LiveData<List<GenreMovie>> get() = detailMovieLiveData
     val detailMovieError: LiveData<String> get() = detailMovieErrorLiveData
 
     private val castMovieLiveData = MutableLiveData<List<Cast>>()
     private val castMovieErrorLiveData = MutableLiveData<String>()
 
-    val castMovie : LiveData<List<Cast>> get() =  castMovieLiveData
-    val castMovieError : LiveData<String> get() =  castMovieErrorLiveData
+    val castMovie: LiveData<List<Cast>> get() = castMovieLiveData
+    val castMovieError: LiveData<String> get() = castMovieErrorLiveData
 
 
     private val similarMovieLiveData = MutableLiveData<List<SimilarMovie>>()
     private val similarMovieErrorLiveData = MutableLiveData<String>()
 
-    val similarMovie : LiveData<List<SimilarMovie>> get() =  similarMovieLiveData
-    val similarMovieError : LiveData<String> get() =  similarMovieErrorLiveData
+    val similarMovie: LiveData<List<SimilarMovie>> get() = similarMovieLiveData
+    val similarMovieError: LiveData<String> get() = similarMovieErrorLiveData
 
-    suspend fun fetchSimilarMovie(path: Int){
-        val similar = pardeService.getSimilarMovie(path,apiKey)
+    suspend fun fetchSimilarMovie(path: Int) {
+        val similar = pardeService.getSimilarMovie(path, apiKey)
         similarMovieLiveData.postValue(similar.results)
     }
 
     suspend fun fetchCastMovie(path: Int) {
-        val cast = pardeService.getCastMovie(path,apiKey)
+        val cast = pardeService.getCastMovie(path, apiKey)
         castMovieLiveData.postValue(cast.cast)
     }
 
 
-    suspend fun fetchDetailMovie(path:Int) {
-        val detailMovie = pardeService.getDetailMovie(path,apiKey)
+    suspend fun fetchDetailMovie(path: Int) {
+        val detailMovie = pardeService.getDetailMovie(path, apiKey)
         detailMovieLiveData.postValue(detailMovie.genres)
     }
 
     suspend fun fetchSearch(query: String) {
-        val search = pardeService.getSearch(apiKey,query)
+        val search = pardeService.getSearch(apiKey, query)
         searchLiveData.postValue(search.results)
     }
 
-    suspend fun fetchMovieGenres(genreId: Int,pages: Int) {
+    suspend fun fetchMovieGenres(genreId: Int, pages: Int) {
         val genreMovies = mutableListOf<GMovie>()
         for (i in 1..pages) {
             val response = pardeService.getGenreMovie(apiKey, genreId, i)
@@ -172,10 +171,10 @@ class PardeRepository(private val pardeService: PardeService) {
         genresMovieLiveData.postValue(genreMovies)
     }
 
-    suspend fun fetchTvGenres(genreId: Int,pages: Int) {
+    suspend fun fetchTvGenres(genreId: Int, pages: Int) {
         val genreTv = mutableListOf<GTv>()
-        for (i in 1..pages){
-            val response = pardeService.getGenreTv(apiKey,genreId,i)
+        for (i in 1..pages) {
+            val response = pardeService.getGenreTv(apiKey, genreId, i)
             genreTv.addAll(response.results)
         }
         genresTvLiveData.postValue(genreTv)
@@ -203,7 +202,7 @@ class PardeRepository(private val pardeService: PardeService) {
             popularTvLiveData.postValue(popularTv.results)
         } catch (exception: Exception) {
             popularTvErrorLiveData.postValue("An error occurred: ${exception.message}")
-            Log.d("thisisforrecyclertest","${exception.message}")
+            Log.d("thisisforrecyclertest", "${exception.message}")
         }
     }
 }

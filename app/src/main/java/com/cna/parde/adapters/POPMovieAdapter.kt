@@ -6,11 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.bumptech.glide.Glide
 import com.cna.parde.R
-import com.cna.parde.detailActivity.DetailMovieActivity
-import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
 
 class POPMovieAdapter(private val clickListener: POPMovieClickListener) :

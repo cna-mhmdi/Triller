@@ -9,16 +9,16 @@
     <item
         android:id="@+id/nav_categories"
         android:icon="@drawable/categories"
-        android:title="CATEGORIES"/>
+        android:title="CATEGORIES" />
 
     <item
         android:id="@+id/nav_favorite"
         android:icon="@drawable/heart"
-        android:title="FAVORITE"/>
+        android:title="FAVORITE" />
 
     <item
         android:id="@+id/nav_search"
         android:icon="@drawable/search"
-        android:title="SEARCH"/>
+        android:title="SEARCH" />
 
 </menu>

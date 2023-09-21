@@ -1,9 +1,8 @@
 package com.cna.parde
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.AlphaAnimation
+import androidx.appcompat.app.AppCompatActivity
 import com.cna.parde.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {

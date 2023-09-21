@@ -2,11 +2,11 @@ package com.cna.parde.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -20,14 +20,13 @@ import com.cna.parde.adapters.TTvAdapter
 import com.cna.parde.detailActivity.DetailTvActivity
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPTv
-import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
 import com.cna.parde.model.TTv
 
 class TvFragment : Fragment() {
 
-    private lateinit var recyclerViewOntTv : RecyclerView
-    private lateinit var recyclerViewPopTv : RecyclerView
+    private lateinit var recyclerViewOntTv: RecyclerView
+    private lateinit var recyclerViewPopTv: RecyclerView
     private lateinit var recyclerViewTrTv: RecyclerView
     private lateinit var recyclerViewTTv: RecyclerView
 
@@ -56,7 +55,7 @@ class TvFragment : Fragment() {
     }
 
     private val trTvAdapter by lazy {
-        TRTvAdapter(object :TRTvAdapter.TRTvClickListener {
+        TRTvAdapter(object : TRTvAdapter.TRTvClickListener {
             override fun onTRTvClick(tv: TRTv) {
                 openTRTvDetails(tv)
             }
@@ -73,7 +72,7 @@ class TvFragment : Fragment() {
         recyclerViewOntTv.adapter = otaTvAdapter
 
         val pardeRepository = (activity?.application as PardeApplication).pardeRepository
-        val pardeViewModel = ViewModelProvider(this, object: ViewModelProvider.Factory{
+        val pardeViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return PardeViewModel(pardeRepository) as T
             }
@@ -83,69 +82,69 @@ class TvFragment : Fragment() {
             otaTvAdapter.addMovies(onTheAirTv)
         }
 
-        pardeViewModel.getOnTheAirTvError().observe(viewLifecycleOwner) {error ->
+        pardeViewModel.getOnTheAirTvError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewPopTv = view.findViewById(R.id.Recycler_tv_popular)
         recyclerViewPopTv.adapter = popTvAdapter
 
-        pardeViewModel.popularTv.observe(viewLifecycleOwner) { popularTv->
+        pardeViewModel.popularTv.observe(viewLifecycleOwner) { popularTv ->
             popTvAdapter.addMovies(popularTv)
         }
 
-        pardeViewModel.getPopularTvError().observe(viewLifecycleOwner) { error->
+        pardeViewModel.getPopularTvError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewTrTv = view.findViewById(R.id.Recycler_tv_toprated)
         recyclerViewTrTv.adapter = trTvAdapter
 
-        pardeViewModel.topRatedTv.observe(viewLifecycleOwner) {topRatedTv->
+        pardeViewModel.topRatedTv.observe(viewLifecycleOwner) { topRatedTv ->
             trTvAdapter.addMovies(topRatedTv)
         }
-        pardeViewModel.getTopRatedTvError().observe(viewLifecycleOwner) {error->
-            Toast.makeText(requireContext(),error,Toast.LENGTH_SHORT).show()
+        pardeViewModel.getTopRatedTvError().observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewTTv = view.findViewById(R.id.Recycler_tv_trending)
         recyclerViewTTv.adapter = tTvAdapter
 
-        pardeViewModel.trendingTv.observe(viewLifecycleOwner) {trendingTv->
+        pardeViewModel.trendingTv.observe(viewLifecycleOwner) { trendingTv ->
             tTvAdapter.addMovies(trendingTv)
         }
 
-        pardeViewModel.getTrendingTvError().observe(viewLifecycleOwner) {error->
-            Toast.makeText(requireContext(),error,Toast.LENGTH_SHORT).show()
+        pardeViewModel.getTrendingTvError().observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
         }
 
         return view
     }
 
     private fun openOTATvDetails(tv: OTATv) {
-        val intent = Intent(requireContext(),DetailTvActivity::class.java).apply {
-            putExtra(DetailTvActivity.OTATv,tv)
+        val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
+            putExtra(DetailTvActivity.OTATv, tv)
         }
         startActivity(intent)
     }
 
     private fun openPOPTvDetails(tv: POPTv) {
-        val intent = Intent(requireContext(),DetailTvActivity::class.java).apply {
-            putExtra(DetailTvActivity.POPTv,tv)
+        val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
+            putExtra(DetailTvActivity.POPTv, tv)
         }
         startActivity(intent)
     }
 
     private fun openTRTvDetails(tv: TRTv) {
-        val intent = Intent(requireContext(),DetailTvActivity::class.java).apply {
-            putExtra(DetailTvActivity.TRTv,tv)
+        val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
+            putExtra(DetailTvActivity.TRTv, tv)
         }
         startActivity(intent)
     }
 
     private fun openTTvDetails(tv: TTv) {
-        val intent = Intent(requireContext(),DetailTvActivity::class.java).apply {
-            putExtra(DetailTvActivity.TTv,tv)
+        val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
+            putExtra(DetailTvActivity.TTv, tv)
         }
         startActivity(intent)
     }

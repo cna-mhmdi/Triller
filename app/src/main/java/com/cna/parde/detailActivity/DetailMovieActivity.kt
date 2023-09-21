@@ -1,13 +1,10 @@
 package com.cna.parde.detailActivity
 
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.bumptech.glide.Glide
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
@@ -23,7 +20,7 @@ import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
 
-class DetailMovieActivity: AppCompatActivity() {
+class DetailMovieActivity : AppCompatActivity() {
 
     companion object {
         const val POPMovie = "POPMovie"
@@ -37,7 +34,7 @@ class DetailMovieActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailBinding
 
     private val castMovieAdapter by lazy {
-        CastMovieAdapter(object :CastMovieAdapter.CastMovieClickListener {
+        CastMovieAdapter(object : CastMovieAdapter.CastMovieClickListener {
             override fun onCastMovieClick(cast: Cast) {
                 openCastDetail(cast)
             }
@@ -45,7 +42,7 @@ class DetailMovieActivity: AppCompatActivity() {
     }
 
     private val similarMovieAdapter by lazy {
-        SimilarMovieAdapter(object :SimilarMovieAdapter.SimilarMovieClickListener {
+        SimilarMovieAdapter(object : SimilarMovieAdapter.SimilarMovieClickListener {
             override fun onSimilarMovieClick(movie: SimilarMovie) {
                 openSimilarDetail(movie)
             }
@@ -69,7 +66,7 @@ class DetailMovieActivity: AppCompatActivity() {
         binding.recyclerSimilarMovie.adapter = similarMovieAdapter
 
         val intent = intent
-        if(intent != null){
+        if (intent != null) {
 
             val popMovie = intent.getParcelableExtra<POPMovie>(POPMovie)
             val npMovie = intent.getParcelableExtra<NPMovie>(NPMovie)
@@ -77,7 +74,7 @@ class DetailMovieActivity: AppCompatActivity() {
             val trMovie = intent.getParcelableExtra<TRMovie>(TRMovie)
             val ucMovie = intent.getParcelableExtra<UCMovie>(UCMovie)
 
-            if (popMovie != null){
+            if (popMovie != null) {
 
                 Glide.with(this)
                     .load("$IMAGE_URL${popMovie.poster_path}")
@@ -92,8 +89,8 @@ class DetailMovieActivity: AppCompatActivity() {
 
 
                 pardeViewModel.setMovieId(popMovie.id)
-                pardeViewModel.detailMovie.observe(this){ detail->
-                    binding.genreMovie.text = detail.map { it.name}.toString()
+                pardeViewModel.detailMovie.observe(this) { detail ->
+                    binding.genreMovie.text = detail.map { it.name }.toString()
                 }
 
                 binding.moviePopularity.text = popMovie.popularity.toString()
@@ -101,16 +98,16 @@ class DetailMovieActivity: AppCompatActivity() {
                 binding.movieOverview.text = popMovie.overview
 
                 pardeViewModel.setCastId(popMovie.id)
-                pardeViewModel.castMovie.observe(this) {cast->
+                pardeViewModel.castMovie.observe(this) { cast ->
                     castMovieAdapter.addMovies(cast)
                 }
 
                 pardeViewModel.setSimilarId(popMovie.id)
-                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                pardeViewModel.similarMovie.observe(this) { similarMovie ->
                     similarMovieAdapter.addMovies(similarMovie)
                 }
 
-            }else if (npMovie != null) {
+            } else if (npMovie != null) {
 
                 Glide.with(this)
                     .load("$IMAGE_URL${npMovie.poster_path}")
@@ -125,8 +122,8 @@ class DetailMovieActivity: AppCompatActivity() {
 
 
                 pardeViewModel.setMovieId(npMovie.id)
-                pardeViewModel.detailMovie.observe(this){ detail->
-                    binding.genreMovie.text = detail.map { it.name}.toString()
+                pardeViewModel.detailMovie.observe(this) { detail ->
+                    binding.genreMovie.text = detail.map { it.name }.toString()
                 }
 
                 binding.moviePopularity.text = npMovie.popularity.toString()
@@ -134,16 +131,16 @@ class DetailMovieActivity: AppCompatActivity() {
                 binding.movieOverview.text = npMovie.overview
 
                 pardeViewModel.setCastId(npMovie.id)
-                pardeViewModel.castMovie.observe(this) {cast->
+                pardeViewModel.castMovie.observe(this) { cast ->
                     castMovieAdapter.addMovies(cast)
                 }
 
                 pardeViewModel.setSimilarId(npMovie.id)
-                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                pardeViewModel.similarMovie.observe(this) { similarMovie ->
                     similarMovieAdapter.addMovies(similarMovie)
                 }
 
-            }else if (tMovie != null) {
+            } else if (tMovie != null) {
 
                 Glide.with(this)
                     .load("$IMAGE_URL${tMovie.poster_path}")
@@ -158,8 +155,8 @@ class DetailMovieActivity: AppCompatActivity() {
 
 
                 pardeViewModel.setMovieId(tMovie.id)
-                pardeViewModel.detailMovie.observe(this){ detail->
-                    binding.genreMovie.text = detail.map { it.name}.toString()
+                pardeViewModel.detailMovie.observe(this) { detail ->
+                    binding.genreMovie.text = detail.map { it.name }.toString()
                 }
 
                 binding.moviePopularity.text = tMovie.popularity.toString()
@@ -167,16 +164,16 @@ class DetailMovieActivity: AppCompatActivity() {
                 binding.movieOverview.text = tMovie.overview
 
                 pardeViewModel.setCastId(tMovie.id)
-                pardeViewModel.castMovie.observe(this) {cast->
+                pardeViewModel.castMovie.observe(this) { cast ->
                     castMovieAdapter.addMovies(cast)
                 }
 
                 pardeViewModel.setSimilarId(tMovie.id)
-                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                pardeViewModel.similarMovie.observe(this) { similarMovie ->
                     similarMovieAdapter.addMovies(similarMovie)
                 }
 
-            }else if (trMovie != null) {
+            } else if (trMovie != null) {
 
                 Glide.with(this)
                     .load("$IMAGE_URL${trMovie.poster_path}")
@@ -191,8 +188,8 @@ class DetailMovieActivity: AppCompatActivity() {
 
 
                 pardeViewModel.setMovieId(trMovie.id)
-                pardeViewModel.detailMovie.observe(this){ detail->
-                    binding.genreMovie.text = detail.map { it.name}.toString()
+                pardeViewModel.detailMovie.observe(this) { detail ->
+                    binding.genreMovie.text = detail.map { it.name }.toString()
                 }
 
                 binding.moviePopularity.text = trMovie.popularity.toString()
@@ -200,16 +197,16 @@ class DetailMovieActivity: AppCompatActivity() {
                 binding.movieOverview.text = trMovie.overview
 
                 pardeViewModel.setCastId(trMovie.id)
-                pardeViewModel.castMovie.observe(this) {cast->
+                pardeViewModel.castMovie.observe(this) { cast ->
                     castMovieAdapter.addMovies(cast)
                 }
 
                 pardeViewModel.setSimilarId(trMovie.id)
-                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                pardeViewModel.similarMovie.observe(this) { similarMovie ->
                     similarMovieAdapter.addMovies(similarMovie)
                 }
 
-            }else if (ucMovie != null) {
+            } else if (ucMovie != null) {
 
                 Glide.with(this)
                     .load("$IMAGE_URL${ucMovie.poster_path}")
@@ -224,8 +221,8 @@ class DetailMovieActivity: AppCompatActivity() {
 
 
                 pardeViewModel.setMovieId(ucMovie.id)
-                pardeViewModel.detailMovie.observe(this){ detail->
-                    binding.genreMovie.text = detail.map { it.name}.toString()
+                pardeViewModel.detailMovie.observe(this) { detail ->
+                    binding.genreMovie.text = detail.map { it.name }.toString()
                 }
 
                 binding.moviePopularity.text = ucMovie.popularity.toString()
@@ -233,12 +230,12 @@ class DetailMovieActivity: AppCompatActivity() {
                 binding.movieOverview.text = ucMovie.overview
 
                 pardeViewModel.setCastId(ucMovie.id)
-                pardeViewModel.castMovie.observe(this) {cast->
+                pardeViewModel.castMovie.observe(this) { cast ->
                     castMovieAdapter.addMovies(cast)
                 }
 
                 pardeViewModel.setSimilarId(ucMovie.id)
-                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                pardeViewModel.similarMovie.observe(this) { similarMovie ->
                     similarMovieAdapter.addMovies(similarMovie)
                 }
 
@@ -247,10 +244,10 @@ class DetailMovieActivity: AppCompatActivity() {
     }
 
     private fun openCastDetail(cast: Cast) {
-        Toast.makeText(this,cast.name,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, cast.name, Toast.LENGTH_SHORT).show()
     }
 
     private fun openSimilarDetail(similarMovie: SimilarMovie) {
-        Toast.makeText(this,similarMovie.title,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, similarMovie.title, Toast.LENGTH_SHORT).show()
     }
 }

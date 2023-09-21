@@ -49,12 +49,11 @@ data class POPMovie(
 ) : Parcelable
 
 
-
 data class UcMovieResponse(
     val page: Int,
     val results: List<UCMovie>,
 
-)
+    )
 
 @Parcelize
 data class UCMovie(
@@ -73,9 +72,9 @@ data class UCMovie(
     val vote_count: Int = 0,
 ) : Parcelable
 
-data class TRMovieResponse (
+data class TRMovieResponse(
     val page: Int,
-    val results: List<TRMovie>
+    val results: List<TRMovie>,
 )
 
 @Parcelize
@@ -93,11 +92,11 @@ data class TRMovie(
     val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
-):Parcelable
+) : Parcelable
 
-data class TMovieResponse (
+data class TMovieResponse(
     val page: Int,
-    val results: List<TMovie>
+    val results: List<TMovie>,
 )
 
 @Parcelize
@@ -115,9 +114,9 @@ data class TMovie(
     val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
-):Parcelable
+) : Parcelable
 
-data class GMovieResponse (
+data class GMovieResponse(
     val page: Int,
     val results: List<GMovie>,
 )
@@ -137,7 +136,7 @@ data class GMovie(
     val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
-):Parcelable
+) : Parcelable
 
 
 data class DetailMovie(
@@ -160,16 +159,17 @@ data class DetailMovie(
     val tagline: String = "",
     val title: String = "",
 )
+
 @Parcelize
 data class GenreMovie(
     val id: Int = 0,
-    val name: String = ""
-):Parcelable
+    val name: String = "",
+) : Parcelable
 
 
 data class CastMovieResponse(
     val id: Int = 0,
-    val cast: List<Cast>
+    val cast: List<Cast>,
 )
 
 @Parcelize
@@ -185,12 +185,12 @@ data class Cast(
     val cast_id: Int = 0,
     val character: String = "",
     val credit_id: String = "",
-    val order: Int = 0
-):Parcelable
+    val order: Int = 0,
+) : Parcelable
 
 data class SimilarMovieResponse(
     val page: Int = 0,
-    val results: List<SimilarMovie>
+    val results: List<SimilarMovie>,
 )
 
 @Parcelize
@@ -207,6 +207,6 @@ data class SimilarMovie(
     val title: String = "",
     val video: Boolean = false,
     val vote_average: Float = 0f,
-    val vote_count: Int = 0
-):Parcelable
+    val vote_count: Int = 0,
+) : Parcelable
 

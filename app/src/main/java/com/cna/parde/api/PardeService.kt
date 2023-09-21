@@ -25,7 +25,7 @@ interface PardeService {
     suspend fun getNowPlayingMovie(@Query("api_key") apikey: String): NPMoviesResponse
 
     @GET("movie/popular")
-    suspend fun getPopularMovie(@Query("api_key") apikey: String):POPMoviesResponse
+    suspend fun getPopularMovie(@Query("api_key") apikey: String): POPMoviesResponse
 
     @GET("movie/upcoming")
     suspend fun getUpcomingMovie(@Query("api_key") apikey: String): UcMovieResponse
@@ -53,38 +53,38 @@ interface PardeService {
     suspend fun getGenreMovie(
         @Query("api_key") apikey: String,
         @Query("with_genres") genreId: Int,
-        @Query("page") page: Int
+        @Query("page") page: Int,
     ): GMovieResponse
 
     @GET("discover/tv")
     suspend fun getGenreTv(
         @Query("api_key") apikey: String,
         @Query("with_genres") genreId: Int,
-        @Query("page") page: Int
+        @Query("page") page: Int,
     ): GTvResponse
 
     @GET("search/multi")
     suspend fun getSearch(
         @Query("api_key") apikey: String,
-        @Query("query") query: String
+        @Query("query") query: String,
     ): SearchResponse
 
     @GET("movie/{movie_id}")
     suspend fun getDetailMovie(
         @Path("movie_id") movieId: Int,
-        @Query("api_key") apiKey: String
+        @Query("api_key") apiKey: String,
     ): DetailMovie
 
     @GET("movie/{movie_id}/credits")
     suspend fun getCastMovie(
         @Path("movie_id") movieId: Int,
-        @Query("api_key") apikey: String
+        @Query("api_key") apikey: String,
     ): CastMovieResponse
 
     @GET("movie/{movie_id}/similar")
     suspend fun getSimilarMovie(
         @Path("movie_id") movieId: Int,
-        @Query("api_key") apikey: String
+        @Query("api_key") apikey: String,
     ): SimilarMovieResponse
 
 }

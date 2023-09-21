@@ -1,12 +1,12 @@
 package com.cna.parde.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.cna.parde.PardeApplication
@@ -17,11 +17,11 @@ import com.cna.parde.model.Search
 
 class SearchFragment : Fragment() {
 
-    private var _binding : FragmentSearchBinding? = null
+    private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
     private val searchAdapter by lazy {
-        SearchAdapter(object : SearchAdapter.SearchClickListener{
+        SearchAdapter(object : SearchAdapter.SearchClickListener {
             override fun onSearchClick(movie: Search) {
                 openSearchDetails(movie)
             }
@@ -32,7 +32,7 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentSearchBinding.inflate(inflater,container,false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val view = binding.root
 
         binding.RecyclerSearch.adapter = searchAdapter
@@ -48,17 +48,21 @@ class SearchFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
                     pardeViewModel.setSearch(query)
-                    pardeViewModel.search.observe(viewLifecycleOwner) {search ->
+                    pardeViewModel.search.observe(viewLifecycleOwner) { search ->
                         searchAdapter.addMovies(search)
                     }
 
-                    pardeViewModel.getSearchError().observe(viewLifecycleOwner) { error->
+                    pardeViewModel.getSearchError().observe(viewLifecycleOwner) { error ->
                         Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
                     }
 
                     binding.searchView.clearFocus()
-                }else{
-                    Toast.makeText(requireContext(),"please Enter something first!",Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "please Enter something first!",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
                 return true
             }
@@ -73,9 +77,9 @@ class SearchFragment : Fragment() {
     }
 
     private fun openSearchDetails(movie: Search) {
-        if (movie.media_type == "movie"){
+        if (movie.media_type == "movie") {
             Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
-        }else{
+        } else {
             Toast.makeText(requireContext(), movie.name, Toast.LENGTH_SHORT).show()
         }
     }

@@ -1,13 +1,11 @@
 package com.cna.parde.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.cna.parde.R
+import androidx.fragment.app.Fragment
 import com.cna.parde.adapters.CategoryViewPagerAdapter
-import com.cna.parde.adapters.ViewPagerAdapter
 import com.cna.parde.databinding.FragmentCategoriesBinding
 import com.google.android.material.tabs.TabLayout
 
@@ -20,19 +18,24 @@ class CategoriesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentCategoriesBinding.inflate(inflater,container,false)
+        _binding = FragmentCategoriesBinding.inflate(inflater, container, false)
 
         binding.tabLayoutc.addTab(binding.tabLayoutc.newTab().setText("Movie"))
         binding.tabLayoutc.addTab(binding.tabLayoutc.newTab().setText("Tv"))
         binding.tabLayoutc.tabGravity = TabLayout.GRAVITY_FILL
 
-        val adapter = CategoryViewPagerAdapter(requireActivity(),childFragmentManager,binding.tabLayoutc.tabCount)
+        val adapter = CategoryViewPagerAdapter(
+            requireActivity(),
+            childFragmentManager,
+            binding.tabLayoutc.tabCount
+        )
         binding.viewPagerc.adapter = adapter
         binding.viewPagerc.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayoutc))
         binding.tabLayoutc.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 binding.viewPagerc.currentItem = tab!!.position
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })

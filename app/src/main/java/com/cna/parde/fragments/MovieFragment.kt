@@ -2,23 +2,23 @@ package com.cna.parde.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.cna.parde.detailActivity.DetailMovieActivity
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
-import com.cna.parde.adapters.TRMovieAdapter
 import com.cna.parde.adapters.NPMovieAdapter
 import com.cna.parde.adapters.POPMovieAdapter
 import com.cna.parde.adapters.TMovieAdapter
+import com.cna.parde.adapters.TRMovieAdapter
 import com.cna.parde.adapters.UCMovieAdapter
+import com.cna.parde.detailActivity.DetailMovieActivity
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.TMovie
@@ -54,7 +54,7 @@ class MovieFragment : Fragment() {
     }
 
     private val trMovieAdapter by lazy {
-        TRMovieAdapter(object : TRMovieAdapter.TRMovieClickListener{
+        TRMovieAdapter(object : TRMovieAdapter.TRMovieClickListener {
             override fun onTRMovieClick(movie: TRMovie) {
                 openTRMovieDetails(movie)
             }
@@ -62,7 +62,7 @@ class MovieFragment : Fragment() {
     }
 
     private val popMovieAdapter by lazy {
-        POPMovieAdapter(object : POPMovieAdapter.POPMovieClickListener{
+        POPMovieAdapter(object : POPMovieAdapter.POPMovieClickListener {
             override fun onPOPMovieClick(movie: POPMovie) {
                 openPOPMovieDetails(movie)
             }
@@ -70,7 +70,7 @@ class MovieFragment : Fragment() {
     }
 
     private val tMovieAdapter by lazy {
-        TMovieAdapter(object : TMovieAdapter.TMovieClickListener{
+        TMovieAdapter(object : TMovieAdapter.TMovieClickListener {
             override fun onTMovieClick(movie: TMovie) {
                 openTMovieDetails(movie)
             }
@@ -118,29 +118,29 @@ class MovieFragment : Fragment() {
             trMovieAdapter.addMovies(topRatedMovie)
         }
         pardeViewModel.getTopRatedMovieError().observe(viewLifecycleOwner) { error ->
-            Toast.makeText(requireActivity(),error,Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewPOPMovie = view.findViewById(R.id.Recycler_movie_popular)
         recyclerViewPOPMovie.adapter = popMovieAdapter
 
-        pardeViewModel.popularMovies.observe(viewLifecycleOwner) { popularMovie->
+        pardeViewModel.popularMovies.observe(viewLifecycleOwner) { popularMovie ->
             popMovieAdapter.addMovies(popularMovie)
         }
 
-        pardeViewModel.getPopularMovieError().observe(viewLifecycleOwner) { error->
-            Toast.makeText(requireActivity(),error,Toast.LENGTH_SHORT).show()
+        pardeViewModel.getPopularMovieError().observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewTMovie = view.findViewById(R.id.Recycler_movie_trending)
         recyclerViewTMovie.adapter = tMovieAdapter
 
-        pardeViewModel.trendingMovie.observe(viewLifecycleOwner) {trendingMovie->
+        pardeViewModel.trendingMovie.observe(viewLifecycleOwner) { trendingMovie ->
             tMovieAdapter.addMovies(trendingMovie)
         }
 
-        pardeViewModel.getTrendingMovieError().observe(viewLifecycleOwner) { error->
-            Toast.makeText(requireActivity(),error,Toast.LENGTH_SHORT).show()
+        pardeViewModel.getTrendingMovieError().observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
         return view
@@ -148,28 +148,28 @@ class MovieFragment : Fragment() {
 
     private fun openNPMovieDetails(movie: NPMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.NPMovie,movie)
+            putExtra(DetailMovieActivity.NPMovie, movie)
         }
         startActivity(intent)
     }
 
     private fun openUCMovieDetails(movie: UCMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.UCMovie,movie)
+            putExtra(DetailMovieActivity.UCMovie, movie)
         }
         startActivity(intent)
     }
 
     private fun openTRMovieDetails(movie: TRMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.TRMovie,movie)
+            putExtra(DetailMovieActivity.TRMovie, movie)
         }
         startActivity(intent)
     }
 
     private fun openPOPMovieDetails(movie: POPMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.POPMovie,movie)
+            putExtra(DetailMovieActivity.POPMovie, movie)
         }
         startActivity(intent)
 
@@ -177,7 +177,7 @@ class MovieFragment : Fragment() {
 
     private fun openTMovieDetails(movie: TMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.TMovie,movie)
+            putExtra(DetailMovieActivity.TMovie, movie)
         }
         startActivity(intent)
     }

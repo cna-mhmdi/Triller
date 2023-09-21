@@ -1,34 +1,28 @@
 package com.cna.parde.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.GMovieAdapter
 import com.cna.parde.databinding.FragmentMovieGBinding
 import com.cna.parde.model.GMovie
-import com.cna.parde.model.TMovie
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 
 class MovieGFragment : Fragment() {
 
 
-    private var _binding : FragmentMovieGBinding? = null
+    private var _binding: FragmentMovieGBinding? = null
     private val binding get() = _binding!!
 
     private val gMovieAdapter by lazy {
-        GMovieAdapter(object :GMovieAdapter.GMovieClickListener {
+        GMovieAdapter(object : GMovieAdapter.GMovieClickListener {
             override fun onGMovieClick(movie: GMovie) {
                 openGMovieDetails(movie)
             }
@@ -39,7 +33,7 @@ class MovieGFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentMovieGBinding.inflate(inflater,container,false)
+        _binding = FragmentMovieGBinding.inflate(inflater, container, false)
         val view = binding.root
 
         binding.RecyclerMovieGenre.adapter = gMovieAdapter
@@ -132,21 +126,21 @@ class MovieGFragment : Fragment() {
         return view
     }
 
-    private fun callingViewModel(id:Int){
+    private fun callingViewModel(id: Int) {
 
         val pardeRepository = (activity?.application as PardeApplication).pardeRepository
         val pardeViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return PardeViewModel(pardeRepository)as T
+                return PardeViewModel(pardeRepository) as T
             }
         }).get(PardeViewModel::class.java)
 
         pardeViewModel.setGenreId(id)
-        pardeViewModel.genreMovie.observe(viewLifecycleOwner) { genreMovie->
+        pardeViewModel.genreMovie.observe(viewLifecycleOwner) { genreMovie ->
             gMovieAdapter.addMovies(genreMovie)
         }
 
-        pardeViewModel.getGenreMovieError().observe(viewLifecycleOwner) { error->
+        pardeViewModel.getGenreMovieError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
     }
