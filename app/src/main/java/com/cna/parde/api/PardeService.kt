@@ -9,6 +9,7 @@ import com.cna.parde.model.OTATvResponse
 import com.cna.parde.model.POPMoviesResponse
 import com.cna.parde.model.POPTvResponse
 import com.cna.parde.model.SearchResponse
+import com.cna.parde.model.SimilarMovieResponse
 import com.cna.parde.model.TMovieResponse
 import com.cna.parde.model.TRMovieResponse
 import com.cna.parde.model.TRTvResponse
@@ -79,5 +80,11 @@ interface PardeService {
         @Path("movie_id") movieId: Int,
         @Query("api_key") apikey: String
     ): CastMovieResponse
+
+    @GET("movie/{movie_id}/similar")
+    suspend fun getSimilarMovie(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apikey: String
+    ): SimilarMovieResponse
 
 }

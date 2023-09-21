@@ -14,6 +14,7 @@ import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.Search
+import com.cna.parde.model.SimilarMovie
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
@@ -133,6 +134,18 @@ class PardeRepository(private val pardeService: PardeService) {
 
     val castMovie : LiveData<List<Cast>> get() =  castMovieLiveData
     val castMovieError : LiveData<String> get() =  castMovieErrorLiveData
+
+
+    private val similarMovieLiveData = MutableLiveData<List<SimilarMovie>>()
+    private val similarMovieErrorLiveData = MutableLiveData<String>()
+
+    val similarMovie : LiveData<List<SimilarMovie>> get() =  similarMovieLiveData
+    val similarMovieError : LiveData<String> get() =  similarMovieErrorLiveData
+
+    suspend fun fetchSimilarMovie(path: Int){
+        val similar = pardeService.getSimilarMovie(path,apiKey)
+        similarMovieLiveData.postValue(similar.results)
+    }
 
     suspend fun fetchCastMovie(path: Int) {
         val cast = pardeService.getCastMovie(path,apiKey)

@@ -13,10 +13,12 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastMovieAdapter
+import com.cna.parde.adapters.SimilarMovieAdapter
 import com.cna.parde.databinding.ActivityMovieDetailBinding
 import com.cna.parde.model.Cast
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
+import com.cna.parde.model.SimilarMovie
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
@@ -42,6 +44,14 @@ class DetailMovieActivity: AppCompatActivity() {
         })
     }
 
+    private val similarMovieAdapter by lazy {
+        SimilarMovieAdapter(object :SimilarMovieAdapter.SimilarMovieClickListener {
+            override fun onSimilarMovieClick(movie: SimilarMovie) {
+                openSimilarDetail(movie)
+            }
+        })
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
@@ -56,6 +66,7 @@ class DetailMovieActivity: AppCompatActivity() {
 
 
         binding.recyclerCastMovie.adapter = castMovieAdapter
+        binding.recyclerSimilarMovie.adapter = similarMovieAdapter
 
         val intent = intent
         if(intent != null){
@@ -90,6 +101,11 @@ class DetailMovieActivity: AppCompatActivity() {
                     castMovieAdapter.addMovies(cast)
                 }
 
+                pardeViewModel.setSimilarId(popMovie.id)
+                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                    similarMovieAdapter.addMovies(similarMovie)
+                }
+
             }else if (npMovie != null) {
                 binding.movieImg.load("$IMAGE_URL${npMovie.backdrop_path}")
             }else if (tMovie != null) {
@@ -104,5 +120,9 @@ class DetailMovieActivity: AppCompatActivity() {
 
     private fun openCastDetail(cast: Cast) {
         Toast.makeText(this,cast.name,Toast.LENGTH_SHORT).show()
+    }
+
+    private fun openSimilarDetail(similarMovie: SimilarMovie) {
+        Toast.makeText(this,similarMovie.title,Toast.LENGTH_SHORT).show()
     }
 }
