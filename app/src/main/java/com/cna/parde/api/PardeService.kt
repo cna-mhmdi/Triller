@@ -1,5 +1,6 @@
 package com.cna.parde.api
 
+import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.GMovieResponse
 import com.cna.parde.model.GTvResponse
 import com.cna.parde.model.NPMoviesResponse
@@ -13,6 +14,7 @@ import com.cna.parde.model.TRTvResponse
 import com.cna.parde.model.TTvResponse
 import com.cna.parde.model.UcMovieResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PardeService {
@@ -64,5 +66,11 @@ interface PardeService {
         @Query("api_key") apikey: String,
         @Query("query") query: String
     ): SearchResponse
+
+    @GET("movie/{movie_id}")
+    suspend fun getDetailMovie(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String
+    ): DetailMovie
 
 }

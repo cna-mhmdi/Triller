@@ -37,6 +37,13 @@ class DetailMovieActivity: AppCompatActivity() {
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val pardeRepository = (application as PardeApplication).pardeRepository
+        val pardeViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return PardeViewModel(pardeRepository) as T
+            }
+        }).get(PardeViewModel::class.java)
+
         val intent = intent
         if(intent != null){
             val popMovie = intent.getParcelableExtra<POPMovie>(POPMovie)
@@ -47,18 +54,24 @@ class DetailMovieActivity: AppCompatActivity() {
 
             if (popMovie != null){
 
-                binding.movieTitle.text = popMovie.title
-                binding.moviePopularity.text = popMovie.popularity.toString()
-                binding.movieMetaScore.text = popMovie.vote_count.toString()
-                binding.movieOverview.text = popMovie.overview
-
-                binding.rateMovie.text = "${popMovie.vote_average} /10 "
-
                 Glide.with(this)
                     .load("$IMAGE_URL${popMovie.poster_path}")
                     .placeholder(R.drawable.star)
                     .centerInside()
                     .into(binding.movieImg)
+
+                binding.movieTitle.text = popMovie.title
+                binding.rateMovie.text = "${popMovie.vote_average} /10 "
+
+                pardeViewModel.setMovieId(popMovie.id)
+                pardeViewModel.detailMovie.observe(this){ detail->
+                    binding.genreMovie.text = detail.map { it.name}.toString()
+
+                }
+
+                binding.moviePopularity.text = popMovie.popularity.toString()
+                binding.movieMetaScore.text = popMovie.vote_count.toString()
+                binding.movieOverview.text = popMovie.overview
 
             }else if (npMovie != null) {
                 binding.movieImg.load("$IMAGE_URL${npMovie.backdrop_path}")

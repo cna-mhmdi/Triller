@@ -4,8 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
+import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
+import com.cna.parde.model.GenreMovie
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
@@ -117,6 +119,21 @@ class PardeRepository(private val pardeService: PardeService) {
 
     val search : LiveData<List<Search>> get() = searchLiveData
     val searchError: LiveData<String> get() = searchErrorLiveData
+
+
+    private val detailMovieLiveData = MutableLiveData<List<GenreMovie>>()
+    private val detailMovieErrorLiveData = MutableLiveData<String>()
+
+    val detailMovie : LiveData<List<GenreMovie>> get() = detailMovieLiveData
+    val detailMovieError: LiveData<String> get() = detailMovieErrorLiveData
+
+    private val taglineMovieLiveData = MutableLiveData<List<DetailMovie>>()
+    private val taglineMovieErrorLiveData = MutableLiveData<String>()
+
+    suspend fun fetchDetailMovie(path:Int) {
+        val detailMovie = pardeService.getDetailMovie(path,apiKey)
+        detailMovieLiveData.postValue(detailMovie.genres)
+    }
 
     suspend fun fetchSearch(query: String) {
         val search = pardeService.getSearch(apiKey,query)

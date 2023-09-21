@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
+import com.cna.parde.model.GenreMovie
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
@@ -27,6 +29,12 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     private var genreTvId : Int = 35
     private var page: Int = 5
     private var userQuery: String = ""
+    private var movieId: Int = 0
+
+    fun setMovieId(path:Int){
+        movieId = path
+        fetchMovieDetail()
+    }
 
     fun setGenreId(id: Int){
         genreMovieId = id
@@ -42,8 +50,6 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
         userQuery = query
         fetchSearch()
     }
-
-
 
     init {
         fetchMovies()
@@ -75,6 +81,15 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     val trendingTv : LiveData<List<TTv>> get() = pardeRepository.trendingTv
     fun getTrendingTvError(): LiveData<String> = pardeRepository.trendingTvError
+
+    val detailMovie : LiveData<List<GenreMovie>> get() = pardeRepository.detailMovie
+    fun getDetailMovieError(): LiveData<String> = pardeRepository.detailMovieError
+
+    private fun fetchMovieDetail() {
+        viewModelScope.launch(Dispatchers.IO){
+            pardeRepository.fetchDetailMovie(movieId)
+        }
+    }
 
     val genreMovie: LiveData<List<GMovie>>
         get() = pardeRepository.genreMovie.map { list->
