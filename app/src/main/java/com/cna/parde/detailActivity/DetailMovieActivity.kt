@@ -70,6 +70,7 @@ class DetailMovieActivity: AppCompatActivity() {
 
         val intent = intent
         if(intent != null){
+
             val popMovie = intent.getParcelableExtra<POPMovie>(POPMovie)
             val npMovie = intent.getParcelableExtra<NPMovie>(NPMovie)
             val tMovie = intent.getParcelableExtra<TMovie>(TMovie)
@@ -85,7 +86,10 @@ class DetailMovieActivity: AppCompatActivity() {
                     .into(binding.movieImg)
 
                 binding.movieTitle.text = popMovie.title
-                binding.rateMovie.text = "${popMovie.vote_average} /10 "
+
+                val voteAverageFormat = getString(R.string.vote_average_format)
+                binding.rateMovie.text = String.format(voteAverageFormat, popMovie.vote_average)
+
 
                 pardeViewModel.setMovieId(popMovie.id)
                 pardeViewModel.detailMovie.observe(this){ detail->
@@ -107,13 +111,137 @@ class DetailMovieActivity: AppCompatActivity() {
                 }
 
             }else if (npMovie != null) {
-                binding.movieImg.load("$IMAGE_URL${npMovie.backdrop_path}")
+
+                Glide.with(this)
+                    .load("$IMAGE_URL${npMovie.poster_path}")
+                    .placeholder(R.drawable.star)
+                    .centerInside()
+                    .into(binding.movieImg)
+
+                binding.movieTitle.text = npMovie.title
+
+                val voteAverageFormat = getString(R.string.vote_average_format)
+                binding.rateMovie.text = String.format(voteAverageFormat, npMovie.vote_average)
+
+
+                pardeViewModel.setMovieId(npMovie.id)
+                pardeViewModel.detailMovie.observe(this){ detail->
+                    binding.genreMovie.text = detail.map { it.name}.toString()
+                }
+
+                binding.moviePopularity.text = npMovie.popularity.toString()
+                binding.movieMetaScore.text = npMovie.vote_count.toString()
+                binding.movieOverview.text = npMovie.overview
+
+                pardeViewModel.setCastId(npMovie.id)
+                pardeViewModel.castMovie.observe(this) {cast->
+                    castMovieAdapter.addMovies(cast)
+                }
+
+                pardeViewModel.setSimilarId(npMovie.id)
+                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                    similarMovieAdapter.addMovies(similarMovie)
+                }
+
             }else if (tMovie != null) {
-                binding.movieImg.load("$IMAGE_URL${tMovie.backdrop_path}")
+
+                Glide.with(this)
+                    .load("$IMAGE_URL${tMovie.poster_path}")
+                    .placeholder(R.drawable.star)
+                    .centerInside()
+                    .into(binding.movieImg)
+
+                binding.movieTitle.text = tMovie.title
+
+                val voteAverageFormat = getString(R.string.vote_average_format)
+                binding.rateMovie.text = String.format(voteAverageFormat, tMovie.vote_average)
+
+
+                pardeViewModel.setMovieId(tMovie.id)
+                pardeViewModel.detailMovie.observe(this){ detail->
+                    binding.genreMovie.text = detail.map { it.name}.toString()
+                }
+
+                binding.moviePopularity.text = tMovie.popularity.toString()
+                binding.movieMetaScore.text = tMovie.vote_count.toString()
+                binding.movieOverview.text = tMovie.overview
+
+                pardeViewModel.setCastId(tMovie.id)
+                pardeViewModel.castMovie.observe(this) {cast->
+                    castMovieAdapter.addMovies(cast)
+                }
+
+                pardeViewModel.setSimilarId(tMovie.id)
+                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                    similarMovieAdapter.addMovies(similarMovie)
+                }
+
             }else if (trMovie != null) {
-                binding.movieImg.load("$IMAGE_URL${trMovie.backdrop_path}")
+
+                Glide.with(this)
+                    .load("$IMAGE_URL${trMovie.poster_path}")
+                    .placeholder(R.drawable.star)
+                    .centerInside()
+                    .into(binding.movieImg)
+
+                binding.movieTitle.text = trMovie.title
+
+                val voteAverageFormat = getString(R.string.vote_average_format)
+                binding.rateMovie.text = String.format(voteAverageFormat, trMovie.vote_average)
+
+
+                pardeViewModel.setMovieId(trMovie.id)
+                pardeViewModel.detailMovie.observe(this){ detail->
+                    binding.genreMovie.text = detail.map { it.name}.toString()
+                }
+
+                binding.moviePopularity.text = trMovie.popularity.toString()
+                binding.movieMetaScore.text = trMovie.vote_count.toString()
+                binding.movieOverview.text = trMovie.overview
+
+                pardeViewModel.setCastId(trMovie.id)
+                pardeViewModel.castMovie.observe(this) {cast->
+                    castMovieAdapter.addMovies(cast)
+                }
+
+                pardeViewModel.setSimilarId(trMovie.id)
+                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                    similarMovieAdapter.addMovies(similarMovie)
+                }
+
             }else if (ucMovie != null) {
-                binding.movieImg.load("$IMAGE_URL${ucMovie.backdrop_path}")
+
+                Glide.with(this)
+                    .load("$IMAGE_URL${ucMovie.poster_path}")
+                    .placeholder(R.drawable.star)
+                    .centerInside()
+                    .into(binding.movieImg)
+
+                binding.movieTitle.text = ucMovie.title
+
+                val voteAverageFormat = getString(R.string.vote_average_format)
+                binding.rateMovie.text = String.format(voteAverageFormat, ucMovie.vote_average)
+
+
+                pardeViewModel.setMovieId(ucMovie.id)
+                pardeViewModel.detailMovie.observe(this){ detail->
+                    binding.genreMovie.text = detail.map { it.name}.toString()
+                }
+
+                binding.moviePopularity.text = ucMovie.popularity.toString()
+                binding.movieMetaScore.text = ucMovie.vote_count.toString()
+                binding.movieOverview.text = ucMovie.overview
+
+                pardeViewModel.setCastId(ucMovie.id)
+                pardeViewModel.castMovie.observe(this) {cast->
+                    castMovieAdapter.addMovies(cast)
+                }
+
+                pardeViewModel.setSimilarId(ucMovie.id)
+                pardeViewModel.similarMovie.observe(this) {similarMovie->
+                    similarMovieAdapter.addMovies(similarMovie)
+                }
+
             }
         }
     }
