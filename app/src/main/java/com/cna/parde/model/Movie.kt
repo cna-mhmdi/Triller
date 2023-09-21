@@ -165,3 +165,26 @@ data class GenreMovie(
     val id: Int = 0,
     val name: String = ""
 ):Parcelable
+
+
+data class CastMovieResponse(
+    val id: Int = 0,
+    val cast: List<Cast>
+)
+
+@Parcelize
+data class Cast(
+    val adult: Boolean = false,
+    val gender: Int = 0,
+    val id: Int = 0,
+    val known_for_department: String = "",
+    val name: String = "",
+    val original_name: String = "",
+    val popularity: Float = 0f,
+    val profile_path: String? = null,
+    val cast_id: Int = 0,
+    val character: String = "",
+    val credit_id: String = "",
+    val order: Int = 0
+):Parcelable
+

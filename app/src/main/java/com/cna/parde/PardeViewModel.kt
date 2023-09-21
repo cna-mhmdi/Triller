@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.cna.parde.model.Cast
 import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
@@ -30,6 +31,13 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     private var page: Int = 5
     private var userQuery: String = ""
     private var movieId: Int = 0
+    private var movieIdCast: Int = 0
+
+
+    fun setCastId(path:Int) {
+        movieIdCast = path
+        fetchCastMovie()
+    }
 
     fun setMovieId(path:Int){
         movieId = path
@@ -84,6 +92,19 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     val detailMovie : LiveData<List<GenreMovie>> get() = pardeRepository.detailMovie
     fun getDetailMovieError(): LiveData<String> = pardeRepository.detailMovieError
+
+    val castMovie: LiveData<List<Cast>>
+        get() = pardeRepository.castMovie.map { casts ->
+            casts.sortedByDescending { it.popularity }
+        }
+
+    fun getCastMovieError(): LiveData<String> = pardeRepository.castMovieError
+
+    private fun fetchCastMovie(){
+        viewModelScope.launch(Dispatchers.IO) {
+            pardeRepository.fetchCastMovie(movieIdCast)
+        }
+    }
 
     private fun fetchMovieDetail() {
         viewModelScope.launch(Dispatchers.IO){

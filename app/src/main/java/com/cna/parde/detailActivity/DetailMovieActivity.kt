@@ -12,7 +12,9 @@ import com.bumptech.glide.Glide
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
+import com.cna.parde.adapters.CastMovieAdapter
 import com.cna.parde.databinding.ActivityMovieDetailBinding
+import com.cna.parde.model.Cast
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.TMovie
@@ -32,6 +34,14 @@ class DetailMovieActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailBinding
 
+    private val castMovieAdapter by lazy {
+        CastMovieAdapter(object :CastMovieAdapter.CastMovieClickListener {
+            override fun onCastMovieClick(cast: Cast) {
+                openCastDetail(cast)
+            }
+        })
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
@@ -43,6 +53,9 @@ class DetailMovieActivity: AppCompatActivity() {
                 return PardeViewModel(pardeRepository) as T
             }
         }).get(PardeViewModel::class.java)
+
+
+        binding.recyclerCastMovie.adapter = castMovieAdapter
 
         val intent = intent
         if(intent != null){
@@ -66,12 +79,16 @@ class DetailMovieActivity: AppCompatActivity() {
                 pardeViewModel.setMovieId(popMovie.id)
                 pardeViewModel.detailMovie.observe(this){ detail->
                     binding.genreMovie.text = detail.map { it.name}.toString()
-
                 }
 
                 binding.moviePopularity.text = popMovie.popularity.toString()
                 binding.movieMetaScore.text = popMovie.vote_count.toString()
                 binding.movieOverview.text = popMovie.overview
+
+                pardeViewModel.setCastId(popMovie.id)
+                pardeViewModel.castMovie.observe(this) {cast->
+                    castMovieAdapter.addMovies(cast)
+                }
 
             }else if (npMovie != null) {
                 binding.movieImg.load("$IMAGE_URL${npMovie.backdrop_path}")
@@ -83,5 +100,9 @@ class DetailMovieActivity: AppCompatActivity() {
                 binding.movieImg.load("$IMAGE_URL${ucMovie.backdrop_path}")
             }
         }
+    }
+
+    private fun openCastDetail(cast: Cast) {
+        Toast.makeText(this,cast.name,Toast.LENGTH_SHORT).show()
     }
 }

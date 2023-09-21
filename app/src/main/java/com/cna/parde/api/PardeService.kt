@@ -1,5 +1,6 @@
 package com.cna.parde.api
 
+import com.cna.parde.model.CastMovieResponse
 import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.GMovieResponse
 import com.cna.parde.model.GTvResponse
@@ -72,5 +73,11 @@ interface PardeService {
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String
     ): DetailMovie
+
+    @GET("movie/{movie_id}/credits")
+    suspend fun getCastMovie(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apikey: String
+    ): CastMovieResponse
 
 }

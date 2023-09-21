@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
+import com.cna.parde.model.Cast
 import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
@@ -127,8 +128,17 @@ class PardeRepository(private val pardeService: PardeService) {
     val detailMovie : LiveData<List<GenreMovie>> get() = detailMovieLiveData
     val detailMovieError: LiveData<String> get() = detailMovieErrorLiveData
 
-    private val taglineMovieLiveData = MutableLiveData<List<DetailMovie>>()
-    private val taglineMovieErrorLiveData = MutableLiveData<String>()
+    private val castMovieLiveData = MutableLiveData<List<Cast>>()
+    private val castMovieErrorLiveData = MutableLiveData<String>()
+
+    val castMovie : LiveData<List<Cast>> get() =  castMovieLiveData
+    val castMovieError : LiveData<String> get() =  castMovieErrorLiveData
+
+    suspend fun fetchCastMovie(path: Int) {
+        val cast = pardeService.getCastMovie(path,apiKey)
+        castMovieLiveData.postValue(cast.cast)
+    }
+
 
     suspend fun fetchDetailMovie(path:Int) {
         val detailMovie = pardeService.getDetailMovie(path,apiKey)
