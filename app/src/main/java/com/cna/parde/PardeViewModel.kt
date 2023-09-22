@@ -65,6 +65,7 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     init {
         fetchMovies()
+        fetchTvs()
     }
 
     val nowPlayingMovies: LiveData<List<NPMovie>> get() = pardeRepository.nowPlayingMovies
@@ -171,6 +172,12 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     private fun fetchMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             pardeRepository.fetchMovies()
+        }
+    }
+
+    private fun fetchTvs() {
+        viewModelScope.launch(Dispatchers.IO) {
+            pardeRepository.fetchTvs()
         }
     }
 }

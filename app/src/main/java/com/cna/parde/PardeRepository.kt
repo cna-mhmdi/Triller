@@ -1,6 +1,5 @@
 package com.cna.parde
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
@@ -180,6 +179,23 @@ class PardeRepository(private val pardeService: PardeService) {
         genresTvLiveData.postValue(genreTv)
     }
 
+    suspend fun fetchTvs() {
+        try {
+            val onTheAirTv = pardeService.getOnTheAirTv(apiKey)
+            val popularTv = pardeService.getPopularTv(apiKey)
+            val topRatedTv = pardeService.getTopRatedTv(apiKey)
+            val trendingTv = pardeService.getTrendingTv(apiKey)
+
+            onTheAirTvLiveData.postValue(onTheAirTv.results)
+            popularTvLiveData.postValue(popularTv.results)
+            trendingTvLiveData.postValue(trendingTv.results)
+            topRatedTvLiveData.postValue(topRatedTv.results)
+
+        } catch (ex: Exception) {
+            popularTvErrorLiveData.postValue("An error occurred: ${ex.message}")
+        }
+    }
+
     suspend fun fetchMovies() {
         try {
             val nowPlayingMovies = pardeService.getNowPlayingMovie(apiKey)
@@ -187,22 +203,14 @@ class PardeRepository(private val pardeService: PardeService) {
             val upcomingMovies = pardeService.getUpcomingMovie(apiKey)
             val topRatedMovies = pardeService.getTopRatedMovie(apiKey)
             val trendingMovie = pardeService.getTrendingMovie(apiKey)
-            val onTheAirTv = pardeService.getOnTheAirTv(apiKey)
-            val popularTv = pardeService.getPopularTv(apiKey)
-            val topRatedTv = pardeService.getTopRatedTv(apiKey)
-            val trendingTv = pardeService.getTrendingTv(apiKey)
-            trendingTvLiveData.postValue(trendingTv.results)
             trendingMovieLiveData.postValue(trendingMovie.results)
             popularMovieLiveData.postValue(popularMovies.results)
-            topRatedTvLiveData.postValue(topRatedTv.results)
             upcomingMovieLiveData.postValue(upcomingMovies.results)
             topRatedMovieLiveData.postValue(topRatedMovies.results)
             nowPlayingMovieLiveData.postValue(nowPlayingMovies.results)
-            onTheAirTvLiveData.postValue(onTheAirTv.results)
-            popularTvLiveData.postValue(popularTv.results)
+
         } catch (exception: Exception) {
-            popularTvErrorLiveData.postValue("An error occurred: ${exception.message}")
-            Log.d("thisisforrecyclertest", "${exception.message}")
+            trendingMovieErrorLiveData.postValue("An error occurred: ${exception.message}")
         }
     }
 }
