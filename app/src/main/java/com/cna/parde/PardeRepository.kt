@@ -7,6 +7,7 @@ import com.cna.parde.model.Cast
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
 import com.cna.parde.model.GenreMovie
+import com.cna.parde.model.GenreTv
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
@@ -134,12 +135,22 @@ class PardeRepository(private val pardeService: PardeService) {
     val castMovie: LiveData<List<Cast>> get() = castMovieLiveData
     val castMovieError: LiveData<String> get() = castMovieErrorLiveData
 
-
     private val recMovieLiveData = MutableLiveData<List<RecMovie>>()
     private val recMovieErrorLiveData = MutableLiveData<String>()
 
     val recMovie: LiveData<List<RecMovie>> get() = recMovieLiveData
     val recMovieError: LiveData<String> get() = recMovieErrorLiveData
+
+    private val detailTvLiveData = MutableLiveData<List<GenreTv>>()
+    private val detailTvErrorLiveData = MutableLiveData<String>()
+
+    val detailTv: LiveData<List<GenreTv>> get() = detailTvLiveData
+    val detailTvError: LiveData<String> get() = detailTvErrorLiveData
+
+    suspend fun fetchDetailTv(path: Int) {
+        val detailTv = pardeService.getTvDetail(path,apiKey)
+        detailTvLiveData.postValue(detailTv.genres)
+    }
 
     suspend fun fetchRecMovie(path: Int) {
         val similar = pardeService.getRecMovie(path, apiKey)

@@ -78,7 +78,7 @@ class DetailMovieActivity : AppCompatActivity() {
 
                 Glide.with(this)
                     .load("$IMAGE_URL${popMovie.poster_path}")
-                    .placeholder(R.drawable.star)
+                    .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.movieImg)
 

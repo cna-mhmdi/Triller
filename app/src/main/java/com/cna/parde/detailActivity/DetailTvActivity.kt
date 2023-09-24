@@ -3,7 +3,13 @@ package com.cna.parde.detailActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.cna.parde.PardeApplication
+import com.cna.parde.PardeViewModel
 import com.cna.parde.R
+import com.cna.parde.databinding.ActivityTvDetailBinding
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.TRTv
@@ -21,11 +27,20 @@ class DetailTvActivity : AppCompatActivity() {
 
     private lateinit var tvTitle: TextView
 
+    private lateinit var binding : ActivityTvDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tv_detail)
+        binding = ActivityTvDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        tvTitle = findViewById(R.id.tv_title)
+        val pardeRepository = (application as PardeApplication).pardeRepository
+        val pardeViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return PardeViewModel(pardeRepository) as T
+            }
+        }).get(PardeViewModel::class.java)
+
 
         val intent = intent
         if (intent != null) {
@@ -35,7 +50,33 @@ class DetailTvActivity : AppCompatActivity() {
             val trTv = intent.getParcelableExtra<TRTv>(TRTv)
 
             if (otaTv != null) {
-                tvTitle.text = otaTv.name
+
+                Glide.with(this)
+                    .load("${DetailMovieActivity.IMAGE_URL}${otaTv.poster_path}")
+                    .placeholder(R.drawable.placeholder)
+                    .centerInside()
+                    .into(binding.tvImg)
+
+                binding.tvTitle.text = otaTv.name
+
+                val voteAverageFormat = getString(R.string.vote_average_format)
+                binding.ratetv.text = String.format(voteAverageFormat, otaTv.vote_average)
+
+                pardeViewModel.setTvDetail(otaTv.id)
+                pardeViewModel.detailTv.observe(this) { detailTv->
+                    binding.genretv.text = detailTv.map { it.name }.toString()
+
+                }
+
+                binding.tvPopularity.text = otaTv.popularity.toString()
+                binding.tvMetaScore.text = otaTv.vote_count.toString()
+                binding.tvOverview.text = otaTv.overview
+
+
+
+
+
+
             } else if (tTv != null) {
                 tvTitle.text = tTv.name
 
