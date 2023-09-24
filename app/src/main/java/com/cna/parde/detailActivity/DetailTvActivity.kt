@@ -2,6 +2,7 @@ package com.cna.parde.detailActivity
 
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -9,7 +10,9 @@ import com.bumptech.glide.Glide
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
+import com.cna.parde.adapters.CastTvAdapter
 import com.cna.parde.databinding.ActivityTvDetailBinding
+import com.cna.parde.model.CastTv
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.TRTv
@@ -25,9 +28,17 @@ class DetailTvActivity : AppCompatActivity() {
         const val IMG_URL = "https://image.tmdb.org/t/p/w185/"
     }
 
-    private lateinit var tvTitle: TextView
+
 
     private lateinit var binding : ActivityTvDetailBinding
+
+    private val castTvAdapter by lazy {
+        CastTvAdapter(object : CastTvAdapter.CastTvClickListener {
+            override fun onCastTvClick(tv: CastTv) {
+                openCastTv(tv)
+            }
+        })
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,21 +83,26 @@ class DetailTvActivity : AppCompatActivity() {
                 binding.tvMetaScore.text = otaTv.vote_count.toString()
                 binding.tvOverview.text = otaTv.overview
 
-
-
-
+                pardeViewModel.setTvCast(otaTv.id)
+                pardeViewModel.castTv.observe(this) {castTv->
+                    castTvAdapter.addMovies(castTv)
+                }
+                pardeViewModel.getCastTvError().observe(this) {error->
+                    Toast.makeText(this,error,Toast.LENGTH_LONG).show()
+                }
 
 
             } else if (tTv != null) {
-                tvTitle.text = tTv.name
 
             } else if (popTv != null) {
-                tvTitle.text = popTv.name
 
             } else if (trTv != null) {
-                tvTitle.text = trTv.name
 
             }
         }
+    }
+
+    private fun openCastTv(tv: CastTv){
+        Toast.makeText(this,tv.name,Toast.LENGTH_LONG).show()
     }
 }

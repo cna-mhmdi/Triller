@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
 import com.cna.parde.model.Cast
+import com.cna.parde.model.CastTv
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
 import com.cna.parde.model.GenreMovie
@@ -146,6 +147,17 @@ class PardeRepository(private val pardeService: PardeService) {
 
     val detailTv: LiveData<List<GenreTv>> get() = detailTvLiveData
     val detailTvError: LiveData<String> get() = detailTvErrorLiveData
+
+    private val castTvLiveData = MutableLiveData<List<CastTv>>()
+    private val castTvErrorLiveData = MutableLiveData<String>()
+
+    val castTv: LiveData<List<CastTv>> get() = castTvLiveData
+    val castTvError: LiveData<String> get() = castTvErrorLiveData
+
+    suspend fun fetchCastTv(path: Int) {
+        val cast = pardeService.getCastTv(path,apiKey)
+        castTvLiveData.postValue(cast.cast)
+    }
 
     suspend fun fetchDetailTv(path: Int) {
         val detailTv = pardeService.getTvDetail(path,apiKey)

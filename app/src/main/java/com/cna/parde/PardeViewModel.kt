@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.cna.parde.model.Cast
+import com.cna.parde.model.CastTv
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
 import com.cna.parde.model.GenreMovie
@@ -33,6 +34,12 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     private var movieIdCast: Int = 0
     private var movieSimilar: Int = 0
     private var tvDetail: Int = 0
+    private var tvId: Int = 0
+
+    fun setTvCast(path: Int) {
+        tvId = path
+        fetchCastTv()
+    }
 
     fun setTvDetail(path: Int) {
         tvDetail = path
@@ -121,6 +128,15 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     val detailTv: LiveData<List<GenreTv>> get() = pardeRepository.detailTv
     fun getDetailTvError(): LiveData<String> = pardeRepository.detailTvError
+
+    val castTv: LiveData<List<CastTv>> get() = pardeRepository.castTv
+    fun getCastTvError(): LiveData<String> = pardeRepository.castTvError
+
+    private fun fetchCastTv(){
+        viewModelScope.launch(Dispatchers.IO) {
+            pardeRepository.fetchCastTv(tvId)
+        }
+    }
 
     private fun fetchDetailTv(){
         viewModelScope.launch(Dispatchers.IO) {
