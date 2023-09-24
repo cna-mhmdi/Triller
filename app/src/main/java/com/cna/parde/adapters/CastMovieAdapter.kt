@@ -45,6 +45,7 @@ class CastMovieAdapter(private val clickListener: CastMovieClickListener) :
 
             Glide.with(itemView.context)
                 .load("$imageUrl${cast.profile_path}")
+                .placeholder(R.drawable.placeholder)
                 .fitCenter()
                 .into(imgMoviePic)
         }

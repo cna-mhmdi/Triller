@@ -188,13 +188,13 @@ data class Cast(
     val order: Int = 0,
 ) : Parcelable
 
-data class SimilarMovieResponse(
+data class RecMovieResponse(
     val page: Int = 0,
-    val results: List<SimilarMovie>,
+    val results: List<RecMovie>,
 )
 
 @Parcelize
-data class SimilarMovie(
+data class RecMovie(
     val adult: Boolean = false,
     val backdrop_path: String? = null,
     val id: Int = 0,

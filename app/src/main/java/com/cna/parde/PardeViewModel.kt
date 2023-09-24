@@ -12,8 +12,8 @@ import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
+import com.cna.parde.model.RecMovie
 import com.cna.parde.model.Search
-import com.cna.parde.model.SimilarMovie
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.TRTv
@@ -32,9 +32,9 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     private var movieIdCast: Int = 0
     private var movieSimilar: Int = 0
 
-    fun setSimilarId(path: Int) {
+    fun setRecId(path: Int) {
         movieSimilar = path
-        fetchSimilarMovie()
+        fetchRecMovie()
     }
 
 
@@ -105,16 +105,16 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     fun getCastMovieError(): LiveData<String> = pardeRepository.castMovieError
 
-    val similarMovie: LiveData<List<SimilarMovie>>
-        get() = pardeRepository.similarMovie.map { similarMovies ->
-            similarMovies.sortedByDescending { it.vote_average }
+    val recMovie: LiveData<List<RecMovie>>
+        get() = pardeRepository.recMovie.map { recMovie ->
+            recMovie.sortedByDescending { it.vote_average }
         }
 
-    fun getSimilarMovieError(): LiveData<String> = pardeRepository.similarMovieError
+    fun getRecMovieError(): LiveData<String> = pardeRepository.recMovieError
 
-    private fun fetchSimilarMovie() {
+    private fun fetchRecMovie() {
         viewModelScope.launch(Dispatchers.IO) {
-            pardeRepository.fetchSimilarMovie(movieSimilar)
+            pardeRepository.fetchRecMovie(movieSimilar)
         }
     }
 

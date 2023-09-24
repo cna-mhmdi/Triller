@@ -214,12 +214,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/uniheavy"
-                    android:text="similar"
+                    android:text="recommendations"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_similar_movie"
+                    android:id="@+id/recycler_rec_movie"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"

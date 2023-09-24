@@ -10,12 +10,12 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastMovieAdapter
-import com.cna.parde.adapters.SimilarMovieAdapter
+import com.cna.parde.adapters.RecMovieAdapter
 import com.cna.parde.databinding.ActivityMovieDetailBinding
 import com.cna.parde.model.Cast
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
-import com.cna.parde.model.SimilarMovie
+import com.cna.parde.model.RecMovie
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
@@ -41,10 +41,10 @@ class DetailMovieActivity : AppCompatActivity() {
         })
     }
 
-    private val similarMovieAdapter by lazy {
-        SimilarMovieAdapter(object : SimilarMovieAdapter.SimilarMovieClickListener {
-            override fun onSimilarMovieClick(movie: SimilarMovie) {
-                openSimilarDetail(movie)
+    private val recMovieAdapter by lazy {
+        RecMovieAdapter(object : RecMovieAdapter.RecMovieClickListener {
+            override fun onRecMovieClick(movie: RecMovie) {
+                openRecDetail(movie)
             }
         })
     }
@@ -63,7 +63,7 @@ class DetailMovieActivity : AppCompatActivity() {
 
 
         binding.recyclerCastMovie.adapter = castMovieAdapter
-        binding.recyclerSimilarMovie.adapter = similarMovieAdapter
+        binding.recyclerRecMovie.adapter = recMovieAdapter
 
         val intent = intent
         if (intent != null) {
@@ -102,9 +102,9 @@ class DetailMovieActivity : AppCompatActivity() {
                     castMovieAdapter.addMovies(cast)
                 }
 
-                pardeViewModel.setSimilarId(popMovie.id)
-                pardeViewModel.similarMovie.observe(this) { similarMovie ->
-                    similarMovieAdapter.addMovies(similarMovie)
+                pardeViewModel.setRecId(popMovie.id)
+                pardeViewModel.recMovie.observe(this) { recMovie ->
+                    recMovieAdapter.addMovies(recMovie)
                 }
 
             } else if (npMovie != null) {
@@ -135,9 +135,9 @@ class DetailMovieActivity : AppCompatActivity() {
                     castMovieAdapter.addMovies(cast)
                 }
 
-                pardeViewModel.setSimilarId(npMovie.id)
-                pardeViewModel.similarMovie.observe(this) { similarMovie ->
-                    similarMovieAdapter.addMovies(similarMovie)
+                pardeViewModel.setRecId(npMovie.id)
+                pardeViewModel.recMovie.observe(this) { recMovie ->
+                    recMovieAdapter.addMovies(recMovie)
                 }
 
             } else if (tMovie != null) {
@@ -168,9 +168,9 @@ class DetailMovieActivity : AppCompatActivity() {
                     castMovieAdapter.addMovies(cast)
                 }
 
-                pardeViewModel.setSimilarId(tMovie.id)
-                pardeViewModel.similarMovie.observe(this) { similarMovie ->
-                    similarMovieAdapter.addMovies(similarMovie)
+                pardeViewModel.setRecId(tMovie.id)
+                pardeViewModel.recMovie.observe(this) { recMovie ->
+                    recMovieAdapter.addMovies(recMovie)
                 }
 
             } else if (trMovie != null) {
@@ -201,9 +201,9 @@ class DetailMovieActivity : AppCompatActivity() {
                     castMovieAdapter.addMovies(cast)
                 }
 
-                pardeViewModel.setSimilarId(trMovie.id)
-                pardeViewModel.similarMovie.observe(this) { similarMovie ->
-                    similarMovieAdapter.addMovies(similarMovie)
+                pardeViewModel.setRecId(trMovie.id)
+                pardeViewModel.recMovie.observe(this) { recMovie ->
+                    recMovieAdapter.addMovies(recMovie)
                 }
 
             } else if (ucMovie != null) {
@@ -234,9 +234,9 @@ class DetailMovieActivity : AppCompatActivity() {
                     castMovieAdapter.addMovies(cast)
                 }
 
-                pardeViewModel.setSimilarId(ucMovie.id)
-                pardeViewModel.similarMovie.observe(this) { similarMovie ->
-                    similarMovieAdapter.addMovies(similarMovie)
+                pardeViewModel.setRecId(ucMovie.id)
+                pardeViewModel.recMovie.observe(this) { recMovie ->
+                    recMovieAdapter.addMovies(recMovie)
                 }
 
             }
@@ -247,7 +247,7 @@ class DetailMovieActivity : AppCompatActivity() {
         Toast.makeText(this, cast.name, Toast.LENGTH_SHORT).show()
     }
 
-    private fun openSimilarDetail(similarMovie: SimilarMovie) {
-        Toast.makeText(this, similarMovie.title, Toast.LENGTH_SHORT).show()
+    private fun openRecDetail(recMovie: RecMovie) {
+        Toast.makeText(this, recMovie.title, Toast.LENGTH_SHORT).show()
     }
 }
