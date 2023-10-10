@@ -44,9 +44,13 @@ class CastTvAdapter(private val clickListener: CastTvClickListener) :
         private val imgMoviePic: ImageView by lazy { itemView.findViewById(R.id.imgMoviePic) }
         private val imageUrl = "https://image.tmdb.org/t/p/w185/"
 
-        fun bind(tv: CastTv) {
+        fun bind(cast: CastTv) {
 
-            imgMoviePic.load("$imageUrl${tv.profile_path}")
+            Glide.with(itemView.context)
+                .load("$imageUrl${cast.profile_path}")
+                .placeholder(R.drawable.placeholder)
+                .fitCenter()
+                .into(imgMoviePic)
         }
     }
 

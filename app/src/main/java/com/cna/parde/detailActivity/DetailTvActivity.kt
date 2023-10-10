@@ -52,6 +52,8 @@ class DetailTvActivity : AppCompatActivity() {
             }
         }).get(PardeViewModel::class.java)
 
+        binding.recyclerCastTv.adapter = castTvAdapter
+
 
         val intent = intent
         if (intent != null) {
