@@ -15,6 +15,7 @@ import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.RecMovie
+import com.cna.parde.model.RecTv
 import com.cna.parde.model.Search
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
@@ -35,6 +36,11 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     private var movieSimilar: Int = 0
     private var tvDetail: Int = 0
     private var tvId: Int = 0
+
+    fun setTvRec(path: Int) {
+        tvId = path
+        fetchRecTv()
+    }
 
     fun setTvCast(path: Int) {
         tvId = path
@@ -131,6 +137,15 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     val castTv: LiveData<List<CastTv>> get() = pardeRepository.castTv
     fun getCastTvError(): LiveData<String> = pardeRepository.castTvError
+
+    val recTv: LiveData<List<RecTv>> get() = pardeRepository.recTv
+    fun getRecTvError(): LiveData<String> = pardeRepository.recTvError
+
+    private fun fetchRecTv(){
+        viewModelScope.launch(Dispatchers.IO) {
+            pardeRepository.fetchRecTv(tvId)
+        }
+    }
 
     private fun fetchCastTv(){
         viewModelScope.launch(Dispatchers.IO) {

@@ -11,6 +11,7 @@ import com.cna.parde.model.OTATvResponse
 import com.cna.parde.model.POPMoviesResponse
 import com.cna.parde.model.POPTvResponse
 import com.cna.parde.model.RecMovieResponse
+import com.cna.parde.model.RecTvResponse
 import com.cna.parde.model.SearchResponse
 import com.cna.parde.model.TMovieResponse
 import com.cna.parde.model.TRMovieResponse
@@ -100,5 +101,12 @@ interface PardeService {
         @Path("series_id") seriesId: Int,
         @Query("api_key") apikey: String
     ): CastTvResponse
+
+
+    @GET("tv/{series_id}/recommendations")
+    suspend fun getRecTv(
+        @Path("series_id") seriesId: Int,
+        @Query("api_key") apikey: String
+    ): RecTvResponse
 
 }
