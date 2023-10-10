@@ -136,15 +136,10 @@ data class CastTvResponse(
 
 @Parcelize
 data class CastTv(
-    val adult: Boolean,
-    val gender: Int,
     val id: Int,
     val name: String,
     val original_name: String,
     val popularity: Float,
     val profile_path: String?,
-    val character: String,
-    val credit_id: String,
-    val order: Int
 ):Parcelable
 

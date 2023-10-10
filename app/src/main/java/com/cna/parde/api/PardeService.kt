@@ -95,7 +95,7 @@ interface PardeService {
         @Query("api_key") apiKey:String,
     ): DetailTvResponse
 
-    @GET("tv/{series_id}/credits")
+    @GET("tv/{series_id}/aggregate_credits")
     suspend fun getCastTv(
         @Path("series_id") seriesId: Int,
         @Query("api_key") apikey: String
