@@ -1,5 +1,6 @@
 package com.cna.parde.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.GTvAdapter
 import com.cna.parde.databinding.FragmentTvGBinding
+import com.cna.parde.detailActivity.DetailGMovieActivity
+import com.cna.parde.detailActivity.DetailGTvActivity
 import com.cna.parde.model.GTv
 
 class TvGFragment : Fragment() {
@@ -131,7 +134,10 @@ class TvGFragment : Fragment() {
     }
 
     private fun openGTvDetails(tv: GTv) {
-        Toast.makeText(requireContext(), tv.name, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailGTvActivity::class.java).apply {
+            putExtra(DetailGTvActivity.GTv, tv)
+        }
+        startActivity(intent)
     }
 
     override fun onDestroyView() {
