@@ -42,6 +42,10 @@
             android:exported="false"/>
         <activity android:name=".detailActivity.DetailRecMovieActivity"
             android:exported="false"/>
+        <activity android:name=".detailActivity.DetailGMovieActivity"
+            android:exported="false"/>
+        <activity android:name=".detailActivity.DetailGTvActivity"
+            android:exported="false"/>
 
     </application>
 

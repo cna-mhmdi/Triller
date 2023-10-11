@@ -1,5 +1,6 @@
 package com.cna.parde.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.GMovieAdapter
 import com.cna.parde.databinding.FragmentMovieGBinding
+import com.cna.parde.detailActivity.DetailGMovieActivity
+import com.cna.parde.detailActivity.DetailRecMovieActivity
 import com.cna.parde.model.GMovie
 
 class MovieGFragment : Fragment() {
@@ -146,7 +149,10 @@ class MovieGFragment : Fragment() {
     }
 
     private fun openGMovieDetails(movie: GMovie) {
-        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailGMovieActivity::class.java).apply {
+            putExtra(DetailGMovieActivity.GMovie, movie)
+        }
+        startActivity(intent)
     }
 
     override fun onDestroyView() {
