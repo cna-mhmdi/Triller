@@ -1,5 +1,6 @@
 package com.cna.parde.detailActivity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -29,8 +30,6 @@ class DetailTvActivity : AppCompatActivity() {
         const val TRTv = "TRTv"
         const val IMG_URL = "https://image.tmdb.org/t/p/w185/"
     }
-
-
 
     private lateinit var binding : ActivityTvDetailBinding
 
@@ -223,6 +222,9 @@ class DetailTvActivity : AppCompatActivity() {
     }
 
     private fun openRecTv(tv: RecTv){
-        Toast.makeText(this,tv.name,Toast.LENGTH_LONG).show()
+        val intent = Intent(this, DetailRecTvActivity::class.java).apply {
+            putExtra(DetailRecTvActivity.TV, tv)
+        }
+        startActivity(intent)
     }
 }
