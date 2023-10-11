@@ -1,5 +1,6 @@
 package com.cna.parde.detailActivity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -248,6 +249,9 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun openRecDetail(recMovie: RecMovie) {
-        Toast.makeText(this, recMovie.title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, DetailRecMovieActivity::class.java).apply {
+            putExtra(DetailRecMovieActivity.MOVIE, recMovie)
+        }
+        startActivity(intent)
     }
 }
