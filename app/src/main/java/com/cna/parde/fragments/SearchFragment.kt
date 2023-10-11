@@ -1,5 +1,6 @@
 package com.cna.parde.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.adapters.SearchAdapter
 import com.cna.parde.databinding.FragmentSearchBinding
+import com.cna.parde.detailActivity.DetailRecTvActivity
+import com.cna.parde.detailActivity.DetailSearchActivity
 import com.cna.parde.model.Search
 
 class SearchFragment : Fragment() {
@@ -77,10 +80,9 @@ class SearchFragment : Fragment() {
     }
 
     private fun openSearchDetails(movie: Search) {
-        if (movie.media_type == "movie") {
-            Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(requireContext(), movie.name, Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailSearchActivity::class.java).apply {
+            putExtra(DetailSearchActivity.Search, movie)
         }
+        startActivity(intent)
     }
 }

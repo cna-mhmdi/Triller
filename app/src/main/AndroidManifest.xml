@@ -46,6 +46,8 @@
             android:exported="false"/>
         <activity android:name=".detailActivity.DetailGTvActivity"
             android:exported="false"/>
+        <activity android:name=".detailActivity.DetailSearchActivity"
+            android:exported="false"/>
 
     </application>
 

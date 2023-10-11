@@ -16,6 +16,7 @@ import com.cna.parde.model.POPTv
 import com.cna.parde.model.RecMovie
 import com.cna.parde.model.RecTv
 import com.cna.parde.model.Search
+import com.cna.parde.model.SearchResponse
 
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
