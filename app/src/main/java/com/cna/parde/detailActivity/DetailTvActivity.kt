@@ -1,5 +1,6 @@
 package com.cna.parde.detailActivity
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -224,6 +225,7 @@ class DetailTvActivity : AppCompatActivity() {
         val intent = Intent(this, DetailRecTvActivity::class.java).apply {
             putExtra(DetailRecTvActivity.TV, tv)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(this).toBundle())
     }
 }
