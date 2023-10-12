@@ -1,5 +1,7 @@
 package com.cna.parde.detailActivity
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -252,6 +254,7 @@ class DetailMovieActivity : AppCompatActivity() {
         val intent = Intent(this, DetailRecMovieActivity::class.java).apply {
             putExtra(DetailRecMovieActivity.MOVIE, recMovie)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(this).toBundle())
     }
 }
