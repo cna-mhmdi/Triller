@@ -1,5 +1,7 @@
 package com.cna.parde.fragments
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -125,28 +127,32 @@ class TvFragment : Fragment() {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
             putExtra(DetailTvActivity.OTATv, tv)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
 
     private fun openPOPTvDetails(tv: POPTv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
             putExtra(DetailTvActivity.POPTv, tv)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
 
     private fun openTRTvDetails(tv: TRTv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
             putExtra(DetailTvActivity.TRTv, tv)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
 
     private fun openTTvDetails(tv: TTv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
             putExtra(DetailTvActivity.TTv, tv)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
 
 }
