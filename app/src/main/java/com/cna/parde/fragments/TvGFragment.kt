@@ -14,7 +14,6 @@ import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.GTvAdapter
 import com.cna.parde.databinding.FragmentTvGBinding
-import com.cna.parde.detailActivity.DetailGMovieActivity
 import com.cna.parde.detailActivity.DetailGTvActivity
 import com.cna.parde.model.GTv
 

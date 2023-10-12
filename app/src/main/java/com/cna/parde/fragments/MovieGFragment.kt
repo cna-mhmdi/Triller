@@ -15,7 +15,6 @@ import com.cna.parde.R
 import com.cna.parde.adapters.GMovieAdapter
 import com.cna.parde.databinding.FragmentMovieGBinding
 import com.cna.parde.detailActivity.DetailGMovieActivity
-import com.cna.parde.detailActivity.DetailRecMovieActivity
 import com.cna.parde.model.GMovie
 
 class MovieGFragment : Fragment() {

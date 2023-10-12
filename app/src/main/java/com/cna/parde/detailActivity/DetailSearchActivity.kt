@@ -10,20 +10,18 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastMovieAdapter
-import com.cna.parde.adapters.RecMovieAdapter
 import com.cna.parde.databinding.ActivitySearchDetailBinding
 import com.cna.parde.model.Cast
-import com.cna.parde.model.RecMovie
 import com.cna.parde.model.Search
 
-class DetailSearchActivity: AppCompatActivity() {
+class DetailSearchActivity : AppCompatActivity() {
 
     companion object {
         const val Search = "Search"
         const val IMAGE_URL = "https://image.tmdb.org/t/p/w185/"
     }
 
-    private lateinit var binding : ActivitySearchDetailBinding
+    private lateinit var binding: ActivitySearchDetailBinding
 
     private val castMovieAdapter by lazy {
         CastMovieAdapter(object : CastMovieAdapter.CastMovieClickListener {
@@ -61,7 +59,7 @@ class DetailSearchActivity: AppCompatActivity() {
 
                 if (search.name == "") {
                     binding.movieTitle.text = search.title
-                }else {
+                } else {
                     binding.movieTitle.text = search.name
                 }
 

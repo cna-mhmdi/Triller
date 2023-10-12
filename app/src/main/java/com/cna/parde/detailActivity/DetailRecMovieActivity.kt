@@ -10,20 +10,18 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastMovieAdapter
-import com.cna.parde.adapters.CastTvAdapter
 import com.cna.parde.databinding.ActivityMovieRecDetailBinding
 import com.cna.parde.model.Cast
-import com.cna.parde.model.CastTv
 import com.cna.parde.model.RecMovie
 
-class DetailRecMovieActivity:AppCompatActivity() {
+class DetailRecMovieActivity : AppCompatActivity() {
 
     companion object {
         const val MOVIE = "movie"
         const val IMG_URL = "https://image.tmdb.org/t/p/w185/"
     }
 
-    private lateinit var binding : ActivityMovieRecDetailBinding
+    private lateinit var binding: ActivityMovieRecDetailBinding
 
     private val castMovieAdapter by lazy {
         CastMovieAdapter(object : CastMovieAdapter.CastMovieClickListener {
@@ -65,7 +63,7 @@ class DetailRecMovieActivity:AppCompatActivity() {
                 binding.rateMovie.text = String.format(voteAverageFormat, movieCast.vote_average)
 
                 pardeViewModel.setMovieId(movieCast.id)
-                pardeViewModel.detailTv.observe(this) { detailMovie->
+                pardeViewModel.detailTv.observe(this) { detailMovie ->
                     binding.genreMovie.text = detailMovie.map { it.name }.toString()
 
                 }
@@ -75,7 +73,7 @@ class DetailRecMovieActivity:AppCompatActivity() {
                 binding.movieOverview.text = movieCast.overview
 
                 pardeViewModel.setCastId(movieCast.id)
-                pardeViewModel.castMovie.observe(this) {castTv->
+                pardeViewModel.castMovie.observe(this) { castTv ->
                     castMovieAdapter.addMovies(castTv)
                 }
             }
@@ -84,6 +82,6 @@ class DetailRecMovieActivity:AppCompatActivity() {
     }
 
     private fun openCastMovie(movie: Cast) {
-        Toast.makeText(this,movie.name, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, movie.name, Toast.LENGTH_LONG).show()
     }
 }

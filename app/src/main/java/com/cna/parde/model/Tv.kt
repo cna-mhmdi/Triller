@@ -106,7 +106,7 @@ data class GTv(
 
 data class DetailTvResponse(
     val backdrop_path: String = "",
-    val first_air_date: String= "",
+    val first_air_date: String = "",
     val genres: List<GenreTv>,
     val id: Int = 0,
     val last_air_date: String = "",
@@ -122,16 +122,16 @@ data class DetailTvResponse(
     val status: String = "",
     val tagline: String = "",
     val vote_average: Float = 0f,
-    val vote_count: Int =0
+    val vote_count: Int = 0,
 )
 
 data class GenreTv(
     val id: Int = 0,
-    val name: String = ""
+    val name: String = "",
 )
 
 data class CastTvResponse(
-    val cast : List<CastTv>
+    val cast: List<CastTv>,
 )
 
 @Parcelize
@@ -141,7 +141,7 @@ data class CastTv(
     val original_name: String,
     val popularity: Float,
     val profile_path: String?,
-):Parcelable
+) : Parcelable
 
 data class RecTvResponse(
     val page: Int = 0,

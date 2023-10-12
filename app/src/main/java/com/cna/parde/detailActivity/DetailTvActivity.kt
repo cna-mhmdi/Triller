@@ -2,7 +2,6 @@ package com.cna.parde.detailActivity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
@@ -31,7 +30,7 @@ class DetailTvActivity : AppCompatActivity() {
         const val IMG_URL = "https://image.tmdb.org/t/p/w185/"
     }
 
-    private lateinit var binding : ActivityTvDetailBinding
+    private lateinit var binding: ActivityTvDetailBinding
 
     private val castTvAdapter by lazy {
         CastTvAdapter(object : CastTvAdapter.CastTvClickListener {
@@ -86,7 +85,7 @@ class DetailTvActivity : AppCompatActivity() {
                 binding.ratetv.text = String.format(voteAverageFormat, otaTv.vote_average)
 
                 pardeViewModel.setTvDetail(otaTv.id)
-                pardeViewModel.detailTv.observe(this) { detailTv->
+                pardeViewModel.detailTv.observe(this) { detailTv ->
                     binding.genretv.text = detailTv.map { it.name }.toString()
 
                 }
@@ -96,14 +95,14 @@ class DetailTvActivity : AppCompatActivity() {
                 binding.tvOverview.text = otaTv.overview
 
                 pardeViewModel.setTvCast(otaTv.id)
-                pardeViewModel.castTv.observe(this) {castTv->
+                pardeViewModel.castTv.observe(this) { castTv ->
                     castTvAdapter.addMovies(castTv)
                 }
-                pardeViewModel.getCastTvError().observe(this) {error->
-                    Toast.makeText(this,error,Toast.LENGTH_LONG).show()
+                pardeViewModel.getCastTvError().observe(this) { error ->
+                    Toast.makeText(this, error, Toast.LENGTH_LONG).show()
                 }
                 pardeViewModel.setTvRec(otaTv.id)
-                pardeViewModel.recTv.observe(this) {recTv->
+                pardeViewModel.recTv.observe(this) { recTv ->
                     recTvAdapter.addMovies(recTv)
                 }
 
@@ -122,7 +121,7 @@ class DetailTvActivity : AppCompatActivity() {
                 binding.ratetv.text = String.format(voteAverageFormat, tTv.vote_average)
 
                 pardeViewModel.setTvDetail(tTv.id)
-                pardeViewModel.detailTv.observe(this) { detailTv->
+                pardeViewModel.detailTv.observe(this) { detailTv ->
                     binding.genretv.text = detailTv.map { it.name }.toString()
 
                 }
@@ -132,14 +131,14 @@ class DetailTvActivity : AppCompatActivity() {
                 binding.tvOverview.text = tTv.overview
 
                 pardeViewModel.setTvCast(tTv.id)
-                pardeViewModel.castTv.observe(this) {castTv->
+                pardeViewModel.castTv.observe(this) { castTv ->
                     castTvAdapter.addMovies(castTv)
                 }
-                pardeViewModel.getCastTvError().observe(this) {error->
-                    Toast.makeText(this,error,Toast.LENGTH_LONG).show()
+                pardeViewModel.getCastTvError().observe(this) { error ->
+                    Toast.makeText(this, error, Toast.LENGTH_LONG).show()
                 }
                 pardeViewModel.setTvRec(tTv.id)
-                pardeViewModel.recTv.observe(this) {recTv->
+                pardeViewModel.recTv.observe(this) { recTv ->
                     recTvAdapter.addMovies(recTv)
                 }
 
@@ -157,7 +156,7 @@ class DetailTvActivity : AppCompatActivity() {
                 binding.ratetv.text = String.format(voteAverageFormat, popTv.vote_average)
 
                 pardeViewModel.setTvDetail(popTv.id)
-                pardeViewModel.detailTv.observe(this) { detailTv->
+                pardeViewModel.detailTv.observe(this) { detailTv ->
                     binding.genretv.text = detailTv.map { it.name }.toString()
 
                 }
@@ -167,14 +166,14 @@ class DetailTvActivity : AppCompatActivity() {
                 binding.tvOverview.text = popTv.overview
 
                 pardeViewModel.setTvCast(popTv.id)
-                pardeViewModel.castTv.observe(this) {castTv->
+                pardeViewModel.castTv.observe(this) { castTv ->
                     castTvAdapter.addMovies(castTv)
                 }
-                pardeViewModel.getCastTvError().observe(this) {error->
-                    Toast.makeText(this,error,Toast.LENGTH_LONG).show()
+                pardeViewModel.getCastTvError().observe(this) { error ->
+                    Toast.makeText(this, error, Toast.LENGTH_LONG).show()
                 }
                 pardeViewModel.setTvRec(popTv.id)
-                pardeViewModel.recTv.observe(this) {recTv->
+                pardeViewModel.recTv.observe(this) { recTv ->
                     recTvAdapter.addMovies(recTv)
                 }
 
@@ -192,7 +191,7 @@ class DetailTvActivity : AppCompatActivity() {
                 binding.ratetv.text = String.format(voteAverageFormat, trTv.vote_average)
 
                 pardeViewModel.setTvDetail(trTv.id)
-                pardeViewModel.detailTv.observe(this) { detailTv->
+                pardeViewModel.detailTv.observe(this) { detailTv ->
                     binding.genretv.text = detailTv.map { it.name }.toString()
 
                 }
@@ -202,14 +201,14 @@ class DetailTvActivity : AppCompatActivity() {
                 binding.tvOverview.text = trTv.overview
 
                 pardeViewModel.setTvCast(trTv.id)
-                pardeViewModel.castTv.observe(this) {castTv->
+                pardeViewModel.castTv.observe(this) { castTv ->
                     castTvAdapter.addMovies(castTv)
                 }
-                pardeViewModel.getCastTvError().observe(this) {error->
-                    Toast.makeText(this,error,Toast.LENGTH_LONG).show()
+                pardeViewModel.getCastTvError().observe(this) { error ->
+                    Toast.makeText(this, error, Toast.LENGTH_LONG).show()
                 }
                 pardeViewModel.setTvRec(trTv.id)
-                pardeViewModel.recTv.observe(this) {recTv->
+                pardeViewModel.recTv.observe(this) { recTv ->
                     recTvAdapter.addMovies(recTv)
                 }
 
@@ -217,11 +216,11 @@ class DetailTvActivity : AppCompatActivity() {
         }
     }
 
-    private fun openCastTv(tv: CastTv){
-        Toast.makeText(this,tv.name,Toast.LENGTH_LONG).show()
+    private fun openCastTv(tv: CastTv) {
+        Toast.makeText(this, tv.name, Toast.LENGTH_LONG).show()
     }
 
-    private fun openRecTv(tv: RecTv){
+    private fun openRecTv(tv: RecTv) {
         val intent = Intent(this, DetailRecTvActivity::class.java).apply {
             putExtra(DetailRecTvActivity.TV, tv)
         }

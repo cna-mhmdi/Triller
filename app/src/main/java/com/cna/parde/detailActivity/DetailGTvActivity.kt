@@ -11,18 +11,17 @@ import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastTvAdapter
 import com.cna.parde.databinding.ActivityTvGDetailBinding
-import com.cna.parde.model.Cast
 import com.cna.parde.model.CastTv
 import com.cna.parde.model.GTv
 
-class DetailGTvActivity: AppCompatActivity() {
+class DetailGTvActivity : AppCompatActivity() {
 
     companion object {
         const val GTv = "GTv"
         const val IMAGE_URL = "https://image.tmdb.org/t/p/w185/"
     }
 
-    private lateinit var binding : ActivityTvGDetailBinding
+    private lateinit var binding: ActivityTvGDetailBinding
 
     private val castTvAdapter by lazy {
         CastTvAdapter(object : CastTvAdapter.CastTvClickListener {
@@ -64,7 +63,7 @@ class DetailGTvActivity: AppCompatActivity() {
                 binding.ratetv.text = String.format(voteAverageFormat, castTv.vote_average)
 
                 pardeViewModel.setTvDetail(castTv.id)
-                pardeViewModel.detailTv.observe(this) { detailTv->
+                pardeViewModel.detailTv.observe(this) { detailTv ->
                     binding.genretv.text = detailTv.map { it.name }.toString()
 
                 }
@@ -74,17 +73,17 @@ class DetailGTvActivity: AppCompatActivity() {
                 binding.tvOverview.text = castTv.overview
 
                 pardeViewModel.setTvCast(castTv.id)
-                pardeViewModel.castTv.observe(this) {castTv->
+                pardeViewModel.castTv.observe(this) { castTv ->
                     castTvAdapter.addMovies(castTv)
                 }
-                pardeViewModel.getCastTvError().observe(this) {error->
-                    Toast.makeText(this,error,Toast.LENGTH_LONG).show()
+                pardeViewModel.getCastTvError().observe(this) { error ->
+                    Toast.makeText(this, error, Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
 
-    private fun openCastTv(tv: CastTv){
-        Toast.makeText(this,tv.name,Toast.LENGTH_LONG).show()
+    private fun openCastTv(tv: CastTv) {
+        Toast.makeText(this, tv.name, Toast.LENGTH_LONG).show()
     }
 }

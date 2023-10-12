@@ -93,20 +93,20 @@ interface PardeService {
     @GET("tv/{series_id}")
     suspend fun getTvDetail(
         @Path("series_id") seriesId: Int,
-        @Query("api_key") apiKey:String,
+        @Query("api_key") apiKey: String,
     ): DetailTvResponse
 
     @GET("tv/{series_id}/aggregate_credits")
     suspend fun getCastTv(
         @Path("series_id") seriesId: Int,
-        @Query("api_key") apikey: String
+        @Query("api_key") apikey: String,
     ): CastTvResponse
 
 
     @GET("tv/{series_id}/recommendations")
     suspend fun getRecTv(
         @Path("series_id") seriesId: Int,
-        @Query("api_key") apikey: String
+        @Query("api_key") apikey: String,
     ): RecTvResponse
 
 }

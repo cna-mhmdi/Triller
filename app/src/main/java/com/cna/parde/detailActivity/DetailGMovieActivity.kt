@@ -14,14 +14,14 @@ import com.cna.parde.databinding.ActivityMovieGDetailBinding
 import com.cna.parde.model.Cast
 import com.cna.parde.model.GMovie
 
-class DetailGMovieActivity:AppCompatActivity() {
+class DetailGMovieActivity : AppCompatActivity() {
 
     companion object {
         const val GMovie = "GMovie"
         const val IMAGE_URL = "https://image.tmdb.org/t/p/w185/"
     }
 
-    private lateinit var binding : ActivityMovieGDetailBinding
+    private lateinit var binding: ActivityMovieGDetailBinding
 
     private val castMovieAdapter by lazy {
         CastMovieAdapter(object : CastMovieAdapter.CastMovieClickListener {

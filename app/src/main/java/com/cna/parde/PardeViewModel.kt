@@ -141,19 +141,19 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     val recTv: LiveData<List<RecTv>> get() = pardeRepository.recTv
     fun getRecTvError(): LiveData<String> = pardeRepository.recTvError
 
-    private fun fetchRecTv(){
+    private fun fetchRecTv() {
         viewModelScope.launch(Dispatchers.IO) {
             pardeRepository.fetchRecTv(tvId)
         }
     }
 
-    private fun fetchCastTv(){
+    private fun fetchCastTv() {
         viewModelScope.launch(Dispatchers.IO) {
             pardeRepository.fetchCastTv(tvId)
         }
     }
 
-    private fun fetchDetailTv(){
+    private fun fetchDetailTv() {
         viewModelScope.launch(Dispatchers.IO) {
             pardeRepository.fetchDetailTv(tvDetail)
         }

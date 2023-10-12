@@ -14,7 +14,6 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.adapters.SearchAdapter
 import com.cna.parde.databinding.FragmentSearchBinding
-import com.cna.parde.detailActivity.DetailRecTvActivity
 import com.cna.parde.detailActivity.DetailSearchActivity
 import com.cna.parde.model.Search
 
