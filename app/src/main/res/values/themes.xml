@@ -1,6 +1,12 @@
 <resources>
 
     <style name="Base.Theme.Parde" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
 
     </style>
 

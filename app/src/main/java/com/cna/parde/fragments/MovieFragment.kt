@@ -1,5 +1,7 @@
 package com.cna.parde.fragments
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -150,28 +152,32 @@ class MovieFragment : Fragment() {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(DetailMovieActivity.NPMovie, movie)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
 
     private fun openUCMovieDetails(movie: UCMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(DetailMovieActivity.UCMovie, movie)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
 
     private fun openTRMovieDetails(movie: TRMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(DetailMovieActivity.TRMovie, movie)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
 
     private fun openPOPMovieDetails(movie: POPMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(DetailMovieActivity.POPMovie, movie)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
 
     }
 
@@ -179,7 +185,8 @@ class MovieFragment : Fragment() {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(DetailMovieActivity.TMovie, movie)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
 
 //    private fun openMovieDetails(movieType: String, movieId: ) {
