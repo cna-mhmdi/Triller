@@ -1,5 +1,7 @@
 package com.cna.parde.fragments
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -82,6 +84,7 @@ class SearchFragment : Fragment() {
         val intent = Intent(requireContext(), DetailSearchActivity::class.java).apply {
             putExtra(DetailSearchActivity.Search, movie)
         }
-        startActivity(intent)
+        startActivity(intent, ActivityOptions
+            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
 }
