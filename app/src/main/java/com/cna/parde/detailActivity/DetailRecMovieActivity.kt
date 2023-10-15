@@ -10,16 +10,12 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastMovieAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityMovieRecDetailBinding
 import com.cna.parde.model.Cast
 import com.cna.parde.model.RecMovie
 
 class DetailRecMovieActivity : AppCompatActivity() {
-
-    companion object {
-        const val MOVIE = "movie"
-        const val IMG_URL = "https://image.tmdb.org/t/p/w185/"
-    }
 
     private lateinit var binding: ActivityMovieRecDetailBinding
 
@@ -47,12 +43,12 @@ class DetailRecMovieActivity : AppCompatActivity() {
 
         val intent = intent
         if (intent !== null) {
-            val movieCast = intent.getParcelableExtra<RecMovie>(MOVIE)
+            val movieCast = intent.getParcelableExtra<RecMovie>(Constant.MOVIE)
 
             if (movieCast !== null) {
 
                 Glide.with(this)
-                    .load("${IMG_URL}${movieCast.poster_path}")
+                    .load("${Constant.IMAGE_URL}${movieCast.poster_path}")
                     .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.movieImg)

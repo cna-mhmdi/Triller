@@ -15,6 +15,7 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.GTvAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.FragmentTvGBinding
 import com.cna.parde.detailActivity.DetailGTvActivity
 import com.cna.parde.model.GTv
@@ -136,7 +137,7 @@ class TvGFragment : Fragment() {
 
     private fun openGTvDetails(tv: GTv) {
         val intent = Intent(requireContext(), DetailGTvActivity::class.java).apply {
-            putExtra(DetailGTvActivity.GTv, tv)
+            putExtra(Constant.GTv, tv)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())

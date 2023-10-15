@@ -4,15 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityInfoBinding
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 
 class InfoActivity : AppCompatActivity() {
-    companion object {
-        const val TAG_USERNAME = "USERNAME"
-        const val TAG_CHIP_NAMES = "CHIP_NAMES"
-    }
 
     private lateinit var binding: ActivityInfoBinding
     private val selectedChipNames = mutableListOf<String>()
@@ -46,8 +43,8 @@ class InfoActivity : AppCompatActivity() {
                         .show()
                 } else {
                     val intent = Intent(this, MainActivity::class.java)
-                    intent.putExtra(TAG_USERNAME, userNames)
-                    intent.putStringArrayListExtra(TAG_CHIP_NAMES, ArrayList(selectedChipNames))
+                    intent.putExtra(Constant.TAG_USERNAME, userNames)
+                    intent.putStringArrayListExtra(Constant.TAG_CHIP_NAMES, ArrayList(selectedChipNames))
                     startActivity(intent)
                 }
             } else {

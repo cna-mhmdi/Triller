@@ -19,6 +19,7 @@ import com.cna.parde.adapters.OTATvAdapter
 import com.cna.parde.adapters.POPTvAdapter
 import com.cna.parde.adapters.TRTvAdapter
 import com.cna.parde.adapters.TTvAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.detailActivity.DetailTvActivity
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPTv
@@ -125,7 +126,7 @@ class TvFragment : Fragment() {
 
     private fun openOTATvDetails(tv: OTATv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
-            putExtra(DetailTvActivity.OTATv, tv)
+            putExtra(Constant.OTATv, tv)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
@@ -133,7 +134,7 @@ class TvFragment : Fragment() {
 
     private fun openPOPTvDetails(tv: POPTv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
-            putExtra(DetailTvActivity.POPTv, tv)
+            putExtra(Constant.POPTv, tv)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
@@ -141,7 +142,7 @@ class TvFragment : Fragment() {
 
     private fun openTRTvDetails(tv: TRTv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
-            putExtra(DetailTvActivity.TRTv, tv)
+            putExtra(Constant.TRTv, tv)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
@@ -149,7 +150,7 @@ class TvFragment : Fragment() {
 
     private fun openTTvDetails(tv: TTv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
-            putExtra(DetailTvActivity.TTv, tv)
+            putExtra(Constant.TTv, tv)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())

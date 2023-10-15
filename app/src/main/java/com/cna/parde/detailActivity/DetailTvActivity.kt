@@ -13,6 +13,7 @@ import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastTvAdapter
 import com.cna.parde.adapters.RecTvAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityTvDetailBinding
 import com.cna.parde.model.CastTv
 import com.cna.parde.model.OTATv
@@ -22,14 +23,6 @@ import com.cna.parde.model.TRTv
 import com.cna.parde.model.TTv
 
 class DetailTvActivity : AppCompatActivity() {
-
-    companion object {
-        const val OTATv = "OTATv"
-        const val TTv = "TTv"
-        const val POPTv = "POPTv"
-        const val TRTv = "TRTv"
-        const val IMG_URL = "https://image.tmdb.org/t/p/w185/"
-    }
 
     private lateinit var binding: ActivityTvDetailBinding
 
@@ -67,15 +60,15 @@ class DetailTvActivity : AppCompatActivity() {
 
         val intent = intent
         if (intent != null) {
-            val otaTv = intent.getParcelableExtra<OTATv>(OTATv)
-            val tTv = intent.getParcelableExtra<TTv>(TTv)
-            val popTv = intent.getParcelableExtra<POPTv>(POPTv)
-            val trTv = intent.getParcelableExtra<TRTv>(TRTv)
+            val otaTv = intent.getParcelableExtra<OTATv>(Constant.OTATv)
+            val tTv = intent.getParcelableExtra<TTv>(Constant.TTv)
+            val popTv = intent.getParcelableExtra<POPTv>(Constant.POPTv)
+            val trTv = intent.getParcelableExtra<TRTv>(Constant.TRTv)
 
             if (otaTv != null) {
 
                 Glide.with(this)
-                    .load("${DetailMovieActivity.IMAGE_URL}${otaTv.poster_path}")
+                    .load("${Constant.IMAGE_URL}${otaTv.poster_path}")
                     .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.tvImg)
@@ -111,7 +104,7 @@ class DetailTvActivity : AppCompatActivity() {
             } else if (tTv != null) {
 
                 Glide.with(this)
-                    .load("${DetailMovieActivity.IMAGE_URL}${tTv.poster_path}")
+                    .load("${Constant.IMAGE_URL}${tTv.poster_path}")
                     .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.tvImg)
@@ -146,7 +139,7 @@ class DetailTvActivity : AppCompatActivity() {
             } else if (popTv != null) {
 
                 Glide.with(this)
-                    .load("${DetailMovieActivity.IMAGE_URL}${popTv.poster_path}")
+                    .load("${Constant.IMAGE_URL}${popTv.poster_path}")
                     .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.tvImg)
@@ -181,7 +174,7 @@ class DetailTvActivity : AppCompatActivity() {
             } else if (trTv != null) {
 
                 Glide.with(this)
-                    .load("${DetailMovieActivity.IMAGE_URL}${trTv.poster_path}")
+                    .load("${Constant.IMAGE_URL}${trTv.poster_path}")
                     .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.tvImg)
@@ -223,7 +216,7 @@ class DetailTvActivity : AppCompatActivity() {
 
     private fun openRecTv(tv: RecTv) {
         val intent = Intent(this, DetailRecTvActivity::class.java).apply {
-            putExtra(DetailRecTvActivity.TV, tv)
+            putExtra(Constant.TV, tv)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(this).toBundle())

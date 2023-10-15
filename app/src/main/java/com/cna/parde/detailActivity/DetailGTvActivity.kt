@@ -10,16 +10,12 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastTvAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityTvGDetailBinding
 import com.cna.parde.model.CastTv
 import com.cna.parde.model.GTv
 
 class DetailGTvActivity : AppCompatActivity() {
-
-    companion object {
-        const val GTv = "GTv"
-        const val IMAGE_URL = "https://image.tmdb.org/t/p/w185/"
-    }
 
     private lateinit var binding: ActivityTvGDetailBinding
 
@@ -47,12 +43,12 @@ class DetailGTvActivity : AppCompatActivity() {
 
         val intent = intent
         if (intent !== null) {
-            val castTv = intent.getParcelableExtra<GTv>(GTv)
+            val castTv = intent.getParcelableExtra<GTv>(Constant.GTv)
 
             if (castTv !== null) {
 
                 Glide.with(this)
-                    .load("${IMAGE_URL}${castTv.poster_path}")
+                    .load("${Constant.IMAGE_URL}${castTv.poster_path}")
                     .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.tvImg)

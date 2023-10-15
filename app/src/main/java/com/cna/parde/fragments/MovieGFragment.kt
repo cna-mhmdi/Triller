@@ -15,6 +15,7 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.GMovieAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.FragmentMovieGBinding
 import com.cna.parde.detailActivity.DetailGMovieActivity
 import com.cna.parde.model.GMovie
@@ -151,7 +152,7 @@ class MovieGFragment : Fragment() {
 
     private fun openGMovieDetails(movie: GMovie) {
         val intent = Intent(requireContext(), DetailGMovieActivity::class.java).apply {
-            putExtra(DetailGMovieActivity.GMovie, movie)
+            putExtra(Constant.GMovie, movie)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())

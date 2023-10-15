@@ -10,16 +10,12 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastTvAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityTvRecDetailBinding
 import com.cna.parde.model.CastTv
 import com.cna.parde.model.RecTv
 
 class DetailRecTvActivity : AppCompatActivity() {
-
-    companion object {
-        const val TV = "TV"
-        const val IMG_URL = "https://image.tmdb.org/t/p/w185/"
-    }
 
     private lateinit var binding: ActivityTvRecDetailBinding
 
@@ -47,12 +43,12 @@ class DetailRecTvActivity : AppCompatActivity() {
 
         val intent = intent
         if (intent !== null) {
-            val tv = intent.getParcelableExtra<RecTv>(TV)
+            val tv = intent.getParcelableExtra<RecTv>(Constant.TV)
 
             if (tv !== null) {
 
                 Glide.with(this)
-                    .load("${IMG_URL}${tv.poster_path}")
+                    .load("${Constant.IMAGE_URL}${tv.poster_path}")
                     .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.tvImg)

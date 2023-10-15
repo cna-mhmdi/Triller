@@ -10,16 +10,12 @@ import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastMovieAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivitySearchDetailBinding
 import com.cna.parde.model.Cast
 import com.cna.parde.model.Search
 
 class DetailSearchActivity : AppCompatActivity() {
-
-    companion object {
-        const val Search = "Search"
-        const val IMAGE_URL = "https://image.tmdb.org/t/p/w185/"
-    }
 
     private lateinit var binding: ActivitySearchDetailBinding
 
@@ -47,12 +43,12 @@ class DetailSearchActivity : AppCompatActivity() {
 
         val intent = intent
         if (intent != null) {
-            val search = intent.getParcelableExtra<Search>(Search)
+            val search = intent.getParcelableExtra<Search>(Constant.Search)
 
             if (search !== null) {
 
                 Glide.with(this)
-                    .load("${IMAGE_URL}${search.poster_path}")
+                    .load("${Constant.IMAGE_URL}${search.poster_path}")
                     .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.movieImg)

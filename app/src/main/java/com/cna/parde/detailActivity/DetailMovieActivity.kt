@@ -14,6 +14,7 @@ import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.CastMovieAdapter
 import com.cna.parde.adapters.RecMovieAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityMovieDetailBinding
 import com.cna.parde.model.Cast
 import com.cna.parde.model.NPMovie
@@ -24,15 +25,6 @@ import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
 
 class DetailMovieActivity : AppCompatActivity() {
-
-    companion object {
-        const val POPMovie = "POPMovie"
-        const val NPMovie = "NPMovie"
-        const val TMovie = "TMovie"
-        const val TRMovie = "TRMovie"
-        const val UCMovie = "UCMovie"
-        const val IMAGE_URL = "https://image.tmdb.org/t/p/w185/"
-    }
 
     private lateinit var binding: ActivityMovieDetailBinding
 
@@ -71,16 +63,16 @@ class DetailMovieActivity : AppCompatActivity() {
         val intent = intent
         if (intent != null) {
 
-            val popMovie = intent.getParcelableExtra<POPMovie>(POPMovie)
-            val npMovie = intent.getParcelableExtra<NPMovie>(NPMovie)
-            val tMovie = intent.getParcelableExtra<TMovie>(TMovie)
-            val trMovie = intent.getParcelableExtra<TRMovie>(TRMovie)
-            val ucMovie = intent.getParcelableExtra<UCMovie>(UCMovie)
+            val popMovie = intent.getParcelableExtra<POPMovie>(Constant.POPMovie)
+            val npMovie = intent.getParcelableExtra<NPMovie>(Constant.NPMovie)
+            val tMovie = intent.getParcelableExtra<TMovie>(Constant.TMovie)
+            val trMovie = intent.getParcelableExtra<TRMovie>(Constant.TRMovie)
+            val ucMovie = intent.getParcelableExtra<UCMovie>(Constant.UCMovie)
 
             if (popMovie != null) {
 
                 Glide.with(this)
-                    .load("$IMAGE_URL${popMovie.poster_path}")
+                    .load("$Constant.IMAGE_URL${popMovie.poster_path}")
                     .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.movieImg)
@@ -113,7 +105,7 @@ class DetailMovieActivity : AppCompatActivity() {
             } else if (npMovie != null) {
 
                 Glide.with(this)
-                    .load("$IMAGE_URL${npMovie.poster_path}")
+                    .load("$Constant.IMAGE_URL${npMovie.poster_path}")
                     .placeholder(R.drawable.star)
                     .centerInside()
                     .into(binding.movieImg)
@@ -146,7 +138,7 @@ class DetailMovieActivity : AppCompatActivity() {
             } else if (tMovie != null) {
 
                 Glide.with(this)
-                    .load("$IMAGE_URL${tMovie.poster_path}")
+                    .load("$Constant.IMAGE_URL${tMovie.poster_path}")
                     .placeholder(R.drawable.star)
                     .centerInside()
                     .into(binding.movieImg)
@@ -179,7 +171,7 @@ class DetailMovieActivity : AppCompatActivity() {
             } else if (trMovie != null) {
 
                 Glide.with(this)
-                    .load("$IMAGE_URL${trMovie.poster_path}")
+                    .load("$Constant.IMAGE_URL${trMovie.poster_path}")
                     .placeholder(R.drawable.star)
                     .centerInside()
                     .into(binding.movieImg)
@@ -212,7 +204,7 @@ class DetailMovieActivity : AppCompatActivity() {
             } else if (ucMovie != null) {
 
                 Glide.with(this)
-                    .load("$IMAGE_URL${ucMovie.poster_path}")
+                    .load("$Constant.IMAGE_URL${ucMovie.poster_path}")
                     .placeholder(R.drawable.star)
                     .centerInside()
                     .into(binding.movieImg)
@@ -252,7 +244,7 @@ class DetailMovieActivity : AppCompatActivity() {
 
     private fun openRecDetail(recMovie: RecMovie) {
         val intent = Intent(this, DetailRecMovieActivity::class.java).apply {
-            putExtra(DetailRecMovieActivity.MOVIE, recMovie)
+            putExtra(Constant.MOVIE, recMovie)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(this).toBundle())

@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.adapters.SearchAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.FragmentSearchBinding
 import com.cna.parde.detailActivity.DetailSearchActivity
 import com.cna.parde.model.Search
@@ -82,7 +83,7 @@ class SearchFragment : Fragment() {
 
     private fun openSearchDetails(movie: Search) {
         val intent = Intent(requireContext(), DetailSearchActivity::class.java).apply {
-            putExtra(DetailSearchActivity.Search, movie)
+            putExtra(Constant.Search, movie)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())

@@ -20,6 +20,7 @@ import com.cna.parde.adapters.POPMovieAdapter
 import com.cna.parde.adapters.TMovieAdapter
 import com.cna.parde.adapters.TRMovieAdapter
 import com.cna.parde.adapters.UCMovieAdapter
+import com.cna.parde.constant.Constant
 import com.cna.parde.detailActivity.DetailMovieActivity
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
@@ -150,7 +151,7 @@ class MovieFragment : Fragment() {
 
     private fun openNPMovieDetails(movie: NPMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.NPMovie, movie)
+            putExtra(Constant.NPMovie, movie)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
@@ -158,7 +159,7 @@ class MovieFragment : Fragment() {
 
     private fun openUCMovieDetails(movie: UCMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.UCMovie, movie)
+            putExtra(Constant.UCMovie, movie)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
@@ -166,7 +167,7 @@ class MovieFragment : Fragment() {
 
     private fun openTRMovieDetails(movie: TRMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.TRMovie, movie)
+            putExtra(Constant.TRMovie, movie)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
@@ -174,7 +175,7 @@ class MovieFragment : Fragment() {
 
     private fun openPOPMovieDetails(movie: POPMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.POPMovie, movie)
+            putExtra(Constant.POPMovie, movie)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
@@ -183,17 +184,9 @@ class MovieFragment : Fragment() {
 
     private fun openTMovieDetails(movie: TMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.TMovie, movie)
+            putExtra(Constant.TMovie, movie)
         }
         startActivity(intent, ActivityOptions
             .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
     }
-
-//    private fun openMovieDetails(movieType: String, movieId: ) {
-//        val intent = Intent(requireContext(),DetailMovieActivity::class.java).apply {
-//            putExtra(DetailMovieActivity.NPMovie,movie)
-//        }
-//        startActivity(intent)
-//    }
-
 }

@@ -9,48 +9,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        const val TAG_USERNAME = "USERNAME"
-        const val TAG_CHIP_NAMES = "CHIP_NAMES"
-
-        val nameFY = arrayOf(
-            "btn7",
-            "btn8",
-            "btn9",
-            "btn10",
-            "btn11",
-            "btn12",
-        )
-        val ratesFY = arrayOf(
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-        )
-        val nameUC = arrayOf(
-            "btn13",
-            "btn14",
-            "btn15",
-            "btn16",
-            "btn17",
-            "btn18",
-            "btn19",
-            "btn20",
-        )
-        val rateUC = arrayOf(
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-        )
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
