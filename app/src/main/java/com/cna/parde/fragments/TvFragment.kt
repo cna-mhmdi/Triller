@@ -128,32 +128,40 @@ class TvFragment : Fragment() {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
             putExtra(Constant.OTATv, tv)
         }
-        startActivity(intent, ActivityOptions
-            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
+        startActivity(
+            intent, ActivityOptions
+                .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle()
+        )
     }
 
     private fun openPOPTvDetails(tv: POPTv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
             putExtra(Constant.POPTv, tv)
         }
-        startActivity(intent, ActivityOptions
-            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
+        startActivity(
+            intent, ActivityOptions
+                .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle()
+        )
     }
 
     private fun openTRTvDetails(tv: TRTv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
             putExtra(Constant.TRTv, tv)
         }
-        startActivity(intent, ActivityOptions
-            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
+        startActivity(
+            intent, ActivityOptions
+                .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle()
+        )
     }
 
     private fun openTTvDetails(tv: TTv) {
         val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
             putExtra(Constant.TTv, tv)
         }
-        startActivity(intent, ActivityOptions
-            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
+        startActivity(
+            intent, ActivityOptions
+                .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle()
+        )
     }
 
 }

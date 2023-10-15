@@ -44,7 +44,10 @@ class InfoActivity : AppCompatActivity() {
                 } else {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra(Constant.TAG_USERNAME, userNames)
-                    intent.putStringArrayListExtra(Constant.TAG_CHIP_NAMES, ArrayList(selectedChipNames))
+                    intent.putStringArrayListExtra(
+                        Constant.TAG_CHIP_NAMES,
+                        ArrayList(selectedChipNames)
+                    )
                     startActivity(intent)
                 }
             } else {

@@ -139,8 +139,10 @@ class TvGFragment : Fragment() {
         val intent = Intent(requireContext(), DetailGTvActivity::class.java).apply {
             putExtra(Constant.GTv, tv)
         }
-        startActivity(intent, ActivityOptions
-            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
+        startActivity(
+            intent, ActivityOptions
+                .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle()
+        )
     }
 
     override fun onDestroyView() {

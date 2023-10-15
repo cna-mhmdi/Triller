@@ -85,7 +85,9 @@ class SearchFragment : Fragment() {
         val intent = Intent(requireContext(), DetailSearchActivity::class.java).apply {
             putExtra(Constant.Search, movie)
         }
-        startActivity(intent, ActivityOptions
-            .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle())
+        startActivity(
+            intent, ActivityOptions
+                .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle()
+        )
     }
 }

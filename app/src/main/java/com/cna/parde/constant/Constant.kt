@@ -1,7 +1,6 @@
 package com.cna.parde.constant
 
 
-
 object Constant {
     const val POPMovie = "POPMovie"
     const val NPMovie = "NPMovie"

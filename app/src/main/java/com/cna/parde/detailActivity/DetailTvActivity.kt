@@ -218,7 +218,9 @@ class DetailTvActivity : AppCompatActivity() {
         val intent = Intent(this, DetailRecTvActivity::class.java).apply {
             putExtra(Constant.TV, tv)
         }
-        startActivity(intent, ActivityOptions
-            .makeSceneTransitionAnimation(this).toBundle())
+        startActivity(
+            intent, ActivityOptions
+                .makeSceneTransitionAnimation(this).toBundle()
+        )
     }
 }
