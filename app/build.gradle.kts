@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
-    id("com.google.gms.google-services")
+//    id("com.google.gms.google-services")
     id("kotlin-parcelize")
 }
 
@@ -66,17 +66,17 @@ dependencies {
     //coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    //Room
-    implementation("androidx.room:room-runtime:2.5.2")
-    kapt("androidx.room:room-compiler:2.5.2")
+//    //Room
+//    implementation("androidx.room:room-runtime:2.5.2")
+//    kapt("androidx.room:room-compiler:2.5.2")
     //viewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     //liveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    //FireBase
-    implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
-    implementation("com.google.firebase:firebase-messaging")
+//    //FireBase
+//    implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
+//    implementation("com.google.firebase:firebase-analytics-ktx")
+//    implementation("com.google.firebase:firebase-messaging")
     //Navigation View
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.2")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.2")
