@@ -3,6 +3,11 @@ package com.cna.parde.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
+interface DisplayableItem {
+    val movieTitle: String
+    val voteAverage: Float
+    val posterPath: String
+}
 
 data class NPMoviesResponse(
     val page: Int,
@@ -24,7 +29,16 @@ data class NPMovie(
     val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
-) : Parcelable
+) : Parcelable, DisplayableItem {
+    override val movieTitle: String
+        get() = title
+
+    override val voteAverage: Float
+        get() = vote_average
+
+    override val posterPath: String
+        get() = poster_path
+}
 
 data class POPMoviesResponse(
     val page: Int,
@@ -46,14 +60,22 @@ data class POPMovie(
     val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
-) : Parcelable
+) : Parcelable, DisplayableItem {
+    override val movieTitle: String
+        get() = title
+
+    override val voteAverage: Float
+        get() = vote_average
+
+    override val posterPath: String
+        get() = poster_path
+}
 
 
 data class UcMovieResponse(
     val page: Int,
     val results: List<UCMovie>,
-
-    )
+)
 
 @Parcelize
 data class UCMovie(
@@ -70,7 +92,16 @@ data class UCMovie(
     val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
-) : Parcelable
+) : Parcelable, DisplayableItem {
+    override val movieTitle: String
+        get() = title
+
+    override val voteAverage: Float
+        get() = vote_average
+
+    override val posterPath: String
+        get() = poster_path
+}
 
 data class TRMovieResponse(
     val page: Int,
@@ -92,7 +123,16 @@ data class TRMovie(
     val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
-) : Parcelable
+) : Parcelable, DisplayableItem {
+    override val movieTitle: String
+        get() = title
+
+    override val voteAverage: Float
+        get() = vote_average
+
+    override val posterPath: String
+        get() = poster_path
+}
 
 data class TMovieResponse(
     val page: Int,
@@ -114,7 +154,16 @@ data class TMovie(
     val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
-) : Parcelable
+) : Parcelable, DisplayableItem {
+    override val movieTitle: String
+        get() = title
+
+    override val voteAverage: Float
+        get() = vote_average
+
+    override val posterPath: String
+        get() = poster_path
+}
 
 data class GMovieResponse(
     val page: Int,
