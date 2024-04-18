@@ -20,7 +20,7 @@
                 android:id="@+id/title_admin_suggestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Admin's  suggestion"
+                android:text="Admin's  suggestion sss"
                 android:paddingBottom="4dp"
                 android:textColor="@color/yellow"
                 android:fontFamily="@font/uniheavy"

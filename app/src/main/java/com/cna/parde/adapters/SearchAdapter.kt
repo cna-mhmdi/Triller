@@ -43,7 +43,7 @@ class SearchAdapter(private val clickListener: SearchClickListener) :
         private val txtTitle: TextView by lazy { itemView.findViewById(R.id.txtTitleMovie) }
         private val txtRate: TextView by lazy { itemView.findViewById(R.id.txtRateMovie) }
         private val imgMoviePic: ImageView by lazy { itemView.findViewById(R.id.imgMoviePic) }
-        private val imageUrl = "https://image.tmdb.org/t/p/w185/"
+        private val imageUrl = "https://image.tmdb.org/t/p/w185"
 
         fun bind(movie: Search) {
             if (movie.media_type == "movie") {

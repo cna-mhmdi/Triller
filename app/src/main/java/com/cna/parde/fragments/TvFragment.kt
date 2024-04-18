@@ -15,10 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
-import com.cna.parde.adapters.OTATvAdapter
-import com.cna.parde.adapters.POPTvAdapter
-import com.cna.parde.adapters.TRTvAdapter
-import com.cna.parde.adapters.TTvAdapter
+import com.cna.parde.adapters.TvAdapter
 import com.cna.parde.constant.Constant
 import com.cna.parde.detailActivity.DetailTvActivity
 import com.cna.parde.model.OTATv
@@ -34,32 +31,32 @@ class TvFragment : Fragment() {
     private lateinit var recyclerViewTTv: RecyclerView
 
     private val otaTvAdapter by lazy {
-        OTATvAdapter(object : OTATvAdapter.OTATvClickListener {
-            override fun onOTATvClick(tv: OTATv) {
+        TvAdapter(object : TvAdapter.TvClickListener<OTATv> {
+            override fun onTvClick(tv: OTATv) {
                 openOTATvDetails(tv)
             }
         })
     }
 
     private val tTvAdapter by lazy {
-        TTvAdapter(object : TTvAdapter.TTvClickListener {
-            override fun onTTvClick(tv: TTv) {
+        TvAdapter(object : TvAdapter.TvClickListener<TTv> {
+            override fun onTvClick(tv: TTv) {
                 openTTvDetails(tv)
             }
         })
     }
 
     private val popTvAdapter by lazy {
-        POPTvAdapter(object : POPTvAdapter.POPTvClickListener {
-            override fun onPOPTvClick(tv: POPTv) {
+        TvAdapter(object : TvAdapter.TvClickListener<POPTv> {
+            override fun onTvClick(tv: POPTv) {
                 openPOPTvDetails(tv)
             }
         })
     }
 
     private val trTvAdapter by lazy {
-        TRTvAdapter(object : TRTvAdapter.TRTvClickListener {
-            override fun onTRTvClick(tv: TRTv) {
+        TvAdapter(object : TvAdapter.TvClickListener<TRTv> {
+            override fun onTvClick(tv: TRTv) {
                 openTRTvDetails(tv)
             }
         })
@@ -163,5 +160,4 @@ class TvFragment : Fragment() {
                 .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle()
         )
     }
-
 }
