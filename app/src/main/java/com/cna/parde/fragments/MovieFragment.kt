@@ -15,10 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
-import com.cna.parde.adapters.MovieAdapter
+import com.cna.parde.adapters.HomeAdapter
 import com.cna.parde.constant.Constant
 import com.cna.parde.detailActivity.DetailMovieActivity
-import com.cna.parde.model.DisplayableItem
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.TMovie
@@ -38,37 +37,37 @@ class MovieFragment : Fragment() {
 
     private lateinit var recyclerViewTMovie: RecyclerView
 
-    private val npMovieAdapter = MovieAdapter(object :
-        MovieAdapter.MovieClickListener<NPMovie> {
-        override fun onMovieClick(movie: NPMovie) {
+    private val npHomeAdapter = HomeAdapter(object :
+        HomeAdapter.HomeClickListener<NPMovie> {
+        override fun onClick(movie: NPMovie) {
             openNPMovieDetails(movie)
         }
     })
 
-    private val ucMovieAdapter = MovieAdapter(object :
-        MovieAdapter.MovieClickListener<UCMovie> {
-        override fun onMovieClick(movie: UCMovie) {
+    private val ucHomeAdapter = HomeAdapter(object :
+        HomeAdapter.HomeClickListener<UCMovie> {
+        override fun onClick(movie: UCMovie) {
             openUCMovieDetails(movie)
         }
     })
 
-    private val trMovieAdapter = MovieAdapter(object :
-        MovieAdapter.MovieClickListener<TRMovie> {
-        override fun onMovieClick(movie: TRMovie) {
+    private val trHomeAdapter = HomeAdapter(object :
+        HomeAdapter.HomeClickListener<TRMovie> {
+        override fun onClick(movie: TRMovie) {
             openTRMovieDetails(movie)
         }
     })
 
-    private val popMovieAdapter = MovieAdapter(object :
-        MovieAdapter.MovieClickListener<POPMovie> {
-        override fun onMovieClick(movie: POPMovie) {
+    private val popHomeAdapter = HomeAdapter(object :
+        HomeAdapter.HomeClickListener<POPMovie> {
+        override fun onClick(movie: POPMovie) {
             openPOPMovieDetails(movie)
         }
     })
 
-    private val tMovieAdapter = MovieAdapter(object :
-        MovieAdapter.MovieClickListener<TMovie> {
-        override fun onMovieClick(movie: TMovie) {
+    private val tHomeAdapter = HomeAdapter(object :
+        HomeAdapter.HomeClickListener<TMovie> {
+        override fun onClick(movie: TMovie) {
             openTMovieDetails(movie)
         }
     })
@@ -88,45 +87,45 @@ class MovieFragment : Fragment() {
         })[PardeViewModel::class.java]
 
         recyclerViewNPMovie = view.findViewById(R.id.Recycler_movie_now_playing)
-        recyclerViewNPMovie.adapter = npMovieAdapter
+        recyclerViewNPMovie.adapter = npHomeAdapter
         pardeViewModel.nowPlayingMovies.observe(viewLifecycleOwner) { nowPlayingMovie ->
-            npMovieAdapter.addMovies(nowPlayingMovie)
+            npHomeAdapter.addMovies(nowPlayingMovie)
         }
         pardeViewModel.getNowPlayingMovieError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewUCMovie = view.findViewById(R.id.Recycler_movie_upComing)
-        recyclerViewUCMovie.adapter = ucMovieAdapter
+        recyclerViewUCMovie.adapter = ucHomeAdapter
         pardeViewModel.upComingMovie.observe(viewLifecycleOwner) { upcomingMovie ->
-            ucMovieAdapter.addMovies(upcomingMovie)
+            ucHomeAdapter.addMovies(upcomingMovie)
         }
         pardeViewModel.getUpComingMovieError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewTRMovie = view.findViewById(R.id.Recycler_movie_top_rated)
-        recyclerViewTRMovie.adapter = trMovieAdapter
+        recyclerViewTRMovie.adapter = trHomeAdapter
         pardeViewModel.topRatedMovie.observe(viewLifecycleOwner) { topRatedMovie ->
-            trMovieAdapter.addMovies(topRatedMovie)
+            trHomeAdapter.addMovies(topRatedMovie)
         }
         pardeViewModel.getTopRatedMovieError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewPOPMovie = view.findViewById(R.id.Recycler_movie_popular)
-        recyclerViewPOPMovie.adapter = popMovieAdapter
+        recyclerViewPOPMovie.adapter = popHomeAdapter
         pardeViewModel.popularMovies.observe(viewLifecycleOwner) { popularMovie ->
-            popMovieAdapter.addMovies(popularMovie)
+            popHomeAdapter.addMovies(popularMovie)
         }
         pardeViewModel.getPopularMovieError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
         recyclerViewTMovie = view.findViewById(R.id.Recycler_movie_trending)
-        recyclerViewTMovie.adapter = tMovieAdapter
+        recyclerViewTMovie.adapter = tHomeAdapter
         pardeViewModel.trendingMovie.observe(viewLifecycleOwner) { trendingMovie ->
-            tMovieAdapter.addMovies(trendingMovie)
+            tHomeAdapter.addMovies(trendingMovie)
         }
         pardeViewModel.getTrendingMovieError().observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()

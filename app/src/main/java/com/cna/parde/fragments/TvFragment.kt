@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
-import com.cna.parde.adapters.TvAdapter
+import com.cna.parde.adapters.HomeAdapter
 import com.cna.parde.constant.Constant
 import com.cna.parde.detailActivity.DetailTvActivity
 import com.cna.parde.model.OTATv
@@ -31,33 +31,33 @@ class TvFragment : Fragment() {
     private lateinit var recyclerViewTTv: RecyclerView
 
     private val otaTvAdapter by lazy {
-        TvAdapter(object : TvAdapter.TvClickListener<OTATv> {
-            override fun onTvClick(tv: OTATv) {
-                openOTATvDetails(tv)
+        HomeAdapter(object : HomeAdapter.HomeClickListener<OTATv> {
+            override fun onClick(movie: OTATv) {
+                openOTATvDetails(movie)
             }
         })
     }
 
     private val tTvAdapter by lazy {
-        TvAdapter(object : TvAdapter.TvClickListener<TTv> {
-            override fun onTvClick(tv: TTv) {
-                openTTvDetails(tv)
+        HomeAdapter(object : HomeAdapter.HomeClickListener<TTv> {
+            override fun onClick(movie: TTv) {
+                openTTvDetails(movie)
             }
         })
     }
 
     private val popTvAdapter by lazy {
-        TvAdapter(object : TvAdapter.TvClickListener<POPTv> {
-            override fun onTvClick(tv: POPTv) {
-                openPOPTvDetails(tv)
+        HomeAdapter(object : HomeAdapter.HomeClickListener<POPTv> {
+            override fun onClick(movie: POPTv) {
+                openPOPTvDetails(movie)
             }
         })
     }
 
     private val trTvAdapter by lazy {
-        TvAdapter(object : TvAdapter.TvClickListener<TRTv> {
-            override fun onTvClick(tv: TRTv) {
-                openTRTvDetails(tv)
+        HomeAdapter(object : HomeAdapter.HomeClickListener<TRTv> {
+            override fun onClick(movie: TRTv) {
+                openTRTvDetails(movie)
             }
         })
     }

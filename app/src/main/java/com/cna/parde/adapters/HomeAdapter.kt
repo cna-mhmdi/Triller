@@ -1,33 +1,30 @@
 package com.cna.parde.adapters
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.bumptech.glide.Glide
 import com.cna.parde.R
 import com.cna.parde.model.DisplayableItem
 
-class MovieAdapter<T : DisplayableItem>(private val clickListener: MovieClickListener<T>) :
-    RecyclerView.Adapter<MovieAdapter<T>.MovieViewHolder>() {
+class HomeAdapter<T : DisplayableItem>(private val clickListener: HomeClickListener<T>) :
+    RecyclerView.Adapter<HomeAdapter<T>.ViewHolder>() {
 
     private val items = mutableListOf<T>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_recycler_item, parent, false)
-        return MovieViewHolder(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
-        holder.itemView.setOnClickListener { clickListener.onMovieClick(item) }
+        holder.itemView.setOnClickListener { clickListener.onClick(item) }
     }
 
     override fun getItemCount(): Int {
@@ -40,7 +37,7 @@ class MovieAdapter<T : DisplayableItem>(private val clickListener: MovieClickLis
         notifyDataSetChanged()
     }
 
-    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val txtTitle: TextView by lazy { itemView.findViewById(R.id.txtTitleMovie) }
         private val txtRate: TextView by lazy { itemView.findViewById(R.id.txtRateMovie) }
         private val imgMoviePic: ImageView by lazy { itemView.findViewById(R.id.imgMoviePic) }
@@ -50,9 +47,6 @@ class MovieAdapter<T : DisplayableItem>(private val clickListener: MovieClickLis
             txtTitle.text = item.movieTitle
             txtRate.text = item.voteAverage.toString()
 
-            Log.d("sinanycomoviepic", "$imageUrl${item.posterPath}")
-//            imgMoviePic.load("$imageUrl${item.posterPath}")
-
             Glide.with(itemView.context)
                 .load("$imageUrl${item.posterPath}")
                 .placeholder(R.drawable.placeholder)
@@ -61,7 +55,7 @@ class MovieAdapter<T : DisplayableItem>(private val clickListener: MovieClickLis
         }
     }
 
-    interface MovieClickListener<T> {
-        fun onMovieClick(movie: T)
+    interface HomeClickListener<T> {
+        fun onClick(movie: T)
     }
 }
