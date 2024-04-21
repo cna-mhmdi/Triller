@@ -10,7 +10,7 @@ import com.cna.parde.R
 import com.cna.parde.model.Cast
 import com.cna.parde.model.DisplayableDetailItem
 
-class CastAdapter<T: DisplayableDetailItem>(private val clickListener: CastClickListener<T>) :
+class CastAdapter<T : DisplayableDetailItem>(private val clickListener: CastClickListener<T>) :
     RecyclerView.Adapter<CastAdapter<T>.ViewHolder>() {
 
     private val movies = mutableListOf<T>()

@@ -2,6 +2,7 @@ package com.cna.parde.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+
 data class GTvResponse(
     val page: Int,
     val results: List<GTv>,

@@ -501,9 +501,10 @@ data class GenreMovie(
     val name: String = "",
 ) : Parcelable
 
-interface DisplayableDetailItem{
-    val profilePath : String?
+interface DisplayableDetailItem {
+    val profilePath: String?
 }
+
 data class CastResponse(
     val id: Int = 0,
     val cast: List<Cast>,
@@ -526,12 +527,13 @@ data class Cast(
     val order: Int = 0,
 ) : Parcelable, DisplayableDetailItem {
     override val profilePath: String?
-        get() =  profile_path
+        get() = profile_path
 }
 
-interface DisplayItem{
-    val profilePath : String?
+interface DisplayItem {
+    val profilePath: String?
 }
+
 data class RecResponse(
     val page: Int = 0,
     val results: List<Rec>,
@@ -555,6 +557,6 @@ data class Rec(
     val vote_count: Int = 0,
 ) : Parcelable, DisplayItem {
     override val profilePath: String?
-        get() =  poster_path
+        get() = poster_path
 }
 

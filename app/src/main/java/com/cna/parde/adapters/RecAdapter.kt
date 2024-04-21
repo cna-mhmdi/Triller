@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.cna.parde.R
 import com.cna.parde.model.DisplayItem
 
-class RecAdapter<T: DisplayItem>(private val clickListener: RecClickListener<T>) :
+class RecAdapter<T : DisplayItem>(private val clickListener: RecClickListener<T>) :
     RecyclerView.Adapter<RecAdapter<T>.ViewHolder>() {
 
     private val movies = mutableListOf<T>()

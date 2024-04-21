@@ -81,7 +81,7 @@ class DetailMovieActivity : AppCompatActivity() {
                     .centerInside()
                     .into(binding.movieImg)
 
-                if (it.isMovie){
+                if (it.isMovie) {
                     binding.movieTitle.text = it.movieTitle
                     pardeViewModel.setCastId(it.movieId)
                     pardeViewModel.castMovie.observe(this) { cast ->
@@ -98,7 +98,7 @@ class DetailMovieActivity : AppCompatActivity() {
                         binding.genreMovie.text = detail.map { it.name }.toString()
                     }
 
-                }else {
+                } else {
                     binding.movieTitle.text = it.movieName
                     pardeViewModel.setTvCast(it.movieId)
                     pardeViewModel.castTv.observe(this) { cast ->
