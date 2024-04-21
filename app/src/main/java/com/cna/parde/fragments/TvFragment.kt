@@ -17,7 +17,8 @@ import com.cna.parde.PardeViewModel
 import com.cna.parde.R
 import com.cna.parde.adapters.HomeAdapter
 import com.cna.parde.constant.Constant
-import com.cna.parde.detailActivity.DetailTvActivity
+import com.cna.parde.detailActivity.DetailMovieActivity
+import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.TRTv
@@ -122,7 +123,7 @@ class TvFragment : Fragment() {
     }
 
     private fun openOTATvDetails(tv: OTATv) {
-        val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
+        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(Constant.OTATv, tv)
         }
         startActivity(
@@ -132,7 +133,7 @@ class TvFragment : Fragment() {
     }
 
     private fun openPOPTvDetails(tv: POPTv) {
-        val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
+        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(Constant.POPTv, tv)
         }
         startActivity(
@@ -142,7 +143,7 @@ class TvFragment : Fragment() {
     }
 
     private fun openTRTvDetails(tv: TRTv) {
-        val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
+        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(Constant.TRTv, tv)
         }
         startActivity(
@@ -152,7 +153,7 @@ class TvFragment : Fragment() {
     }
 
     private fun openTTvDetails(tv: TTv) {
-        val intent = Intent(requireContext(), DetailTvActivity::class.java).apply {
+        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(Constant.TTv, tv)
         }
         startActivity(

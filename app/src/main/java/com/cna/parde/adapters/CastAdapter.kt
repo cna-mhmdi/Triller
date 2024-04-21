@@ -7,51 +7,51 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cna.parde.R
-import com.cna.parde.model.RecMovie
+import com.cna.parde.model.Cast
+import com.cna.parde.model.DisplayableDetailItem
 
-class RecMovieAdapter(private val clickListener: RecMovieClickListener) :
-    RecyclerView.Adapter<RecMovieAdapter.RecMovieViewHolder>() {
+class CastAdapter<T: DisplayableDetailItem>(private val clickListener: CastClickListener<T>) :
+    RecyclerView.Adapter<CastAdapter<T>.ViewHolder>() {
 
-    private val movies = mutableListOf<RecMovie>()
+    private val movies = mutableListOf<T>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecMovieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_recycler_detail_cast, parent, false)
-        return RecMovieViewHolder(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecMovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movie = movies[position]
         holder.bind(movie)
-        holder.itemView.setOnClickListener { clickListener.onRecMovieClick(movie) }
+        holder.itemView.setOnClickListener { clickListener.onCastClick(movie) }
     }
 
     override fun getItemCount(): Int {
         return movies.size
     }
 
-    fun addMovies(movieList: List<RecMovie>) {
+    fun addMovies(movieList: List<T>) {
         this.movies.clear()
         this.movies.addAll(movieList)
         notifyDataSetChanged()
     }
 
-
-    inner class RecMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imgMoviePic: ImageView by lazy { itemView.findViewById(R.id.imgMoviePic) }
         private val imageUrl = "https://image.tmdb.org/t/p/w185/"
 
-        fun bind(movie: RecMovie) {
+        fun bind(cast: T) {
 
             Glide.with(itemView.context)
-                .load("$imageUrl${movie.poster_path}")
+                .load("$imageUrl${cast.profilePath}")
                 .placeholder(R.drawable.placeholder)
                 .fitCenter()
                 .into(imgMoviePic)
         }
     }
 
-    interface RecMovieClickListener {
-        fun onRecMovieClick(movie: RecMovie)
+    interface CastClickListener<T> {
+        fun onCastClick(cast: T)
     }
 }

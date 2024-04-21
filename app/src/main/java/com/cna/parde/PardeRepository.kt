@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cna.parde.api.PardeService
 import com.cna.parde.model.Cast
-import com.cna.parde.model.CastTv
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
 import com.cna.parde.model.GenreMovie
@@ -13,8 +12,7 @@ import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
-import com.cna.parde.model.RecMovie
-import com.cna.parde.model.RecTv
+import com.cna.parde.model.Rec
 import com.cna.parde.model.Search
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
@@ -136,10 +134,10 @@ class PardeRepository(private val pardeService: PardeService) {
     val castMovie: LiveData<List<Cast>> get() = castMovieLiveData
     val castMovieError: LiveData<String> get() = castMovieErrorLiveData
 
-    private val recMovieLiveData = MutableLiveData<List<RecMovie>>()
+    private val recMovieLiveData = MutableLiveData<List<Rec>>()
     private val recMovieErrorLiveData = MutableLiveData<String>()
 
-    val recMovie: LiveData<List<RecMovie>> get() = recMovieLiveData
+    val recMovie: LiveData<List<Rec>> get() = recMovieLiveData
     val recMovieError: LiveData<String> get() = recMovieErrorLiveData
 
     private val detailTvLiveData = MutableLiveData<List<GenreTv>>()
@@ -148,16 +146,16 @@ class PardeRepository(private val pardeService: PardeService) {
     val detailTv: LiveData<List<GenreTv>> get() = detailTvLiveData
     val detailTvError: LiveData<String> get() = detailTvErrorLiveData
 
-    private val castTvLiveData = MutableLiveData<List<CastTv>>()
+    private val castTvLiveData = MutableLiveData<List<Cast>>()
     private val castTvErrorLiveData = MutableLiveData<String>()
 
-    val castTv: LiveData<List<CastTv>> get() = castTvLiveData
+    val castTv: LiveData<List<Cast>> get() = castTvLiveData
     val castTvError: LiveData<String> get() = castTvErrorLiveData
 
-    private val recTvLiveData = MutableLiveData<List<RecTv>>()
+    private val recTvLiveData = MutableLiveData<List<Rec>>()
     private val recTvErrorLiveData = MutableLiveData<String>()
 
-    val recTv: LiveData<List<RecTv>> get() = recTvLiveData
+    val recTv: LiveData<List<Rec>> get() = recTvLiveData
     val recTvError: LiveData<String> get() = recTvErrorLiveData
 
     suspend fun fetchRecTv(path: Int) {

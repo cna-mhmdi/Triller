@@ -9,19 +9,19 @@ import com.bumptech.glide.Glide
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
-import com.cna.parde.adapters.CastMovieAdapter
+import com.cna.parde.adapters.CastAdapter
 import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityMovieRecDetailBinding
 import com.cna.parde.model.Cast
-import com.cna.parde.model.RecMovie
+import com.cna.parde.model.Rec
 
 class DetailRecMovieActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieRecDetailBinding
 
-    private val castMovieAdapter by lazy {
-        CastMovieAdapter(object : CastMovieAdapter.CastMovieClickListener {
-            override fun onCastMovieClick(cast: Cast) {
+    private val castAdapter by lazy {
+        CastAdapter(object : CastAdapter.CastClickListener<Cast> {
+            override fun onCastClick(cast: Cast) {
                 openCastMovie(cast)
             }
         })
@@ -39,11 +39,11 @@ class DetailRecMovieActivity : AppCompatActivity() {
             }
         }).get(PardeViewModel::class.java)
 
-        binding.recyclerCastMovie.adapter = castMovieAdapter
+        binding.recyclerCastMovie.adapter = castAdapter
 
         val intent = intent
         if (intent !== null) {
-            val movieCast = intent.getParcelableExtra<RecMovie>(Constant.MOVIE)
+            val movieCast = intent.getParcelableExtra<Rec>(Constant.MOVIE)
 
             if (movieCast !== null) {
 
@@ -70,7 +70,7 @@ class DetailRecMovieActivity : AppCompatActivity() {
 
                 pardeViewModel.setCastId(movieCast.id)
                 pardeViewModel.castMovie.observe(this) { castTv ->
-                    castMovieAdapter.addMovies(castTv)
+                    castAdapter.addMovies(castTv)
                 }
             }
         }

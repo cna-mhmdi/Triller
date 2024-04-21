@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
-import com.cna.parde.adapters.CastMovieAdapter
+import com.cna.parde.adapters.CastAdapter
 import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityMovieGDetailBinding
 import com.cna.parde.model.Cast
@@ -19,9 +19,9 @@ class DetailGMovieActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieGDetailBinding
 
-    private val castMovieAdapter by lazy {
-        CastMovieAdapter(object : CastMovieAdapter.CastMovieClickListener {
-            override fun onCastMovieClick(cast: Cast) {
+    private val castAdapter by lazy {
+        CastAdapter(object : CastAdapter.CastClickListener<Cast> {
+            override fun onCastClick(cast: Cast) {
                 openCastDetail(cast)
             }
         })
@@ -39,7 +39,7 @@ class DetailGMovieActivity : AppCompatActivity() {
             }
         }).get(PardeViewModel::class.java)
 
-        binding.recyclerCastMovie.adapter = castMovieAdapter
+        binding.recyclerCastMovie.adapter = castAdapter
 
         val intent = intent
         if (intent != null) {
@@ -70,7 +70,7 @@ class DetailGMovieActivity : AppCompatActivity() {
 
                 pardeViewModel.setCastId(gMovie.id)
                 pardeViewModel.castMovie.observe(this) { cast ->
-                    castMovieAdapter.addMovies(cast)
+                    castAdapter.addMovies(cast)
                 }
             }
         }

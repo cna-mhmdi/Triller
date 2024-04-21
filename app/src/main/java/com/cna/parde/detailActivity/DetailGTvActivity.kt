@@ -9,10 +9,10 @@ import com.bumptech.glide.Glide
 import com.cna.parde.PardeApplication
 import com.cna.parde.PardeViewModel
 import com.cna.parde.R
-import com.cna.parde.adapters.CastTvAdapter
+import com.cna.parde.adapters.CastAdapter
 import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityTvGDetailBinding
-import com.cna.parde.model.CastTv
+import com.cna.parde.model.Cast
 import com.cna.parde.model.GTv
 
 class DetailGTvActivity : AppCompatActivity() {
@@ -20,9 +20,9 @@ class DetailGTvActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTvGDetailBinding
 
     private val castTvAdapter by lazy {
-        CastTvAdapter(object : CastTvAdapter.CastTvClickListener {
-            override fun onCastTvClick(tv: CastTv) {
-                openCastTv(tv)
+        CastAdapter(object : CastAdapter.CastClickListener<Cast> {
+            override fun onCastClick(cast: Cast) {
+                openCastTv(cast)
             }
         })
     }
@@ -79,7 +79,7 @@ class DetailGTvActivity : AppCompatActivity() {
         }
     }
 
-    private fun openCastTv(tv: CastTv) {
+    private fun openCastTv(tv: Cast) {
         Toast.makeText(this, tv.name, Toast.LENGTH_LONG).show()
     }
 }

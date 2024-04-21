@@ -47,37 +47,5 @@ data class GenreTv(
     val name: String = "",
 )
 
-data class CastTvResponse(
-    val cast: List<CastTv>,
-)
 
-@Parcelize
-data class CastTv(
-    val id: Int,
-    val name: String,
-    val original_name: String,
-    val popularity: Float,
-    val profile_path: String?,
-) : Parcelable
-
-data class RecTvResponse(
-    val page: Int = 0,
-    val results: List<RecTv>,
-)
-
-@Parcelize
-data class RecTv(
-    val adult: Boolean = false,
-    val backdrop_path: String? = null,
-    val id: Int = 0,
-    val original_language: String = "",
-    val name: String = "",
-    val original_name: String = "",
-    val overview: String = "",
-    val popularity: Float = 0f,
-    val poster_path: String? = null,
-    val release_date: String = "",
-    val vote_average: Float = 0f,
-    val vote_count: Int = 0,
-) : Parcelable
 

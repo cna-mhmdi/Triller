@@ -7,7 +7,7 @@ object Constant {
     const val TMovie = "TMovie"
     const val TRMovie = "TRMovie"
     const val UCMovie = "UCMovie"
-    const val IMAGE_URL = "https://image.tmdb.org/t/p/w185/"
+    const val IMAGE_URL = "https://image.tmdb.org/t/p/w185"
 
     const val GMovie = "GMovie"
     const val GTv = "GTv"

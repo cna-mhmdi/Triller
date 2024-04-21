@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.cna.parde.model.Cast
-import com.cna.parde.model.CastTv
 import com.cna.parde.model.GMovie
 import com.cna.parde.model.GTv
 import com.cna.parde.model.GenreMovie
@@ -14,8 +13,7 @@ import com.cna.parde.model.NPMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
 import com.cna.parde.model.POPTv
-import com.cna.parde.model.RecMovie
-import com.cna.parde.model.RecTv
+import com.cna.parde.model.Rec
 import com.cna.parde.model.Search
 import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
@@ -125,7 +123,7 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
 
     fun getCastMovieError(): LiveData<String> = pardeRepository.castMovieError
 
-    val recMovie: LiveData<List<RecMovie>>
+    val recMovie: LiveData<List<Rec>>
         get() = pardeRepository.recMovie.map { recMovie ->
             recMovie.sortedByDescending { it.vote_average }
         }
@@ -135,10 +133,10 @@ class PardeViewModel(private val pardeRepository: PardeRepository) : ViewModel()
     val detailTv: LiveData<List<GenreTv>> get() = pardeRepository.detailTv
     fun getDetailTvError(): LiveData<String> = pardeRepository.detailTvError
 
-    val castTv: LiveData<List<CastTv>> get() = pardeRepository.castTv
+    val castTv: LiveData<List<Cast>> get() = pardeRepository.castTv
     fun getCastTvError(): LiveData<String> = pardeRepository.castTvError
 
-    val recTv: LiveData<List<RecTv>> get() = pardeRepository.recTv
+    val recTv: LiveData<List<Rec>> get() = pardeRepository.recTv
     fun getRecTvError(): LiveData<String> = pardeRepository.recTvError
 
     private fun fetchRecTv() {

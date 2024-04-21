@@ -36,10 +36,6 @@
         <activity
             android:name=".detailActivity.DetailMovieActivity"
             android:exported="false"/>
-        <activity android:name=".detailActivity.DetailTvActivity"
-            android:exported="false"/>
-        <activity android:name=".detailActivity.DetailRecTvActivity"
-            android:exported="false"/>
         <activity android:name=".detailActivity.DetailRecMovieActivity"
             android:exported="false"/>
         <activity android:name=".detailActivity.DetailGMovieActivity"
