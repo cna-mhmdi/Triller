@@ -3,7 +3,7 @@
     <item>
         <shape>
             <gradient
-                android:startColor="#997c3660"
+                android:startColor="#802E2E2E"
                 android:centerColor="#000000"
                 android:endColor="#000000"
                 android:type="radial"
@@ -15,12 +15,25 @@
     <item>
         <shape>
             <gradient
-                android:startColor="#800f8a75"
+                android:startColor="#802E2E2E"
                 android:centerColor="@android:color/transparent"
                 android:endColor="@android:color/transparent"
                 android:gradientRadius="110%p"
                 android:centerX="0.8"
                 android:centerY="0.6"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#802E2E2E"
+                android:centerColor="@android:color/transparent"
+                android:endColor="@android:color/transparent"
+                android:gradientRadius="110%p"
+                android:centerX="0.1"
+                android:centerY="0.9"
                 android:type="radial" />
         </shape>
     </item>

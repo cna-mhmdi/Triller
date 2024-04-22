@@ -1,64 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="120dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="true"
-    android:elevation="8dp"
     android:focusable="true"
-    android:padding="8dp"
+    android:elevation="8dp"
     android:layout_margin="3dp"
-    app:strokeWidth="1dp"
-    app:strokeColor="#25888484">
+    app:cardCornerRadius="3dp"
+    app:strokeColor="@color/black"
+    app:strokeWidth="0dp"
+    android:backgroundTint="@color/main_background">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/main_background">
-
-        <ImageView
-            android:id="@+id/imgMoviePic"
-            android:layout_width="130dp"
-            android:layout_height="140dp"
-            android:src="@drawable/placeholder"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="4dp">
+            android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/star" />
+                android:id="@+id/imgMoviePic"
+                android:layout_width="120dp"
+                android:layout_height="180dp"
+                android:src="@drawable/placeholder"/>
 
-            <TextView
-                android:id="@+id/txtRateMovie"
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:layout_marginStart="4dp"
-                android:fontFamily="@font/uniheavy"
-                android:text="0.0"
-                android:textColor="@color/white"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtTitleMovie"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/uniheavy"
-            android:inputType="textMultiLine"
-            android:textColor="@color/white"
-            android:padding="4dp"
-            android:lines="1"
-            android:ellipsize="end"
-            android:text="this is title of the movie"
-            android:textSize="10sp" />
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/star" />
+
+                <TextView
+                    android:id="@+id/txtRateMovie"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/uniheavy"
+                    android:text="0.0"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/txtTitleMovie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/uniheavy"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/white"
+
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:text="this is title of the movie"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
