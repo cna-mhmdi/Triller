@@ -5,7 +5,7 @@
     <color name="light_white">#FFFFFF</color>
     <color name="tabOff">#888484</color>
     <color name="searchView">#43FFFFFF</color>
-    <color name="main_background">#19191b</color>
+    <color name="main_background">#000000</color>
     <color name="second_back">#202022</color>
     <color name="pink">#e45eb0</color>
     <color name="green">#34e3c4</color>

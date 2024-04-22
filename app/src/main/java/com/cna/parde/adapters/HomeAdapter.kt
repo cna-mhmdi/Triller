@@ -44,7 +44,13 @@ class HomeAdapter<T : DisplayableItem>(private val clickListener: HomeClickListe
         private val imageUrl = "https://image.tmdb.org/t/p/w185"
 
         fun bind(item: T) {
-            txtTitle.text = item.movieTitle
+
+            if (item.isMovie){
+                txtTitle.text = item.movieTitle
+            }else{
+                txtTitle.text = item.movieName
+            }
+
             txtRate.text = item.voteAverage.toString()
 
             Glide.with(itemView.context)
