@@ -45,9 +45,9 @@ class HomeAdapter<T : DisplayableItem>(private val clickListener: HomeClickListe
 
         fun bind(item: T) {
 
-            if (item.isMovie){
+            if (item.isMovie) {
                 txtTitle.text = item.movieTitle
-            }else{
+            } else {
                 txtTitle.text = item.movieName
             }
 
