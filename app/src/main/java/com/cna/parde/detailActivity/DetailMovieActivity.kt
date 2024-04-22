@@ -77,7 +77,7 @@ class DetailMovieActivity : AppCompatActivity() {
             movie?.let {
                 Glide.with(this)
                     .load("${Constant.IMAGE_URL}${it.posterPath}")
-                    .placeholder(R.drawable.star)
+                    .placeholder(R.drawable.placeholder)
                     .centerInside()
                     .into(binding.movieImg)
 

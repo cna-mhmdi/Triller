@@ -41,7 +41,7 @@ class HomeAdapter<T : DisplayableItem>(private val clickListener: HomeClickListe
         private val txtTitle: TextView by lazy { itemView.findViewById(R.id.txtTitleMovie) }
         private val txtRate: TextView by lazy { itemView.findViewById(R.id.txtRateMovie) }
         private val imgMoviePic: ImageView by lazy { itemView.findViewById(R.id.imgMoviePic) }
-        private val imageUrl = "https://image.tmdb.org/t/p/w185"
+        private val imageUrl = "https://image.tmdb.org/t/p/w500"
 
         fun bind(item: T) {
 
@@ -56,7 +56,7 @@ class HomeAdapter<T : DisplayableItem>(private val clickListener: HomeClickListe
             Glide.with(itemView.context)
                 .load("$imageUrl${item.posterPath}")
                 .placeholder(R.drawable.placeholder)
-                .fitCenter()
+                .centerCrop()
                 .into(imgMoviePic)
         }
     }
