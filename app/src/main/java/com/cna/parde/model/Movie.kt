@@ -121,18 +121,15 @@ data class UcMovieResponse(
 
 @Parcelize
 data class UCMovie(
-    val adult: Boolean = false,
     val backdrop_path: String = "",
     val id: Int = 0,
     val original_language: String = "",
-    val original_title: String = "",
     val overview: String = "",
     val popularity: Float = 0f,
     val poster_path: String = "",
     val release_date: String = "",
     val title: String = "",
     val name: String = "",
-    val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
 ) : Parcelable, DisplayableItem {
@@ -170,18 +167,15 @@ data class TRMovieResponse(
 
 @Parcelize
 data class TRMovie(
-    val adult: Boolean = false,
     val backdrop_path: String = "",
     val id: Int = 0,
     val original_language: String = "",
-    val original_title: String = "",
     val overview: String = "",
     val popularity: Float = 0f,
     val poster_path: String = "",
     val release_date: String = "",
     val title: String = "",
     val name: String = "",
-    val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
 ) : Parcelable, DisplayableItem {
@@ -211,56 +205,6 @@ data class TRMovie(
     override val isMovie: Boolean
         get() = true
 }
-
-data class TMovieResponse(
-    val page: Int,
-    val results: List<TMovie>,
-)
-
-@Parcelize
-data class TMovie(
-    val adult: Boolean = false,
-    val backdrop_path: String = "",
-    val id: Int = 0,
-    val title: String = "",
-    val name: String = "",
-    val original_language: String = "",
-    val original_title: String = "",
-    val overview: String = "",
-    val poster_path: String = "",
-    val popularity: Float = 0f,
-    val release_date: String = "",
-    val video: Boolean = false,
-    val vote_average: Float = 0f,
-    val vote_count: Int = 0,
-) : Parcelable, DisplayableItem {
-    override val movieId: Int
-        get() = id
-    override val movieTitle: String
-        get() = title
-
-    override val movieName: String
-        get() = name
-
-    override val voteAverage: Float
-        get() = vote_average
-
-    override val posterPath: String
-        get() = poster_path
-
-    override val moviePopularity: Float
-        get() = popularity
-
-    override val voteCount: Int
-        get() = vote_count
-
-    override val movieOverview: String
-        get() = overview
-
-    override val isMovie: Boolean
-        get() = true
-}
-
 
 data class OTATvResponse(
     val page: Int,
@@ -270,12 +214,10 @@ data class OTATvResponse(
 @Parcelize
 data class OTATv(
     val backdrop_path: String = "",
-    val first_air_date: String = "",
     val id: Int = 0,
     val title: String = "",
     val name: String = "",
     val original_language: String = "",
-    val original_name: String = "",
     val overview: String = "",
     val popularity: Float = 0f,
     val poster_path: String = "",
@@ -316,13 +258,11 @@ data class TTvResponse(
 
 @Parcelize
 data class TTv(
-    val adult: Boolean = false,
     val backdrop_path: String = "",
     val id: Int = 0,
     val title: String = "",
     val name: String = "",
     val original_language: String = "",
-    val original_name: String = "",
     val overview: String = "",
     val poster_path: String = "",
     val popularity: Float = 0f,
@@ -369,7 +309,6 @@ data class POPTv(
     val title: String = "",
     val name: String = "",
     val original_language: String = "",
-    val original_name: String = "",
     val overview: String = "",
     val popularity: Float = 0f,
     val poster_path: String = "",
@@ -411,12 +350,10 @@ data class TRTvResponse(
 @Parcelize
 data class TRTv(
     val backdrop_path: String = "",
-    val first_air_date: String = "",
     val id: Int = 0,
     val title: String = "",
     val name: String = "",
     val original_language: String = "",
-    val original_name: String = "",
     val overview: String = "",
     val popularity: Float = 0f,
     val poster_path: String = "",
@@ -458,17 +395,13 @@ data class GMovieResponse(
 
 @Parcelize
 data class GMovie(
-    val adult: Boolean = false,
     val backdrop_path: String = "",
     val id: Int = 0,
     val original_language: String = "",
-    val original_title: String = "",
     val overview: String = "",
     val popularity: Float = 0f,
     val poster_path: String = "",
-    val release_date: String = "",
     val title: String = "",
-    val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
 ) : Parcelable
@@ -512,19 +445,11 @@ data class CastResponse(
 
 @Parcelize
 data class Cast(
-    val adult: Boolean = false,
-    val gender: Int = 0,
     val id: Int = 0,
-    val known_for_department: String = "",
-    val title: String = "",
     val name: String = "",
-    val original_name: String = "",
     val popularity: Float = 0f,
     val profile_path: String? = null,
     val cast_id: Int = 0,
-    val character: String = "",
-    val credit_id: String = "",
-    val order: Int = 0,
 ) : Parcelable, DisplayableDetailItem {
     override val profilePath: String?
         get() = profile_path
@@ -541,18 +466,15 @@ data class RecResponse(
 
 @Parcelize
 data class Rec(
-    val adult: Boolean = false,
     val backdrop_path: String? = null,
     val id: Int = 0,
     val original_language: String = "",
-    val original_title: String = "",
     val overview: String = "",
     val popularity: Float = 0f,
     val poster_path: String? = null,
     val release_date: String = "",
     val title: String = "",
     val name: String = "",
-    val video: Boolean = false,
     val vote_average: Float = 0f,
     val vote_count: Int = 0,
 ) : Parcelable, DisplayItem {

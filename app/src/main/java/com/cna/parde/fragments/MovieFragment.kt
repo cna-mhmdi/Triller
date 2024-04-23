@@ -20,7 +20,6 @@ import com.cna.parde.constant.Constant
 import com.cna.parde.detailActivity.DetailMovieActivity
 import com.cna.parde.model.NPMovie
 import com.cna.parde.model.POPMovie
-import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
 import com.cna.parde.model.UCMovie
 
@@ -62,13 +61,6 @@ class MovieFragment : Fragment() {
         HomeAdapter.HomeClickListener<POPMovie> {
         override fun onClick(movie: POPMovie) {
             openPOPMovieDetails(movie)
-        }
-    })
-
-    private val tHomeAdapter = HomeAdapter(object :
-        HomeAdapter.HomeClickListener<TMovie> {
-        override fun onClick(movie: TMovie) {
-            openTMovieDetails(movie)
         }
     })
 
@@ -122,15 +114,6 @@ class MovieFragment : Fragment() {
             Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
         }
 
-        recyclerViewTMovie = view.findViewById(R.id.Recycler_movie_trending)
-        recyclerViewTMovie.adapter = tHomeAdapter
-        pardeViewModel.trendingMovie.observe(viewLifecycleOwner) { trendingMovie ->
-            tHomeAdapter.addMovies(trendingMovie)
-        }
-        pardeViewModel.getTrendingMovieError().observe(viewLifecycleOwner) { error ->
-            Toast.makeText(requireActivity(), error, Toast.LENGTH_SHORT).show()
-        }
-
         return view
     }
 
@@ -167,16 +150,6 @@ class MovieFragment : Fragment() {
     private fun openPOPMovieDetails(movie: POPMovie) {
         val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
             putExtra(Constant.POPMovie, movie)
-        }
-        startActivity(
-            intent, ActivityOptions
-                .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle()
-        )
-    }
-
-    private fun openTMovieDetails(movie: TMovie) {
-        val intent = Intent(requireContext(), DetailMovieActivity::class.java).apply {
-            putExtra(Constant.TMovie, movie)
         }
         startActivity(
             intent, ActivityOptions
