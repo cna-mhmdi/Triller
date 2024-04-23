@@ -17,10 +17,13 @@ import com.cna.parde.constant.Constant
 import com.cna.parde.databinding.ActivityMovieDetailBinding
 import com.cna.parde.model.Cast
 import com.cna.parde.model.NPMovie
+import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPMovie
+import com.cna.parde.model.POPTv
 import com.cna.parde.model.Rec
-import com.cna.parde.model.TMovie
 import com.cna.parde.model.TRMovie
+import com.cna.parde.model.TRTv
+import com.cna.parde.model.TTv
 import com.cna.parde.model.UCMovie
 
 class DetailMovieActivity : AppCompatActivity() {
@@ -55,7 +58,6 @@ class DetailMovieActivity : AppCompatActivity() {
             }
         }).get(PardeViewModel::class.java)
 
-
         binding.recyclerCastMovie.adapter = castAdapter
         binding.recyclerRecMovie.adapter = recAdapter
 
@@ -64,13 +66,12 @@ class DetailMovieActivity : AppCompatActivity() {
             val movie = when {
                 intent.hasExtra(Constant.POPMovie) -> intent.getParcelableExtra<POPMovie>(Constant.POPMovie)
                 intent.hasExtra(Constant.NPMovie) -> intent.getParcelableExtra<NPMovie>(Constant.NPMovie)
-                intent.hasExtra(Constant.TMovie) -> intent.getParcelableExtra<TMovie>(Constant.TMovie)
                 intent.hasExtra(Constant.TRMovie) -> intent.getParcelableExtra<TRMovie>(Constant.TRMovie)
                 intent.hasExtra(Constant.UCMovie) -> intent.getParcelableExtra<UCMovie>(Constant.UCMovie)
-                intent.hasExtra(Constant.OTATv) -> intent.getParcelableExtra<NPMovie>(Constant.OTATv)
-                intent.hasExtra(Constant.POPTv) -> intent.getParcelableExtra<TMovie>(Constant.POPTv)
-                intent.hasExtra(Constant.TRTv) -> intent.getParcelableExtra<TRMovie>(Constant.TRTv)
-                intent.hasExtra(Constant.TTv) -> intent.getParcelableExtra<UCMovie>(Constant.TTv)
+                intent.hasExtra(Constant.OTATv) -> intent.getParcelableExtra<OTATv>(Constant.OTATv)
+                intent.hasExtra(Constant.POPTv) -> intent.getParcelableExtra<POPTv>(Constant.POPTv)
+                intent.hasExtra(Constant.TRTv) -> intent.getParcelableExtra<TRTv>(Constant.TRTv)
+                intent.hasExtra(Constant.TTv) -> intent.getParcelableExtra<TTv>(Constant.TTv)
                 else -> null
             }
 

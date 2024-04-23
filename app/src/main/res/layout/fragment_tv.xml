@@ -15,13 +15,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/layout_tr_tv_recyclerview" />
-
-            <include layout="@layout/layout_t_tv_recyclerview" />
-
             <include layout="@layout/layout_ota_tv_recyclerview" />
 
             <include layout="@layout/layout_pop_tv_recyclerview" />
+
+            <include layout="@layout/layout_t_tv_recyclerview" />
+
+            <include layout="@layout/layout_tr_tv_recyclerview" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
