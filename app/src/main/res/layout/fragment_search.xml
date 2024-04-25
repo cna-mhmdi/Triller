@@ -30,6 +30,7 @@
             android:id="@+id/Recycler_Search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:layout_marginBottom="75dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"

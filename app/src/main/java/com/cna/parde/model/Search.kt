@@ -11,7 +11,7 @@ data class SearchResponse(
 @Parcelize
 data class Search(
     val adult: Boolean = false,
-    val backdrop_path: String = "",
+    val backdrop_path: String? = "",
     val id: Int = 0,
     val name: String = "",
     val title: String = "",

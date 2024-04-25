@@ -45,7 +45,7 @@ class DetailSearchActivity : AppCompatActivity() {
         if (intent != null) {
             val search = intent.getParcelableExtra<Search>(Constant.Search)
 
-            if (search !== null) {
+            if (search != null) {
 
                 Glide.with(this)
                     .load("${Constant.IMAGE_URL}${search.poster_path}")

@@ -192,6 +192,7 @@
             android:id="@+id/Recycler_tv_genre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:layout_marginBottom="75dp"
             app:spanCount="3"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
