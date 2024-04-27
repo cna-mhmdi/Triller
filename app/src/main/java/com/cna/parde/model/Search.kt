@@ -19,7 +19,7 @@ data class Search(
     val original_name: String = "",
     val original_title: String = "",
     val overview: String = "",
-    val poster_path: String = "",
+    val poster_path: String? = "",
     val media_type: String = "",
     val popularity: Float = 0f,
     val release_date: String = "",
