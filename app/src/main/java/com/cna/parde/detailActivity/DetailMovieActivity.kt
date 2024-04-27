@@ -137,9 +137,6 @@ class DetailMovieActivity : AppCompatActivity() {
         val intent = Intent(this, DetailRecMovieActivity::class.java).apply {
             putExtra(Constant.MOVIE, recMovie)
         }
-        startActivity(
-            intent, ActivityOptions
-                .makeSceneTransitionAnimation(this).toBundle()
-        )
+        startActivity(intent)
     }
 }

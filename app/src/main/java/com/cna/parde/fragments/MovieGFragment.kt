@@ -154,10 +154,7 @@ class MovieGFragment : Fragment() {
         val intent = Intent(requireContext(), DetailGMovieActivity::class.java).apply {
             putExtra(Constant.GMovie, movie)
         }
-        startActivity(
-            intent, ActivityOptions
-                .makeSceneTransitionAnimation(requireContext() as Activity?).toBundle()
-        )
+        startActivity(intent)
     }
 
     override fun onDestroyView() {
