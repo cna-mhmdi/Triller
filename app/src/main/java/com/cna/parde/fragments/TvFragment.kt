@@ -1,7 +1,5 @@
 package com.cna.parde.fragments
 
-import android.app.Activity
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,7 +16,6 @@ import com.cna.parde.R
 import com.cna.parde.adapters.HomeAdapter
 import com.cna.parde.constant.Constant
 import com.cna.parde.detailActivity.DetailMovieActivity
-import com.cna.parde.model.DetailMovie
 import com.cna.parde.model.OTATv
 import com.cna.parde.model.POPTv
 import com.cna.parde.model.TRTv

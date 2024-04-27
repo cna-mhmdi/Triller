@@ -1,14 +1,14 @@
 <resources>
 
     <style name="Base.Theme.Parde" parent="Theme.Material3.DayNight.NoActionBar">
-        
+
         <item name="android:windowBackground">@android:color/transparent</item>
 
         <item name="android:statusBarColor">@color/transparent</item>
 
     </style>
 
-    <style name="Theme.Parde" parent="Base.Theme.Parde"></style>
+    <style name="Theme.Parde" parent="Base.Theme.Parde" />
 
     <style name="Widget.App.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:fontFamily">@font/uniheavy</item>

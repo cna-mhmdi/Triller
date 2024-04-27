@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MovieFragment"
-    >
+    tools:context=".fragments.MovieFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -24,7 +23,7 @@
                 android:paddingBottom="4dp"
                 android:textColor="@color/yellow"
                 android:textSize="20sp"
-                android:fontFamily="@font/uniheavy"/>
+                android:fontFamily="@font/uniheavy" />
 
             <include layout="@layout/layout_np_movie_recyclerview" />
 
@@ -36,7 +35,7 @@
                 android:paddingBottom="4dp"
                 android:textColor="@color/yellow"
                 android:textSize="20sp"
-                android:fontFamily="@font/uniheavy"/>
+                android:fontFamily="@font/uniheavy" />
 
             <include layout="@layout/layout_uc_movie_recyclerview" />
 
@@ -48,7 +47,7 @@
                 android:paddingBottom="4dp"
                 android:textColor="@color/yellow"
                 android:textSize="20sp"
-                android:fontFamily="@font/uniheavy"/>
+                android:fontFamily="@font/uniheavy" />
 
             <include layout="@layout/layout_pop_movie_recyclerview" />
 
@@ -60,7 +59,7 @@
                 android:paddingBottom="4dp"
                 android:textColor="@color/yellow"
                 android:fontFamily="@font/uniheavy"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <include layout="@layout/layout_tr_movie_recyclerview" />
 

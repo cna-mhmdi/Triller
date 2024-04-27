@@ -27,7 +27,7 @@
                 android:id="@+id/imgMoviePic"
                 android:layout_width="120dp"
                 android:layout_height="180dp"
-                android:src="@drawable/placeholder"/>
+                android:src="@drawable/placeholder" />
 
 
         </LinearLayout>

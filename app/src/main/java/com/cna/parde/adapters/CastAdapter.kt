@@ -7,7 +7,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cna.parde.R
-import com.cna.parde.model.Cast
 import com.cna.parde.model.DisplayableDetailItem
 
 class CastAdapter<T : DisplayableDetailItem>(private val clickListener: CastClickListener<T>) :
